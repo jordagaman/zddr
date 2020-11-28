@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/jordagaman/zddr.svg?branch=master)](https://travis-ci.com/jordagaman/zddr)
 <!-- badges: end -->
 
 The goal of zddr is to …
