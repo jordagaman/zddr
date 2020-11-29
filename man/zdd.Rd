@@ -19,3 +19,6 @@ the resulting zdd node, expressed as class zdd
 \description{
 zdd
 }
+\examples{
+zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
+}
