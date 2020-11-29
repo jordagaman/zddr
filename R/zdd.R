@@ -31,7 +31,7 @@ zdd <- function(value, p0, p1) {
 #'
 #' @return hash
 #'
-#' @examples
+#' @examples zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
 zdd_hash <- function(value, p0, p1) {
   if(!is.integer(value))
     stop('value must be an integer')
