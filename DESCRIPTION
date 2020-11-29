@@ -18,3 +18,5 @@ Imports:
     digest
 Suggests: 
     testthat
+Depends: 
+    R (>= 2.10)
