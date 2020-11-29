@@ -10,14 +10,11 @@
 #' @examples zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
 zdd <- function(value, p0, p1) {
   hash <- zdd_hash(value, p0, p1)
-  if(!exists('zdd_store'))
-    message('Creating zdd_store')
-    zdd_store <<- new.env(parent = globalenv())
-  if(!exists(hash, envir = zdd_store))
+  if(!exists(hash, envir = zddr::zdd_store))
     assign(
       x     = hash,
       value = list(value = value, p0 = p0, p1 = p1),
-      envir = zdd_store
+      envir = zddr::zdd_store
     )
   return(hash)
 }
