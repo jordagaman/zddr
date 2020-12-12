@@ -32,6 +32,8 @@ zdd <- function(value, p0, p1) {
 zdd_hash <- function(value, p0, p1) {
   if(!is.integer(value))
     stop('value must be an integer')
+  if(value < 0)
+    stop('value must not be negative')
   if(!(is.character(p0)&is.character(p1)))
     stop('p0 and p1 must be strings')
   digest::digest(
