@@ -2,6 +2,7 @@
 
 export("%>%")
 export(as_zdd)
+export(cutsets)
 export(get_zdd)
 export(is_equal)
 export(is_one)
