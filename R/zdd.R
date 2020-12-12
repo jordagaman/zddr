@@ -13,7 +13,7 @@ zdd <- function(value, p0, p1) {
   if(!exists(hash, envir = zddr::zdd_store))
     assign(
       x     = hash,
-      value = list(value = value, p0 = p0, p1 = p1),
+      value = list(value = value, p0 = p0, p1 = p1, hash = hash),
       envir = zddr::zdd_store
     )
   return(get(hash, envir = zddr::zdd_store))
