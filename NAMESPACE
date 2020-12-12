@@ -2,4 +2,5 @@
 
 export("%>%")
 export(zdd)
+export(zdd0)
 importFrom(magrittr,"%>%")
