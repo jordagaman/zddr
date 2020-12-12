@@ -3,4 +3,5 @@ test_that("hashes still work", {
   node <- zdd(1L, p0, p0)
   expect_equal(node$p0, p0)
   expect_equal(node$p1, p0)
+  expect_s3_class(node, "zdd")
 })
