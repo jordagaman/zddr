@@ -11,6 +11,8 @@ zdd_union <- function(zddP, zddQ) {
   if(is_zero(zddP)       ) return(zddQ)
   if(is_zero(zddQ)       ) return(zddP)
   if(is_equal(zddP, zddQ)) return(zddP)
+  if(  is_one(zddP)      ) return(zdd1())
+  if(  is_one(zddQ)      ) return(zdd1())
   Pv <- zddP$value
   P0 <- get_zdd(zddP$p0)
   P1 <- get_zdd(zddP$p1)
