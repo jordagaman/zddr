@@ -2,6 +2,8 @@
 
 export("%>%")
 export(as_zdd)
+export(is_one)
+export(is_zero)
 export(zdd)
 export(zdd0)
 export(zdd1)
