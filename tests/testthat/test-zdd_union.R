@@ -1,4 +1,7 @@
 test_that("zdd_union works", {
-  # need a test
-  expect_equal(2 * 2, 5)
+  expec   <- list( c(3L) , c(4L) )
+  result1 <- cutsets( zdd_union(as_zdd(4L), as_zdd(3L) ) )
+  result2 <- cutsets( zdd_union(as_zdd(3L), as_zdd(4L) ) )
+  expect_equal(expec, result1)
+  expect_equal(expec, result2)
 })
