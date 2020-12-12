@@ -16,7 +16,7 @@ zdd <- function(value, p0, p1) {
       value = list(value = value, p0 = p0, p1 = p1, hash = hash),
       envir = zddr::zdd_store
     )
-  return(get(hash, envir = zddr::zdd_store))
+  return(get_zdd(hash))
 }
 
 
