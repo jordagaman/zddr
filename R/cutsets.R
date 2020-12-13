@@ -18,8 +18,8 @@ cutsets <- function(zdd) {
       function(x) c(x, value)
     )
   }
-  p0_cutsets <- cutsets(get_zdd(zdd$p0))
-  p1_cutsets <- cutsets(get_zdd(zdd$p1))
+  p0_cutsets <- cutsets(as_zdd(zdd$p0))
+  p1_cutsets <- cutsets(as_zdd(zdd$p1))
   return(
     append(
       p0_cutsets,
