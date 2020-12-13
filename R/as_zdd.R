@@ -27,5 +27,3 @@ as_zdd.character <- function(hash) {
     stop('hash not found in zdd_store')
   get(hash, envir = zddr::zdd_store)
 }
-# TO DO
-# character.as_zdd -> get_zdd
