@@ -19,4 +19,5 @@ zdd_union
 }
 \examples{
 zdd_union(as_zdd(2L), as_zdd(3L))
+as_zdd(2L) | as_zdd(3L)
 }

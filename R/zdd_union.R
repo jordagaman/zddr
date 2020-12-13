@@ -8,6 +8,7 @@
 #'
 #' @examples
 #' zdd_union(as_zdd(2L), as_zdd(3L))
+#' as_zdd(2L) | as_zdd(3L)
 zdd_union <- function(zddP, zddQ) {
   if(  is_one(zddP)      ) return(zdd1())
   if(  is_one(zddQ)      ) return(zdd1())
@@ -35,6 +36,8 @@ zdd_union <- function(zddP, zddQ) {
     )
 }
 
+#' @export
+'|.zdd' <- function(a,b) zdd_union(a,b)
 #Union (P, Q) {
 #  if (P == ø) return Q;
 #  if (Q == ø) return P;
