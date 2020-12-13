@@ -5,9 +5,14 @@
 #'
 #' @examples zdd1()
 zdd1 <- function() {
-  zdd(
-    value = 1L,
-    p0    = '',
-    p1    = ''
-  )
+  hash <- 'ffffffffffffffffffffffffffffffff'
+  res <- list(hash = hash)
+  class(res) <- "zdd"
+  if(!exists(hash, envir = zddr::zdd_store))
+    assign(
+      x     = hash,
+      value = res,
+      envir = zddr::zdd_store
+    )
+  return(res)
 }
