@@ -4,7 +4,7 @@
 \alias{as_zdd}
 \title{as_zdd}
 \usage{
-as_zdd(value)
+as_zdd(x)
 }
 \arguments{
 \item{value}{the integer value of the node to be added}

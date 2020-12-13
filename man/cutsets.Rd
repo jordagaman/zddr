@@ -17,4 +17,7 @@ cutsets
 }
 \examples{
 cutsets( zdd_union(as_zdd(3L), as_zdd(4L) ) )
+cutsets( zdd_union(as_zdd(4L), as_zdd(3L) ) )
+cutsets( zdd_union(as_zdd(4L), zdd0()     ) )
+cutsets( zdd_union(as_zdd(4L), zdd1()     ) )
 }
