@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' as_zdd(3L)
-#' as_zdd('aeca5759d5d7a2fca7544cd6baba7bd5')
+#' as_zdd('d7281766b28bdc9025520edeeffecdd9')
 #' #as_zdd('this one does not exist')  # this one throws an error
 as_zdd <- function(x) {
   UseMethod("as_zdd")

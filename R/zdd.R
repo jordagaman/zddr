@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
+#' zdd(1L, zdd0(), zdd1())
 zdd <- function(value, p0, p1) {
   P0 <- ifelse(is_zdd(p0), p0$hash, p0)
   P1 <- ifelse(is_zdd(p1), p1$hash, p1)
@@ -34,7 +34,7 @@ zdd <- function(value, p0, p1) {
 #' @return hash
 #'
 #' @examples
-#' zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
+#' zddr:::zdd_hash(1L, zdd0()$hash, zdd1()$hash)
 zdd_hash <- function(value, p0, p1) {
   if(!is.integer(value))
     stop('value must be an integer')

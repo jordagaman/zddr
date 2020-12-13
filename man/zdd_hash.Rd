@@ -20,5 +20,5 @@ hash
 zdd hash
 }
 \examples{
-zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
+zddr:::zdd_hash(1L, zdd0()$hash, zdd1()$hash)
 }

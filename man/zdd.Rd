@@ -20,5 +20,5 @@ the resulting zdd node, expressed as class zdd
 zdd
 }
 \examples{
-zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
+zdd(1L, zdd0(), zdd1())
 }
