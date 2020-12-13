@@ -17,4 +17,6 @@ as_zdd
 }
 \examples{
 as_zdd(3L)
+as_zdd('ce225c2f42a41993d712ed06367c5eaa')
+as_zdd('this one does not exist')
 }
