@@ -16,8 +16,11 @@ a list of integer vectors representing a family of sets (cutsets)
 cutsets
 }
 \examples{
-cutsets( zdd_union(as_zdd(3L), as_zdd(4L) ) )
-cutsets( zdd_union(as_zdd(4L), as_zdd(3L) ) )
-cutsets( zdd_union(as_zdd(4L), zdd0()     ) )
-cutsets( zdd_union(as_zdd(4L), zdd1()     ) )
+library(magrittr)
+zdd3 <- as_zdd(3L)
+zdd4 <- as_zdd(4L)
+zdd3 \%>\% zdd_union(zdd4) \%>\% cutsets()
+zdd4 \%>\% zdd_union(zdd3) \%>\% cutsets()
+zdd4 \%>\% zdd_union(zdd0()) \%>\% cutsets()
+zdd4 \%>\% zdd_union(zdd1()) \%>\% cutsets()
 }
