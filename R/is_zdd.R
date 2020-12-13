@@ -1,4 +1,4 @@
-#' iz_zdd
+#' is_zdd
 #'
 #' @param zdd object
 #'

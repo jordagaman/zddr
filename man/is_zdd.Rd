@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_zdd.R
 \name{is_zdd}
 \alias{is_zdd}
-\title{iz_zdd}
+\title{is_zdd}
 \usage{
 is_zdd(zdd)
 }
@@ -13,7 +13,7 @@ is_zdd(zdd)
 TRUE if the object is the class of the zdd list object
 }
 \description{
-iz_zdd
+is_zdd
 }
 \examples{
 is_zdd(zdd0()) # TRUE
