@@ -25,14 +25,14 @@ zdd_union <- function(zddP, zddQ) {
   if(Pv > Qv)
     return(
       zdd(value = Pv,
-          p0    = zdd_union(P0, zddQ)$hash,
-          p1    = P1$hash)
+          p0    = zdd_union(P0, zddQ),
+          p1    = P1)
     )
   if(Pv == Qv)
     return(
       zdd(value = zddP$value,
-          p0    = zdd_union(P0, Q0)$hash,
-          p1    = zdd_union(P1, Q1)$hash)
+          p0    = zdd_union(P0, Q0),
+          p1    = zdd_union(P1, Q1))
     )
 }
 

@@ -17,8 +17,8 @@ as_zdd <- function(x) {
 as_zdd.integer <- function(x) {
   zdd(
     value = x,
-    p0    = zdd0()$hash,
-    p1    = zdd1()$hash
+    p0    = zdd0(),
+    p1    = zdd1()
   )
 }
 

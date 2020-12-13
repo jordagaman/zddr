@@ -13,14 +13,14 @@ zdd <- function(value, p0, p1) {
   P0 <- ifelse(is_zdd(p0), p0$hash, p0)
   P1 <- ifelse(is_zdd(p1), p1$hash, p1)
   hash <- zdd_hash(value, P0, P1)
+  res  <- list(value = value, p0 = P0, p1 = P1, hash = hash)
+  class(res) <- "zdd"
   if(!exists(hash, envir = zddr::zdd_store))
     assign(
       x     = hash,
-      value = list(value = value, p0 = P0, p1 = P1, hash = hash),
+      value = res,
       envir = zddr::zdd_store
     )
-  res <- as_zdd(hash)
-  class(res) <- "zdd"
   return(res)
 }
 
@@ -40,8 +40,10 @@ zdd_hash <- function(value, p0, p1) {
     stop('value must be an integer')
   if(value < 0)
     stop('value must not be negative')
-  if(!(is.character(p0)&is.character(p1)))
-    stop('p0 and p1 must be strings')
+  if(!exists(p0, envir = zddr::zdd_store))
+    stop('p0 must be a registered zdd node')
+  if(!exists(p1, envir = zddr::zdd_store))
+    stop('p1 must be a registered zdd node')
   digest::digest(
     object = list(value, p0, p1),
     raw    = FALSE

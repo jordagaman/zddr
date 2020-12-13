@@ -9,9 +9,9 @@ zdd(value, p0, p1)
 \arguments{
 \item{value}{the integer value of the node}
 
-\item{p0}{the negative compliment of the zdd with respect to \code{value}, expressed as class zdd}
+\item{p0}{the negative compliment of the zdd with respect to \code{value}, expressed as a string hash or as class zdd}
 
-\item{p1}{the positive compliment of the zdd with respect to \code{value}, expressed as class zdd}
+\item{p1}{the positive compliment of the zdd with respect to \code{value}, expressed as a string hash or as class zdd}
 }
 \value{
 the resulting zdd node, expressed as class zdd
