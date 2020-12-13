@@ -20,7 +20,8 @@ jobs:
     strategy:
       matrix:
         r-version: [3.5, 3.6]
-
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up R ${{ matrix.r-version }}
