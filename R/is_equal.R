@@ -6,7 +6,8 @@
 #' @return TRUE if the input zdd's are equal
 #' @export
 #'
-#' @examples is_equal(as_zdd(1L), as_zdd(1L)) # TRUE
+#' @examples
+#' is_equal(as_zdd(1L), as_zdd(1L)) # TRUE
 is_equal <- function(zddP, zddQ) {
   return(zddP$hash == zddQ$hash)
 }

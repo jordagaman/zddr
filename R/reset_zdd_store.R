@@ -5,7 +5,8 @@
 #' @return NULL
 #' @export
 #'
-#' @examples reset_zdd_store(quiet = TRUE)
+#' @examples
+#' reset_zdd_store(quiet = TRUE)
 reset_zdd_store <- function(quiet = FALSE) {
   if(!quiet)
     message("Resetting zdd_store.")

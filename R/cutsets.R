@@ -5,10 +5,11 @@
 #' @return a list of integer vectors representing a family of sets (cutsets)
 #' @export
 #'
-#' @examples cutsets( zdd_union(as_zdd(3L), as_zdd(4L) ) )
-#' @examples cutsets( zdd_union(as_zdd(4L), as_zdd(3L) ) )
-#' @examples cutsets( zdd_union(as_zdd(4L), zdd0()     ) )
-#' @examples cutsets( zdd_union(as_zdd(4L), zdd1()     ) )
+#' @examples
+#' cutsets( zdd_union(as_zdd(3L), as_zdd(4L) ) )
+#' cutsets( zdd_union(as_zdd(4L), as_zdd(3L) ) )
+#' cutsets( zdd_union(as_zdd(4L), zdd0()     ) )
+#' cutsets( zdd_union(as_zdd(4L), zdd1()     ) )
 cutsets <- function(zdd) {
   if( is_one(zdd)) return(list( c() ))
   if(is_zero(zdd)) return(list(     ))

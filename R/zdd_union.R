@@ -6,7 +6,8 @@
 #' @return a zdd list object that is the union of the two input zdds
 #' @export
 #'
-#' @examples zdd_union(as_zdd(2L), as_zdd(3L))
+#' @examples
+#' zdd_union(as_zdd(2L), as_zdd(3L))
 zdd_union <- function(zddP, zddQ) {
   if(  is_one(zddP)      ) return(zdd1())
   if(  is_one(zddQ)      ) return(zdd1())

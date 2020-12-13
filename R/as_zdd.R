@@ -5,7 +5,8 @@
 #' @return the single variable elementary zdd (the so-called "set containing `value`")
 #' @export
 #'
-#' @examples as_zdd(3L)
+#' @examples
+#' as_zdd(3L)
 #' as_zdd('aeca5759d5d7a2fca7544cd6baba7bd5')
 #' #as_zdd('this one does not exist')  # this one throws an error
 as_zdd <- function(x) {

@@ -7,7 +7,8 @@
 #' @return the resulting zdd node, expressed as class zdd
 #' @export
 #'
-#' @examples zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
+#' @examples
+#' zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
 zdd <- function(value, p0, p1) {
   hash <- zdd_hash(value, p0, p1)
   if(!exists(hash, envir = zddr::zdd_store))
@@ -30,7 +31,8 @@ zdd <- function(value, p0, p1) {
 #'
 #' @return hash
 #'
-#' @examples zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
+#' @examples
+#' zdd(1L, '420767073edd8b7097448d6c27bf5534', '420767073edd8b7097448d6c27bf5534')
 zdd_hash <- function(value, p0, p1) {
   if(!is.integer(value))
     stop('value must be an integer')
