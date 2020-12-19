@@ -3,6 +3,7 @@
 S3method("|",zdd)
 S3method(as_zdd,character)
 S3method(as_zdd,integer)
+S3method(print,zdd)
 export("%>%")
 export(as_zdd)
 export(cutsets)
