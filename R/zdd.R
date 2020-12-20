@@ -10,10 +10,11 @@
 #' @examples
 #' zdd(1L, zdd0(), zdd1())
 zdd <- function(value, p0, p1) {
+  V  <- as.integer(value)
   P0 <- as.character(p0)
   P1 <- as.character(p1)
-  hash <- zdd_hash(value, P0, P1)
-  res  <- list(value = value, p0 = P0, p1 = P1, hash = hash)
+  hash <- zdd_hash(V, P0, P1)
+  res  <- list(value = V, p0 = P0, p1 = P1, hash = hash)
   class(res) <- "zdd"
   if(!exists(hash, envir = zddr::zdd_store))
     assign(
