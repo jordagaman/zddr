@@ -10,19 +10,34 @@
 #' @examples
 #' zdd(1L, zdd0(), zdd1())
 zdd <- function(value, p0, p1) {
+  z <- new_zdd(value, p0, p1)
+  if(!exists(as.character(z), envir = zddr::zdd_store))
+    assign(
+      x     = as.character(z),
+      value = z,
+      envir = zddr::zdd_store
+    )
+  return(z)
+}
+
+#' new_zdd
+#'
+#' @param value the integer value of the node
+#' @param p0 the negative compliment of the zdd with respect to `value`, expressed as a string hash or as class zdd
+#' @param p1 the positive compliment of the zdd with respect to `value`, expressed as a string hash or as class zdd
+#'
+#' @return the resulting zdd node, expressed as class zdd
+new_zdd <- function(value, p0, p1) {
   V  <- as.integer(value)
   P0 <- as.character(p0)
   P1 <- as.character(p1)
-  hash <- zdd_hash(V, P0, P1)
-  res  <- list(value = V, p0 = P0, p1 = P1, hash = hash)
-  class(res) <- "zdd"
-  if(!exists(hash, envir = zddr::zdd_store))
-    assign(
-      x     = hash,
-      value = res,
-      envir = zddr::zdd_store
-    )
-  return(res)
+  return(
+    structure(.Data = list(value = V,
+                           p0    = P0,
+                           p1    = P1,
+                           hash  = zdd_hash(V, P0, P1) ),
+              class = 'zdd')
+  )
 }
 
 
