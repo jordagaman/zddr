@@ -62,7 +62,7 @@ zdd_hash <- function(value, p0, p1) {
 #' print(zdd0())
 #' print(as_zdd(3L))
 print.zdd <- function(x, ...) {
-  cat(crayon::blue(x$hash), ':', sep = '')
+  cat(crayon::blue(as.character(x)), ':', sep = '')
   if( is_one(x)) {
     cat(crayon::green('ONE'))
   } else if(is_zero(x)) {
