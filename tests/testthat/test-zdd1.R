@@ -1,10 +1,7 @@
 test_that("zdd1 works", {
   reset_zdd_store(quiet = TRUE)
-  test_func <- function() {
-    exists('ffffffffffffffffffffffffffffffff', envir = zddr::zdd_store)
-  }
-  expect_false(test_func())
+  expect_false(zddr:::zdd_exists('ffffffffffffffffffffffffffffffff'))
   zdd1()
-  expect_true(test_func())
+  expect_true(zddr:::zdd_exists('ffffffffffffffffffffffffffffffff'))
 })
 

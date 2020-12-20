@@ -11,12 +11,7 @@
 #' zdd(1L, zdd0(), zdd1())
 zdd <- function(value, p0, p1) {
   z <- new_zdd(value, p0, p1)
-  if(!exists(as.character(z), envir = zddr::zdd_store))
-    assign(
-      x     = as.character(z),
-      value = z,
-      envir = zddr::zdd_store
-    )
+  if(!zdd_exists(z)) register_zdd(z)
   return(z)
 }
 
@@ -40,6 +35,18 @@ new_zdd <- function(value, p0, p1) {
   )
 }
 
+zdd_exists <- function(zdd) {
+  z <- as.character(zdd)
+  return(exists(z, envir = zddr::zdd_store))
+}
+
+register_zdd <- function(zdd) {
+  assign(
+    x     = as.character(zdd),
+    value = zdd,
+    envir = zddr::zdd_store
+  )
+}
 
 #' zdd hash
 #'
