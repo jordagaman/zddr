@@ -58,7 +58,7 @@ zdd_hash <- function(value, p0, p1) {
 #' @export
 #'
 #' @examples
-print.zdd <- function(x) {
+print.zdd <- function(x, ...) {
   cat(crayon::blue(x$hash), ':', sep = '')
   if( is_one(x)) {
     cat(crayon::green('ONE'))
