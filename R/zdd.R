@@ -53,11 +53,14 @@ zdd_hash <- function(value, p0, p1) {
 #' print zdd
 #'
 #' @param x a zdd
+#' @param ... all the other stuff
 #'
 #' @return printed zdd
 #' @export
 #'
 #' @examples
+#' print(zdd0())
+#' print(as_zdd(3L))
 print.zdd <- function(x, ...) {
   cat(crayon::blue(x$hash), ':', sep = '')
   if( is_one(x)) {

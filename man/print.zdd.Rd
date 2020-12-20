@@ -4,10 +4,12 @@
 \alias{print.zdd}
 \title{print zdd}
 \usage{
-\method{print}{zdd}(x)
+\method{print}{zdd}(x, ...)
 }
 \arguments{
 \item{x}{a zdd}
+
+\item{...}{all the other stuff}
 }
 \value{
 printed zdd
