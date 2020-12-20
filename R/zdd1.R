@@ -5,9 +5,7 @@
 #'
 #' @examples zdd1()
 zdd1 <- function() {
-  hash <- 'ffffffffffffffffffffffffffffffff'
-  res <- list(hash = hash)
-  class(res) <- "zdd"
-  if(!zdd_exists(res)) register_zdd(res)
-  return(res)
+  return(
+    terminal_node(hash = 'ffffffffffffffffffffffffffffffff')
+  )
 }
