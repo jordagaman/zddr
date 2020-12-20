@@ -9,5 +9,5 @@
 #' is_zero(zdd0())     # TRUE
 #' is_zero(as_zdd(0L)) # FALSE
 is_zero <- function(zdd) {
-  return(zdd$hash == zdd0()$hash)
+  return(as.character(zdd) == as.character(zdd0()))
 }
