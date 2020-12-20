@@ -63,9 +63,9 @@ zdd_hash <- function(value, p0, p1) {
     stop('value must be an integer')
   if(value < 0)
     stop('value must not be negative')
-  if(!exists(p0, envir = zddr::zdd_store))
+  if(!zdd_exists(p0))
     stop('p0 must be a registered zdd node')
-  if(!exists(p1, envir = zddr::zdd_store))
+  if(!zdd_exists(p1))
     stop('p1 must be a registered zdd node')
   digest::digest(
     object = list(value, p0, p1),

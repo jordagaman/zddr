@@ -8,11 +8,6 @@ zdd0 <- function() {
   hash <- '00000000000000000000000000000000'
   res <- list(hash = hash)
   class(res) <- "zdd"
-  if(!exists(hash, envir = zddr::zdd_store))
-    assign(
-      x     = hash,
-      value = res,
-      envir = zddr::zdd_store
-    )
+  if(!zdd_exists(res)) register_zdd(res)
   return(res)
 }
