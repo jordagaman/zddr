@@ -76,3 +76,18 @@ print.zdd <- function(x, ...) {
   cat('\n')
 }
 
+#' zdd as integer
+#'
+#' @param x a zdd
+#' @param ... all the other stuff
+#'
+#' @return the integer value of the zdd node
+#' @export
+#'
+#' @examples
+#' as.integer( as_zdd(3L) )
+as.integer.zdd <- function(x, ...) {
+  if( is_one(x)) stop('You just asked me to return the value for a constant-1 node!')
+  if(is_zero(x)) stop('You just asked me to return the value for a constant-0 node!')
+  return(x$value)
+}
