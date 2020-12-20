@@ -19,5 +19,4 @@ zdd as integer
 }
 \examples{
 as.integer( as_zdd(3L) )
-as.integer( zdd0() )
 }

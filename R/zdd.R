@@ -68,7 +68,7 @@ print.zdd <- function(x, ...) {
   } else if(is_zero(x)) {
     cat(crayon::red('ZERO'))
   } else {
-    cat(crayon::cyan(x$value),
+    cat(crayon::cyan(as.integer(x)),
         x$p0,
         x$p1,
         sep = ',')
