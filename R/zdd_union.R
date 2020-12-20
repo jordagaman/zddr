@@ -14,7 +14,7 @@ zdd_union <- function(zddP, zddQ) {
   if(  is_one(zddQ)      ) return(zdd1())
   if( is_zero(zddP)      ) return(zddQ  )
   if( is_zero(zddQ)      ) return(zddP  )
-  if(is_equal(zddP, zddQ)) return(zddP  )
+  if( zddP == zddQ       ) return(zddP  )
   Pv <- as.integer(zddP)
   P0 <- as_zdd(zddP$p0)
   P1 <- as_zdd(zddP$p1)

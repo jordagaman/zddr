@@ -9,5 +9,5 @@
 #' is_one(zdd1())     # TRUE
 #' is_one(as_zdd(1L)) # FALSE
 is_one <- function(zdd) {
-  return(as.character(zdd) == as.character(zdd1()))
+  return(zdd == zdd1())
 }

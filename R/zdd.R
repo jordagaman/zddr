@@ -128,3 +128,5 @@ as.integer.zdd <- function(x, ...) {
 as.character.zdd <- function(x, ...) {
   return(x$hash)
 }
+
+'==.zdd' <- function(a,b) as.character(a) == as.character(b)
