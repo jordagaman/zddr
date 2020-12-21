@@ -15,8 +15,8 @@ zdd_union <- function(zddP, zddQ) {
   if( is_zero(zddP) ) return(zddQ  )
   if( is_zero(zddQ) ) return(zddP  )
   if( zddP == zddQ  ) return(zddP  )
-  if(zddP < zddQ) return(zddQ | zddP)
-  if(zddP > zddQ)
+  if( zddP <  zddQ  ) return(zddQ | zddP)
+  if( zddP >  zddQ  )
     return(
       zdd(value = zddP,
           p0    = p0(zddP) | zddQ,
