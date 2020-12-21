@@ -10,47 +10,27 @@ test_that("subset1 works", {
     zdd(3L, zdd0(), .     ) %>%
     zdd(5L, zdd0(), .     )
 
+  expect_cutsets <- function(result, expectation) {
+    expect_equal(
+      cutsets(result),
+      expectation
+    )
+  }
   ####
   # some basic tests to start
   ####
-  expect_equal(
-    cutsets(zdd_subset1(zdd135, 5L)),     list(c(1L,3L))
-  )
-  expect_equal(
-    cutsets(zdd_subset1(zdd135, 4L)),     list()
-  )
-  expect_equal(
-    cutsets(zdd_subset1(zdd135, 3L)),     list(c(1L,5L))
-  )
+  expect_cutsets(zdd_subset1(zdd135, 5L),     list( c(1L,3L) ) )
+  expect_cutsets(zdd_subset1(zdd135, 4L),     list(          ) )
+  expect_cutsets(zdd_subset1(zdd135, 3L),     list( c(1L,5L) ) )
 
   ####
   # some tests on a more complex zdd
   ####
-  expect_equal(
-    cutsets(zdd_subset1(zdd135 | zdd24, 5L)),     list(c(1L,3L))
-  )
-  expect_equal(
-    cutsets(zdd_subset1(zdd135 | zdd24, 4L)),     list(c(2L))
-  )
-  expect_equal(
-    cutsets(zdd_subset1(zdd135 | zdd24, 3L)),     list(c(1L,5L))
-  )
-  expect_equal(
-    cutsets(zdd_subset1(zdd135 | zdd24, 2L)),     list(c(4L))
-  )
-  expect_equal(
-    cutsets(zdd_subset1(zdd135 | zdd24, 1L)),     list(c(3L,5L))
-  )
-
-  expect_equal(
-    cutsets(zdd_subset1(zdd135 | as_zdd(6L), 6L)),     list(NULL)
-  )
-  expect_equal(
-    cutsets(zdd_subset1(zdd135 | as_zdd(6L), 7L)),     list()
-  )
-  expect_equal(
-    cutsets(zdd_subset1(zdd135 | as_zdd(6L) | as_zdd(7L), 7L)), list(NULL)
-  )
-
-
+  expect_cutsets(zdd_subset1(zdd135 | zdd24     , 5L),     list(c(1L,3L))    )
+  expect_cutsets(zdd_subset1(zdd135 | zdd24     , 4L),     list(c(2L   ))    )
+  expect_cutsets(zdd_subset1(zdd135 | zdd24     , 3L),     list(c(1L,5L))    )
+  expect_cutsets(zdd_subset1(zdd135 | zdd24     , 2L),     list(c(4L   ))    )
+  expect_cutsets(zdd_subset1(zdd135 | zdd24     , 1L),     list(c(3L,5L))    )
+  expect_cutsets(zdd_subset1(zdd135 | as_zdd(6L), 6L),     list(  NULL  )    )
+  expect_cutsets(zdd_subset1(zdd135 | as_zdd(6L), 7L),     list(        )    )
 })
