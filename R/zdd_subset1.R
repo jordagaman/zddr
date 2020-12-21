@@ -18,7 +18,7 @@
 #' zdd_subset1(zdd345, 4L)   # {3,5}
 zdd_subset1 <- function(zdd, value) {
   if(is_zero(zdd)) return(zdd0())
-  if( is_one(zdd)) return(zdd1())
+  if( is_one(zdd)) return(zdd0())
   if(zdd < value ) return(zdd0())
   if(zdd > value ) return(
     zdd(value = zdd,
