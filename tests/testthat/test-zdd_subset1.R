@@ -10,5 +10,28 @@ test_that("subset1 works", {
   expect_equal(
     cutsets(zdd_subset1(zdd345, 4L)),
     list(c(3L,5L))
-  )# {3,5}
+  )
+  expect_equal(
+    cutsets(zdd_subset1(zdd345, 5L)),
+    list(c(3L,4L))
+  )
+  expect_equal(
+    cutsets(zdd_subset1(zdd345, 3L)),
+    list(c(4L,5L))
+  )
+
+  expect_equal(
+    cutsets(zdd_subset1(zdd345 | as_zdd(6L), 5L)),
+    list(c(3L,4L),c(6))
+  )
+  expect_equal(
+    cutsets(zdd_subset1(zdd345 | as_zdd(6L), 6L)),
+    list(NULL)
+  )
+  expect_equal(
+    cutsets(zdd_subset1(zdd345 | as_zdd(6L), 7L)),
+    list()
+  )
+
+
 })
