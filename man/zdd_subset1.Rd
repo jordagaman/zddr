@@ -19,12 +19,12 @@ zdd_subset1
 }
 \examples{
 zdd_subset1(as_zdd(2L), 2L)# ONE
-zdd_subset1(as_zdd(2L), 1L)# error: You just asked me to return the value for a constant-0 node!
+zdd_subset1(as_zdd(2L), 1L)# {2}
 zdd_subset1(as_zdd(1L), 2L)# ZERO
 library(magrittr)
 zdd345 <-
   zdd(3L, zdd0(), zdd1()) \%>\%
   zdd(4L, zdd0(), .     ) \%>\%
   zdd(5L, zdd0(), .     )
-zdd_subset1(zdd345, 4L)
+zdd_subset1(zdd345, 4L)   # {3,5}
 }
