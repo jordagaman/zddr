@@ -130,3 +130,5 @@ as.character.zdd <- function(x, ...) {
 }
 
 '==.zdd' <- function(a,b) as.character(a) == as.character(b)
+'<.zdd'  <- function(a,b) as.integer(a)   <  as.integer(b)
+'>.zdd'  <- function(a,b) as.integer(a)   >  as.integer(b)
