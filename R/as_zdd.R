@@ -14,6 +14,11 @@ as_zdd <- function(x) {
 }
 
 #' @export
+as_zdd.zdd <- function(x) {
+  return(x)
+}
+
+#' @export
 as_zdd.integer <- function(x) {
   zdd(
     value = x,

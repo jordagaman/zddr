@@ -92,8 +92,8 @@ print.zdd <- function(x, ...) {
     cat(crayon::red('ZERO'))
   } else {
     cat(crayon::cyan(as.integer(x)),
-        x$p0,
-        x$p1,
+        as.character(p0(x)),
+        as.character(p1(x)),
         sep = ',')
   }
   cat('\n')
@@ -127,6 +127,19 @@ as.integer.zdd <- function(x, ...) {
 #' as.character( as_zdd(3L) )
 as.character.zdd <- function(x, ...) {
   return(x$hash)
+}
+
+p0 <- function(x) {
+  zdd <- as_zdd(x)
+  if( is_one(zdd)) stop('You just asked me to return the p0 value for a constant-1 node!')
+  if(is_zero(zdd)) stop('You just asked me to return the p0 value for a constant-0 node!')
+  return(as_zdd(zdd$p0))
+}
+p1 <- function(x) {
+  zdd <- as_zdd(x)
+  if( is_one(zdd)) stop('You just asked me to return the p1 value for a constant-1 node!')
+  if(is_zero(zdd)) stop('You just asked me to return the p1 value for a constant-0 node!')
+  return(as_zdd(zdd$p1))
 }
 
 '==.zdd' <- function(a,b) as.character(a) == as.character(b)

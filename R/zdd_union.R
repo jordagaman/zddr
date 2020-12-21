@@ -15,21 +15,17 @@ zdd_union <- function(zddP, zddQ) {
   if( is_zero(zddP) ) return(zddQ  )
   if( is_zero(zddQ) ) return(zddP  )
   if( zddP == zddQ  ) return(zddP  )
-  P0 <- as_zdd(zddP$p0)
-  P1 <- as_zdd(zddP$p1)
-  Q0 <- as_zdd(zddQ$p0)
-  Q1 <- as_zdd(zddQ$p1)
   if(zddP < zddQ) return(zddQ | zddP)
   if(zddP > zddQ)
     return(
       zdd(value = zddP,
-          p0    = P0 | zddQ,
-          p1    = P1)
+          p0    = p0(zddP) | zddQ,
+          p1    = p1(zddP))
     )
     return(
       zdd(value = zddP,
-          p0    = P0 | Q0,
-          p1    = P1 | Q1)
+          p0    = p0(zddP) | p0(zddQ),
+          p1    = p1(zddP) | p1(zddQ))
     )
 }
 
