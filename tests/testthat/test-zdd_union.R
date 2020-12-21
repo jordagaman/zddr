@@ -22,12 +22,12 @@ test_that("zdd_union works", {
     zdd(3L, zdd0(), zdd1()) %>%
     zdd(4L, zdd0(), .     )
 
-  cutsets(zdd345)         %>% expect_equal( list(          c(3L,4L,5L)) )
-  cutsets(zdd35)          %>% expect_equal( list(          c(3L,   5L)) )
-  cutsets(zdd45)          %>% expect_equal( list(          c(   4L,5L)) )
-  cutsets(zdd34)          %>% expect_equal( list(          c(3L,4L   )) )
-  cutsets(zdd345 | zdd35) %>% expect_equal( list(          c(3L,   5L)) )
-  cutsets(zdd345 | zdd45) %>% expect_equal( list(          c(   4L,5L)) )
-  cutsets(zdd345 | zdd34) %>% expect_equal( list(          c(3L,4L   )) )
+  cutsets(zdd345)         %>% expect_equal( list( c(3L,4L,5L)) )
+  cutsets(zdd35)          %>% expect_equal( list( c(3L,   5L)) )
+  cutsets(zdd45)          %>% expect_equal( list( c(   4L,5L)) )
+  cutsets(zdd34)          %>% expect_equal( list( c(3L,4L   )) )
+  cutsets(zdd345 | zdd35) %>% expect_equal( list( c(3L,   5L)) )
+  cutsets(zdd345 | zdd45) %>% expect_equal( list( c(   4L,5L)) )
+  cutsets(zdd345 | zdd34) %>% expect_equal( list( c(3L,4L   )) )
 
 })
