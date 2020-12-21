@@ -10,6 +10,9 @@
 #' @examples
 #' zdd(1L, zdd0(), zdd1())
 zdd <- function(value, p0, p1) {
+  if( is_one(p0)) return(zdd1())  # p0 + v*p1 = 1  + v*p1 = 1
+  if(is_zero(p1)) return(  p0  )  #           = p0 + v*0  = p0
+  if( p0 == p1  ) return(  p1  )  #           = p1 + v*p1 = p1
   z <- new_zdd(value, p0, p1)
   if(!zdd_exists(z)) register_zdd(z)
   return(z)
