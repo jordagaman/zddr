@@ -22,11 +22,11 @@ zdd_union <- function(zddP, zddQ) {
           p0    = p0(zddP) | zddQ,
           p1    = p1(zddP))
     )
-    return(
-      zdd(value = zddP,
-          p0    = p0(zddP) | p0(zddQ),
-          p1    = p1(zddP) | p1(zddQ))
-    )
+  return(
+    zdd(value = zddP,
+        p0    = p0(zddP) | p0(zddQ),
+        p1    = p1(zddP) | p1(zddQ))
+  )
 }
 
 #' @export
