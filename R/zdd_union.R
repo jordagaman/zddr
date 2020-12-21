@@ -10,20 +10,20 @@
 #' zdd_union(as_zdd(2L), as_zdd(3L))
 #' as_zdd(2L) | as_zdd(3L)
 zdd_union <- function(zddP, zddQ) {
-  if(  is_one(zddP) ) return(zdd1())
-  if(  is_one(zddQ) ) return(zdd1())
-  if( is_zero(zddP) ) return(zddQ  )
-  if( is_zero(zddQ) ) return(zddP  )
-  if( zddP == zddQ  ) return(zddP  )
+  if(  is_one(zddP) ) return(zdd1())      # P | Q =  1 | Q = 1
+  if(  is_one(zddQ) ) return(zdd1())      #       =  P | 1 = 1
+  if( is_zero(zddP) ) return(zddQ  )      #       =  0 | Q = Q
+  if( is_zero(zddQ) ) return(zddP  )      #       =  P | 0 = P
+  if( zddP == zddQ  ) return(zddP  )      #       =  P | P = P
   if( zddP <  zddQ  ) return(zddQ | zddP)
-  if( zddP >  zddQ  )
-    return(
+  if( zddP >  zddQ  )                     # (P0 + Pv*P1) | Q
+    return(                               #    = (P0 | Q) + Pv*P1
       zdd(value = zddP,
           p0    = p0(zddP) | zddQ,
           p1    = p1(zddP))
     )
-  return(
-    zdd(value = zddP,
+  return(                                 # (P0 + Pv*P1) | (Q0 + Pv*Q1)
+    zdd(value = zddP,                     #   = (P0 | Q0) + Pv*(P1 | Q1)
         p0    = p0(zddP) | p0(zddQ),
         p1    = p1(zddP) | p1(zddQ))
   )
