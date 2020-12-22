@@ -146,10 +146,10 @@ p1 <- function(x) {
 }
 
 #' @export
-'==.zdd' <- function(a,b) as.character(a) == as.character(b)
+'==.zdd' <- function(a,b) as.character(a) == as.character(as_zdd(b))
 
 #' @export
-'<.zdd'  <- function(a,b) as.integer(a)   <  as.integer(b)
+'<.zdd'  <- function(a,b) as.integer(a)   <  as.integer(as_zdd(b))
 
 #' @export
-'>.zdd'  <- function(a,b) as.integer(a)   >  as.integer(b)
+'>.zdd'  <- function(a,b) as.integer(a)   >  as.integer(as_zdd(b))
