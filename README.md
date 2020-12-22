@@ -9,6 +9,8 @@
 status](https://travis-ci.com/jordagaman/zddr.svg?branch=main)](https://travis-ci.com/jordagaman/zddr)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build
+status](https://github.com/jordagaman/zddr/workflows/R-CMD-check/badge.svg)](https://github.com/jordagaman/zddr/actions)
 <!-- badges: end -->
 
 The goal of zddr is to …
