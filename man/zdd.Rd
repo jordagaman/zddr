@@ -4,7 +4,7 @@
 \alias{zdd}
 \title{zdd}
 \usage{
-zdd(value, p0, p1)
+zdd(value, p0 = zdd0(), p1 = zdd1())
 }
 \arguments{
 \item{value}{the integer value of the node}
@@ -20,5 +20,5 @@ the resulting zdd node, expressed as class zdd
 zdd
 }
 \examples{
-zdd(1L, zdd0(), zdd1())
+zdd(1L)
 }

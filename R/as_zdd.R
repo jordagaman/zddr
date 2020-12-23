@@ -20,11 +20,7 @@ as_zdd.zdd <- function(x) {
 
 #' @export
 as_zdd.integer <- function(x) {
-  zdd(
-    value = x,
-    p0    = zdd0(),
-    p1    = zdd1()
-  )
+  return(zdd(x))
 }
 
 #' @export
