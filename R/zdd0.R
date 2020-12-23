@@ -6,13 +6,15 @@
 #' @examples zdd0()
 zdd0 <- function() {
   return(
-    terminal_node(hash = '00000000000000000000000000000000')
+    terminal_node(hash = '00000000000000000000000000000000',
+                  count = 0L)
   )
 }
 
-terminal_node <- function(hash) {
+terminal_node <- function(hash, count) {
   res <- structure(.Data = list(hash = hash),
-                   class = 'zdd')
+                   class = 'zdd',
+                   count = count)
   if(!zdd_exists(res)) register_zdd(res)
   return(res)
 }

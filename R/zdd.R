@@ -29,12 +29,15 @@ new_zdd <- function(value, p0, p1) {
   V  <- as.integer(value)
   P0 <- as.character(p0)
   P1 <- as.character(p1)
+  count <- zdd_count(p0) + zdd_count(p1)
+
   return(
     structure(.Data = list(value = V,
                            p0    = P0,
                            p1    = P1,
                            hash  = zdd_hash(V, P0, P1) ),
-              class = 'zdd')
+              class = 'zdd',
+              count = count)
   )
 }
 
@@ -143,6 +146,12 @@ p1 <- function(x) {
   if( is_one(zdd)) stop('You just asked me to return the p1 value for a constant-1 node!')
   if(is_zero(zdd)) stop('You just asked me to return the p1 value for a constant-0 node!')
   return(as_zdd(zdd$p1))
+}
+
+#' @export
+zdd_count <- function(x) {
+  zdd <- as_zdd(x)
+  return(attr(zdd, 'count'))
 }
 
 #' @export

@@ -6,6 +6,7 @@
 #' @examples zdd1()
 zdd1 <- function() {
   return(
-    terminal_node(hash = 'ffffffffffffffffffffffffffffffff')
+    terminal_node(hash = 'ffffffffffffffffffffffffffffffff',
+                  count = 1L)
   )
 }
