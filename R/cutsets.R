@@ -27,7 +27,7 @@ cutsets <- function(zdd) {
   return(
     append(
       p0_cutsets,
-      add_to_every_vector(p1_cutsets, zdd$value)
+      add_to_every_vector(p1_cutsets, as.integer(zdd))
     )
   )
 }

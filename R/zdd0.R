@@ -12,9 +12,9 @@ zdd0 <- function() {
 }
 
 terminal_node <- function(hash, count) {
-  res <- structure(.Data = list(hash = hash),
+  res <- structure(.Data = hash,
                    class = 'zdd',
-                   count = count)
+                   count = as.integer(count))
   if(!zdd_exists(res)) register_zdd(res)
   return(res)
 }
