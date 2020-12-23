@@ -18,6 +18,6 @@ a zdd list object that is the difference between the two zdds
 zdd_difference
 }
 \examples{
-zdd_union(as_zdd(2L), as_zdd(3L))
-as_zdd(2L) | as_zdd(3L) - 3L
+(as_zdd(2L) | 3L) - 3L  # {2}
+(as_zdd(2L) | 3L) - 2L  # {3}
 }

@@ -9,28 +9,31 @@ test_that("subset1 works", {
     zdd(1L, zdd0(), zdd1()) %>%
     zdd(3L, zdd0(), .     ) %>%
     zdd(5L, zdd0(), .     )
+  zdd13 <-
+    zdd(1L, zdd0(), zdd1()) %>%
+    zdd(3L, zdd0(), .     )
+  zdd15 <-
+    zdd(1L, zdd0(), zdd1()) %>%
+    zdd(5L, zdd0(), .     )
+  zdd35 <-
+    zdd(3L, zdd0(), zdd1()) %>%
+    zdd(5L, zdd0(), .     )
 
-  expect_cutsets <- function(result, expectation) {
-    expect_equal(
-      cutsets(result),
-      expectation
-    )
-  }
   ####
   # some basic tests to start
   ####
-  zdd_subset1(zdd135, 5L) %>% expect_cutsets( list( c(1L,3L) ) )
-  zdd_subset1(zdd135, 4L) %>% expect_cutsets( list(          ) )
-  zdd_subset1(zdd135, 3L) %>% expect_cutsets( list( c(1L,5L) ) )
+  zdd_subset1(zdd135, 5L) %>% expect_equal( zdd13  )
+  zdd_subset1(zdd135, 4L) %>% expect_equal( zdd0() )
+  zdd_subset1(zdd135, 3L) %>% expect_equal( zdd15  )
 
   ####
   # some tests on a more complex zdd
   ####
-  zdd_subset1(zdd135 | zdd24     , 5L) %>% expect_cutsets( list(c(1L,3L))    )
-  zdd_subset1(zdd135 | zdd24     , 4L) %>% expect_cutsets( list(c(2L   ))    )
-  zdd_subset1(zdd135 | zdd24     , 3L) %>% expect_cutsets( list(c(1L,5L))    )
-  zdd_subset1(zdd135 | zdd24     , 2L) %>% expect_cutsets( list(c(4L   ))    )
-  zdd_subset1(zdd135 | zdd24     , 1L) %>% expect_cutsets( list(c(3L,5L))    )
-  zdd_subset1(zdd135 | as_zdd(6L), 6L) %>% expect_cutsets( list(  NULL  )    )
-  zdd_subset1(zdd135 | as_zdd(6L), 7L) %>% expect_cutsets( list(        )    )
+  zdd_subset1(zdd135 | zdd24     , 5L) %>% expect_equal( zdd13      )
+  zdd_subset1(zdd135 | zdd24     , 4L) %>% expect_equal( as_zdd(2L) )
+  zdd_subset1(zdd135 | zdd24     , 3L) %>% expect_equal( zdd15      )
+  zdd_subset1(zdd135 | zdd24     , 2L) %>% expect_equal( as_zdd(4L) )
+  zdd_subset1(zdd135 | zdd24     , 1L) %>% expect_equal( zdd35      )
+  zdd_subset1(zdd135 | as_zdd(6L), 6L) %>% expect_equal( zdd1()     )
+  zdd_subset1(zdd135 | as_zdd(6L), 7L) %>% expect_equal( zdd0()     )
 })
