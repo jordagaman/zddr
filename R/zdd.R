@@ -148,7 +148,6 @@ p1 <- function(x) {
   return(as_zdd(zdd$p1))
 }
 
-#' @export
 zdd_count <- function(x) {
   zdd <- as_zdd(x)
   return(attr(zdd, 'count'))
