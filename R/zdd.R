@@ -26,6 +26,7 @@ zdd <- function(value, p0 = zdd0(), p1 = zdd1()) {
 #'
 #' @return the resulting zdd node, expressed as class zdd
 new_zdd <- function(value, p0, p1) {
+  stopifnot(length(value)==1)
   V  <- as.integer(value)
   P0 <- as.character(p0)
   P1 <- as.character(p1)
