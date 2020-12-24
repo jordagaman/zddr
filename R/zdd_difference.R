@@ -15,7 +15,7 @@ zdd_difference <- function(zddP, zddQ) {
   if( is_zero(P) ) return(zdd0())      # P - Q =  0 - Q = 0
   if( is_zero(Q) ) return(  P   )      #       =  P - 0 = P
   if(   P == Q   ) return(zdd0())      #       =  P - P = 0
-  if(   P <  Q   ) return(Q - P )
+  if(   P <  Q   ) return( P - p0(Q) ) # P - (Q0 + Qv*Q1) = P - Q0
   if(   P >  Q   )                     # (P0 + Pv*P1) - Q
     return(                            #    = (P0 - Q) + Pv*P1
       zdd(value = P,
