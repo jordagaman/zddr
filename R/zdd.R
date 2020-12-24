@@ -124,17 +124,24 @@ as.integer.zdd <- function(x, ...) {
 
 
 p0 <- function(x) {
-  zdd <- as_zdd(x)
-  p0  <- attr(zdd, 'p0')
-  if( is_one(zdd)) stop('You just asked me to return the p0 value for a constant-1 node!')
-  if(is_zero(zdd)) stop('You just asked me to return the p0 value for a constant-0 node!')
+  UseMethod("p0")
+}
+
+p0.zdd <- function(x) {
+  if( is_one(x)) stop('You just asked me to return the p0 value for a constant-1 node!')
+  if(is_zero(x)) stop('You just asked me to return the p0 value for a constant-0 node!')
+  p0  <- attr(x, 'p0')
   return(as_zdd(p0))
 }
+
 p1 <- function(x) {
-  zdd <- as_zdd(x)
-  p1  <- attr(zdd, 'p1')
-  if( is_one(zdd)) stop('You just asked me to return the p1 value for a constant-1 node!')
-  if(is_zero(zdd)) stop('You just asked me to return the p1 value for a constant-0 node!')
+  UseMethod("p1")
+}
+
+p1.zdd <- function(x) {
+  if( is_one(x)) stop('You just asked me to return the p1 value for a constant-1 node!')
+  if(is_zero(x)) stop('You just asked me to return the p1 value for a constant-0 node!')
+  p1  <- attr(x, 'p1')
   return(as_zdd(p1))
 }
 
