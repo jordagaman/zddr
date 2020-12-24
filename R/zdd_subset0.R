@@ -7,9 +7,9 @@
 #' @export
 #'
 #' @examples
-#' zdd_subset0(as_zdd(2L), 2L)# ONE
-#' zdd_subset0(as_zdd(2L), 1L)# {2}
-#' zdd_subset0(as_zdd(1L), 2L)# ZERO
+#' zdd_subset0(zdd(2L), 2L)# ONE
+#' zdd_subset0(zdd(2L), 1L)# {2}
+#' zdd_subset0(zdd(1L), 2L)# ZERO
 #' library(magrittr)
 #' zdd345 <-
 #'   zdd(3L, zdd0(), zdd1()) %>%

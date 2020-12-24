@@ -90,7 +90,7 @@ zdd_hash <- function(value, p0, p1) {
 #'
 #' @examples
 #' print(zdd0())
-#' print(as_zdd(3L))
+#' print(zdd(3L))
 print.zdd <- function(x, ...) {
   cat(crayon::blue(as.character(x)), ':', sep = '')
   if( is_one(x)) {
@@ -115,7 +115,7 @@ print.zdd <- function(x, ...) {
 #' @export
 #'
 #' @examples
-#' as.integer( as_zdd(3L) )
+#' as.integer( zdd(3L) )
 as.integer.zdd <- function(x, ...) {
   if( is_one(x)) stop('You just asked me to return the value for a constant-1 node!')
   if(is_zero(x)) stop('You just asked me to return the value for a constant-0 node!')

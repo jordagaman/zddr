@@ -18,7 +18,7 @@ a zdd list object that is the crossproduct of the two input zdds
 zdd_crossproduct
 }
 \examples{
-zdd_crossproduct(as_zdd(2L), as_zdd(3L))
-as_zdd(2L) * as_zdd(3L)
-(as_zdd(1L)|as_zdd(2L)|as_zdd(3L)) * (as_zdd(3L)|as_zdd(4L)|as_zdd(5L))
+zdd_crossproduct(zdd(2L), zdd(3L))
+zdd(2L) * zdd(3L)
+(zdd(1L)|zdd(2L)|zdd(3L)) * (zdd(3L)|zdd(4L)|zdd(5L))
 }

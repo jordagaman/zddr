@@ -17,8 +17,8 @@ cutsets
 }
 \examples{
 library(magrittr)
-zdd3 <- as_zdd(3L)
-zdd4 <- as_zdd(4L)
+zdd3 <- zdd(3L)
+zdd4 <- zdd(4L)
 zdd3 \%>\% zdd_union(zdd4) \%>\% cutsets()
 zdd4 \%>\% zdd_union(zdd3) \%>\% cutsets()
 zdd4 \%>\% zdd_union(zdd0()) \%>\% cutsets()

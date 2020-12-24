@@ -7,8 +7,8 @@
 #' @export
 #'
 #' @examples
-#' as_zdd(2L) | as_zdd(3L) & as_zdd(3L)   # { {2}, {3} }
-#' (as_zdd(2L) | as_zdd(3L)) & as_zdd(3L) # {   {3}    }
+#' zdd(2L) | zdd(3L) & zdd(3L)   # { {2}, {3} }
+#' (zdd(2L) | zdd(3L)) & zdd(3L) # {   {3}    }
 zdd_intersection <- function(zddP, zddQ) {
   P <- as_zdd(zddP)
   Q <- as_zdd(zddQ)

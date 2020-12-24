@@ -18,6 +18,6 @@ a zdd list object that is the union of the two input zdds
 zdd_union
 }
 \examples{
-zdd_union(as_zdd(2L), as_zdd(3L))
-as_zdd(2L) | as_zdd(3L)
+zdd_union(zdd(2L), zdd(3L))
+zdd(2L) | zdd(3L)
 }

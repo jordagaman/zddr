@@ -18,6 +18,6 @@ a zdd list object that is the intersection of the two input zdds
 zdd_intersection
 }
 \examples{
-as_zdd(2L) | as_zdd(3L) & as_zdd(3L)   # { {2}, {3} }
-(as_zdd(2L) | as_zdd(3L)) & as_zdd(3L) # {   {3}    }
+zdd(2L) | zdd(3L) & zdd(3L)   # { {2}, {3} }
+(zdd(2L) | zdd(3L)) & zdd(3L) # {   {3}    }
 }

@@ -7,8 +7,8 @@
 #' @export
 #'
 #' @examples
-#' zdd_union(as_zdd(2L), as_zdd(3L))
-#' as_zdd(2L) | as_zdd(3L)
+#' zdd_union(zdd(2L), zdd(3L))
+#' zdd(2L) | zdd(3L)
 zdd_union <- function(zddP, zddQ) {
   P <- as_zdd(zddP)
   Q <- as_zdd(zddQ)

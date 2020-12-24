@@ -18,5 +18,5 @@ the integer value of the zdd node
 zdd as integer
 }
 \examples{
-as.integer( as_zdd(3L) )
+as.integer( zdd(3L) )
 }

@@ -7,8 +7,8 @@
 #' @export
 #'
 #' @examples
-#' (as_zdd(2L) | 3L) - 3L  # {2}
-#' (as_zdd(2L) | 3L) - 2L  # {3}
+#' (zdd(2L) | 3L) - 3L  # {2}
+#' (zdd(2L) | 3L) - 2L  # {3}
 zdd_difference <- function(zddP, zddQ) {
   P <- as_zdd(zddP)
   Q <- as_zdd(zddQ)

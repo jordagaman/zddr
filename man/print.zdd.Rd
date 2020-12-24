@@ -19,5 +19,5 @@ print zdd
 }
 \examples{
 print(zdd0())
-print(as_zdd(3L))
+print(zdd(3L))
 }

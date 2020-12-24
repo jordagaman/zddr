@@ -1,6 +1,6 @@
 test_that("subset0 works", {
-  expect_true(is_zero(zdd_subset0(as_zdd(2L), 2L)))
-  expect_true(zdd_subset0(as_zdd(1L), 2L) == 1L)
+  expect_true(is_zero(zdd_subset0(zdd(2L), 2L)))
+  expect_true(zdd_subset0(zdd(1L), 2L) == 1L)
   library(magrittr)
   zdd24 <-
     zdd(2L, zdd0(), zdd1()) %>%

@@ -7,8 +7,8 @@
 #'
 #' @examples
 #' library(magrittr)
-#' zdd3 <- as_zdd(3L)
-#' zdd4 <- as_zdd(4L)
+#' zdd3 <- zdd(3L)
+#' zdd4 <- zdd(4L)
 #' zdd3 %>% zdd_union(zdd4) %>% cutsets()
 #' zdd4 %>% zdd_union(zdd3) %>% cutsets()
 #' zdd4 %>% zdd_union(zdd0()) %>% cutsets()
@@ -22,8 +22,8 @@ cutsets <- function(zdd) {
       function(x) c(x, value)
     )
   }
-  p0_cutsets <- cutsets(as_zdd(p0(zdd)))
-  p1_cutsets <- cutsets(as_zdd(p1(zdd)))
+  p0_cutsets <- cutsets(p0(zdd))
+  p1_cutsets <- cutsets(p1(zdd))
   return(
     append(
       p0_cutsets,

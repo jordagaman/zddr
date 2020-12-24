@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' is_one(zdd1())     # TRUE
-#' is_one(as_zdd(1L)) # FALSE
+#' is_one(zdd(1L))    # FALSE
 is_one <- function(zdd) {
   return(zdd == zdd1())
 }
