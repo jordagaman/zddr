@@ -30,5 +30,6 @@ test_that("zdd_union works", {
   (zdd345 | zdd45)        %>% expect_equal(       zdd45        )
   (zdd345 | zdd34)        %>% expect_equal(       zdd34        )
 
-  cutsets(zdd345 | 3L )   %>% expect_equal( list( c(3L      )) )  #this test not working yet
+  (zdd345 | 3L )          %>% expect_equal(       zdd(3L)      )
+  (zdd345 | zdd35 | 4L )  %>% expect_equal(       zdd35 | 4L   )
 })
