@@ -2,22 +2,11 @@ test_that("subset1 works", {
   expect_true(is_one(zdd_subset1(zdd(2L), 2L)))# ONE
   expect_true(is_zero(zdd_subset1(zdd(1L), 2L)))# ZERO
   library(magrittr)
-  zdd24 <-
-    zdd(2L, zdd0(), zdd1()) %>%
-    zdd(4L, zdd0(), .     )
-  zdd135 <-
-    zdd(1L, zdd0(), zdd1()) %>%
-    zdd(3L, zdd0(), .     ) %>%
-    zdd(5L, zdd0(), .     )
-  zdd13 <-
-    zdd(1L, zdd0(), zdd1()) %>%
-    zdd(3L, zdd0(), .     )
-  zdd15 <-
-    zdd(1L, zdd0(), zdd1()) %>%
-    zdd(5L, zdd0(), .     )
-  zdd35 <-
-    zdd(3L, zdd0(), zdd1()) %>%
-    zdd(5L, zdd0(), .     )
+  zdd24  <- zdd_and(2,4)
+  zdd135 <- zdd_and(1,3,5)
+  zdd13  <- zdd_and(1,3  )
+  zdd15  <- zdd_and(1,  5)
+  zdd35  <- zdd_and(3,  5)
 
   ####
   # some basic tests to start

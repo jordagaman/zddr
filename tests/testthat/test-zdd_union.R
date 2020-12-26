@@ -8,19 +8,10 @@ test_that("zdd_union works", {
   expect_equal(expec, result3)
 
   library(magrittr)
-  zdd345 <-
-    zdd(3L, zdd0(), zdd1()) %>%
-    zdd(4L, zdd0(), .     ) %>%
-    zdd(5L, zdd0(), .     )
-  zdd35  <-
-    zdd(3L, zdd0(), zdd1()) %>%
-    zdd(5L, zdd0(), .     )
-  zdd45  <-
-    zdd(4L, zdd0(), zdd1()) %>%
-    zdd(5L, zdd0(), .     )
-  zdd34  <-
-    zdd(3L, zdd0(), zdd1()) %>%
-    zdd(4L, zdd0(), .     )
+  zdd345 <- zdd_and(3,4,5)
+  zdd35  <- zdd_and(3,  5)
+  zdd45  <- zdd_and(  4,5)
+  zdd34  <- zdd_and(3,4  )
 
   cutsets(zdd345)         %>% expect_equal( list( c(3L,4L,5L)) )
   cutsets(zdd35)          %>% expect_equal( list( c(3L,   5L)) )

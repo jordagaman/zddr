@@ -10,12 +10,8 @@
 #' zdd_subset0(zdd(2L), 2L)# ONE
 #' zdd_subset0(zdd(2L), 1L)# {2}
 #' zdd_subset0(zdd(1L), 2L)# ZERO
-#' library(magrittr)
-#' zdd345 <-
-#'   zdd(3L, zdd0(), zdd1()) %>%
-#'   zdd(4L, zdd0(), .     ) %>%
-#'   zdd(5L, zdd0(), .     )
-#' zdd_subset0(zdd345, 4L)   # {3,5}
+#' zdd_subset0(zdd_and(3,4,5), 2L)   # {3,4,5}
+#' zdd_subset0(zdd_and(3,4,5), 5L)   # {}
 zdd_subset0 <- function(zdd, value) {
   if(is_zero(zdd)) return(zdd0())
   if( is_one(zdd)) return(zdd1())
