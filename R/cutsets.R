@@ -19,7 +19,7 @@ cutsets <- function(zdd) {
   add_to_every_vector <- function(list_of_vectors, value) {
     purrr::map(
       list_of_vectors,
-      function(x) c(x, value)
+      ~ c(.x, value)
     )
   }
   p0_cutsets <- cutsets(p0(zdd))
