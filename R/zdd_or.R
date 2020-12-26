@@ -15,6 +15,6 @@ zdd_or <- function(...) {
   if(any(purrr::map_lgl(input_list, is_one)))
     return(zdd1())
   return(
-    purrr::reduce(input_list, zdd_union)
+    purrr::reduce(input_list, zdd_union)  # this would probably be faster if the list was sorted first
   )
 }

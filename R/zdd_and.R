@@ -13,6 +13,6 @@ zdd_and <- function(...) {
   if(any(purrr::map_lgl(input_list, is_zero)))
     return(zdd0())
   return(
-    purrr::reduce(input_list, zdd_crossproduct)
+    purrr::reduce(input_list, zdd_crossproduct)  # this would probably be faster if the list was sorted first
   )
 }
