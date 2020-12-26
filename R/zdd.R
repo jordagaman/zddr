@@ -100,7 +100,7 @@ print.zdd <- function(x, ...) {
   } else if(is_zero(x)) {
     cat(crayon::red('ZERO'))
   } else {
-    purrr::walk(cutsets(x), ~ cat('{', .x, '}\n') )
+    purrr::walk(cutsets(x), ~ cat(crayon::cyan('{'), .x, crayon::cyan('}'),'\n') )
   }
 }
 
