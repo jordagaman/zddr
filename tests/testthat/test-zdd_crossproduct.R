@@ -1,8 +1,8 @@
 test_that("zdd_crossproduct works", {
   library(magrittr)
-  zdd1 <- zdd(1L) | zdd(2L) | zdd(3L) | zdd(4L) | zdd(5L)
-  zdd2 <-           zdd(6L) | zdd(7L) | zdd(8L) | zdd(9L)
-  zdd3 <- zdd(5L) | zdd(6L) | zdd(7L) | zdd(8L) | zdd(9L)
+  zdd1 <- zdd_or(1,2,3,4,5)
+  zdd2 <- zdd_or(  6,7,8,9)
+  zdd3 <- zdd_or(5,6,7,8,9)
 
   expect_equal(  attr(zdd1*zdd2, 'count')  , 20L)
   expect_equal(
