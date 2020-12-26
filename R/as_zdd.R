@@ -24,6 +24,12 @@ as_zdd.integer <- function(x) {
 }
 
 #' @export
+as_zdd.numeric <- function(x) {
+  stopifnot(all.equal(x, as.integer(x)))
+  return(zdd(x))
+}
+
+#' @export
 as_zdd.character <- function(x) {
   if(!zdd_exists(x)) stop('hash not found in zdd_store')
   get(x, envir = zddr::zdd_store)
