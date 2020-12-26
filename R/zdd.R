@@ -94,18 +94,14 @@ zdd_hash <- function(value, p0, p1) {
 #' print(zdd0())
 #' print(zdd(3L))
 print.zdd <- function(x, ...) {
-  cat(crayon::blue(as.character(x)), ':', sep = '')
+  cat(crayon::blue(as.character(x)), ':', zdd_count(x), 'cutsets\n')
   if( is_one(x)) {
     cat(crayon::green('ONE'))
   } else if(is_zero(x)) {
     cat(crayon::red('ZERO'))
   } else {
-    cat(crayon::cyan(as.integer(x)),
-        as.character(p0(x)),
-        as.character(p1(x)),
-        sep = ',')
+    purrr::walk(cutsets(x), ~ cat('{', .x, '}\n') )
   }
-  cat('\n')
 }
 
 #' zdd as integer
