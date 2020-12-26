@@ -11,6 +11,8 @@ status](https://travis-ci.com/jordagaman/zddr.svg?branch=main)](https://travis-c
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
 status](https://github.com/jordagaman/zddr/workflows/R-CMD-check/badge.svg)](https://github.com/jordagaman/zddr/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/jordagaman/zddr/branch/master/graph/badge.svg)](https://codecov.io/gh/jordagaman/zddr?branch=master)
 <!-- badges: end -->
 
 The goal of zddr is to …

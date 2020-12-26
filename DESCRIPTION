@@ -19,6 +19,7 @@ Imports:
     purrr,
     crayon
 Suggests: 
-    testthat
+    testthat,
+    covr
 Depends: 
     R (>= 2.10)
