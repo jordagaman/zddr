@@ -112,3 +112,44 @@ zddr:::zdd_count(
 Sys.time() - start_time            # Time difference of 3.410514 secs
 pryr::object_size(zddr::zdd_store) # 220 kB
 pryr::object_size(zddr::zdd_fxns)  # 399 kB
+
+
+
+
+######### GETTING GREEDY
+library(zddr)
+reset_zdd_store()
+start_time <- Sys.time()
+zddr:::zdd_count(
+  zdd_or(   1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20) *
+    zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *
+    zdd_or(41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60) *
+    zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
+    zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) *
+    zdd_or(101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120)
+) # [1] 64000000
+
+######### PERFORMANCE STATS
+Sys.time() - start_time            # Time difference of 2.008795 secs
+pryr::object_size(zddr::zdd_store) # 263 kB
+pryr::object_size(zddr::zdd_fxns)  # 453 kB
+
+
+######### GETTING GREEDY - reorder multiplication statements
+library(zddr)
+reset_zdd_store()
+start_time <- Sys.time()
+zddr:::zdd_count(
+  zdd_or(101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120) *
+    zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) *
+    zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
+    zdd_or(41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60) *
+    zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *
+    zdd_or(   1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20)
+) # [1] 64000000
+
+######### PERFORMANCE STATS
+Sys.time() - start_time            # Time difference of 4.074686 secs
+pryr::object_size(zddr::zdd_store) # 405 kB
+pryr::object_size(zddr::zdd_fxns)  # 782 kB
+
