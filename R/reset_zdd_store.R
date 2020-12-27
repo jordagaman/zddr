@@ -15,8 +15,8 @@ reset_zdd_store <- function(quiet = FALSE) {
     envir = zddr::zdd_store
   )
   remove(
-    list = ls(envir = zddr::zdd_store),
-    envir = zddr::zdd_store
+    list = ls(envir = zddr::zdd_fxns),
+    envir = zddr::zdd_fxns
   )
   return(NULL)
 }
