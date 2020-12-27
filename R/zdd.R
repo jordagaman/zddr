@@ -160,6 +160,10 @@ zdd_count <- function(x) {
 '>.zdd'  <- function(a,b) as.integer(a)   >  as.integer(as_zdd(b))
 
 #' helper function to store the results of binary operations
+#'
+#' @param P first zdd argument
+#' @param op binary function
+#' @param Q second zdd argument
 zdd_binary_function <- function(P, op, Q) {
   fun <- match.fun(op)
   hash_calc <- digest::digest(list(P, fun, Q))
