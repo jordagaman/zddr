@@ -95,6 +95,7 @@ zdd_hash <- function(value, p0, p1) {
 #' print(zdd(3L))
 print.zdd <- function(x, ...) {
   cat('Memory of ZDD Store:    ', round(pryr::object_size(zddr::zdd_store)/1e6,digits = 3), 'MB, item count:', length(ls(zddr::zdd_store)), '\n')
+  cat('Memory of ZDD Functions:', round(pryr::object_size(zddr::zdd_fxns )/1e6,digits = 3), 'MB, item count:', length(ls(zddr::zdd_fxns )), '\n')
   cat(crayon::blue(as.character(x)), ':', zdd_count(x), 'cutsets\n')
   if( is_one(x)) {
     cat(crayon::green('ONE'))
