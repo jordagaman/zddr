@@ -28,17 +28,37 @@ zddr:::zdd_count(
     zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *
     zdd_or(41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60) *
     zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
-    zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) | zdd(1)
+    zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100)
 ) # [1] 3200000
 
 ######### PERFORMANCE STATS
 Sys.time() - start_time            # Time difference of 2.008795 secs
-pryr::object_size(zddr::zdd_store) # 210 kB
-pryr::object_size(zddr::zdd_fxns)  # 308 kB
+pryr::object_size(zddr::zdd_store) # 220 kB
+pryr::object_size(zddr::zdd_fxns)  # 398 kB
 
 
 
-######### COMPARISON - ZDD REDUCTION
+######### COMPARISON - ZDD REDUCTION - what happens when we minimize
+library(zddr)
+reset_zdd_store()
+start_time <- Sys.time()
+zddr:::zdd_count(
+  zdd_or(   1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20) *
+    zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *
+    zdd_or(41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60) *
+    zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
+    zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) | zdd(1)
+) # [1] 3040001
+
+######### PERFORMANCE STATS
+Sys.time() - start_time            # Time difference of 13.6091 secs
+pryr::object_size(zddr::zdd_store) # 482 kB
+pryr::object_size(zddr::zdd_fxns)  # 1.88 MB
+
+
+
+
+######### COMPARISON - ZDD REDUCTION x2 - minimize by a second variable
 library(zddr)
 reset_zdd_store()
 start_time <- Sys.time()
@@ -52,6 +72,43 @@ zddr:::zdd_count(
 
 ######### PERFORMANCE STATS
 Sys.time() - start_time            # Time difference of 33.33057 secs
-pryr::object_size(zddr::zdd_store) # 910 kB
-pryr::object_size(zddr::zdd_fxns)  # 4.39 MB
+pryr::object_size(zddr::zdd_store) # 915 kB
+pryr::object_size(zddr::zdd_fxns)  # 4.44 MB
 
+
+######### COMPARISON - ZDD REDUCTION x3 - minimize by a higher ranked variable
+library(zddr)
+reset_zdd_store()
+start_time <- Sys.time()
+zddr:::zdd_count(
+  zdd_or(   1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20) *
+    zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *
+    zdd_or(41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60) *
+    zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
+    zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) | zdd(50)
+) # [1] 3040001
+
+######### PERFORMANCE STATS
+Sys.time() - start_time            # Time difference of 3.410514 secs
+pryr::object_size(zddr::zdd_store) # 271 kB
+pryr::object_size(zddr::zdd_fxns)  # 622 kB
+
+
+
+
+######### COMPARISON - ZDD REDUCTION x3 - minimize by the highest variable
+library(zddr)
+reset_zdd_store()
+start_time <- Sys.time()
+zddr:::zdd_count(
+  zdd_or(   1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20) *
+    zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *
+    zdd_or(41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60) *
+    zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
+    zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) | zdd(100)
+) # [1] 3040001
+
+######### PERFORMANCE STATS
+Sys.time() - start_time            # Time difference of 3.410514 secs
+pryr::object_size(zddr::zdd_store) # 220 kB
+pryr::object_size(zddr::zdd_fxns)  # 399 kB
