@@ -32,7 +32,7 @@ zdd_union <- function(zddP, zddQ) {
 }
 
 #' @export
-'|.zdd' <- function(a,b) zdd_union(a,b)
+'|.zdd' <- function(a,b) zdd_binary_function(a, 'zdd_union', b)
 #Union (P, Q) {
 #  if (P == ø) return Q;
 #  if (Q == ø) return P;

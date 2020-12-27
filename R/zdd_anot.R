@@ -34,5 +34,5 @@ zdd_anot <- function(zddP, zddQ) {
 #' @return zdd_anot(a,b)
 #'
 #' @export
-`%anot%` <- function(a,b) zdd_anot(a,b)
+`%anot%` <- function(a,b) zdd_binary_function(a, 'zdd_anot', b)
 

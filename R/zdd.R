@@ -158,3 +158,18 @@ zdd_count <- function(x) {
 
 #' @export
 '>.zdd'  <- function(a,b) as.integer(a)   >  as.integer(as_zdd(b))
+
+#' helper function to store the results of binary operations
+zdd_binary_function <- function(P, op, Q) {
+  fun <- match.fun(op)
+  hash_calc <- digest::digest(list(P, fun, Q))
+  result_exists <- exists(hash_calc, envir = zddr::zdd_fxns)
+  if(result_exists) return(get(hash_calc, envir = zddr::zdd_fxns))
+  res <- do.call(fun, P, Q)
+  assign(
+    x     = hash_calc,
+    value = res,
+    envir = zddr::zdd_fxns
+  )
+  return( res )
+}

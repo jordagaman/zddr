@@ -27,7 +27,7 @@ zdd_intersection <- function(zddP, zddQ) {
 }
 
 #' @export
-'&.zdd' <- function(a,b) zdd_intersection(a,b)
+'&.zdd' <- function(a,b) zdd_binary_function(a, 'zdd_intersection', b)
 
 #Intsec (P, Q) {
 #  if (P == ø) return ø;

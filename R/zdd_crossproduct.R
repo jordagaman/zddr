@@ -33,7 +33,7 @@ zdd_crossproduct <- function(zddP, zddQ) {
 }
 
 #' @export
-'*.zdd' <- function(a,b) zdd_crossproduct(a,b)
+'*.zdd' <- function(a,b) zdd_binary_function(a, 'zdd_crossproduct', b)
 #Union (P, Q) {
 #  if (P == ø) return Q;
 #  if (Q == ø) return P;

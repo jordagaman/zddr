@@ -32,7 +32,7 @@ zdd_difference <- function(zddP, zddQ) {
 }
 
 #' @export
-'-.zdd' <- function(a,b) zdd_difference(a,b)
+'-.zdd' <- function(a,b) zdd_binary_function(a, 'zdd_difference', b)
 
 #Diff (P, Q) {
 #  if (P == ø) return ø;
