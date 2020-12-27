@@ -17,7 +17,8 @@ Imports:
     magrittr,
     digest,
     purrr,
-    crayon
+    crayon,
+    pryr
 Suggests: 
     testthat,
     covr
