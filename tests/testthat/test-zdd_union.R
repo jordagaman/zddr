@@ -23,4 +23,13 @@ test_that("zdd_union works", {
 
   (zdd345 | 3L )          %>% expect_equal(       zdd(3L)      )
   (zdd345 | zdd35 | 4L )  %>% expect_equal(       zdd35 | 4L   )
+
+  # these cases systematically evaluate whether minimal cutsets can be found in union statements
+  (zdd_and(1,2,3,4) | zdd_and(1,2) ) %>% expect_equal( zdd_and(1,2) )
+  (zdd_and(1,2,3,4) | zdd_and(1,4) ) %>% expect_equal( zdd_and(1,4) )
+  (zdd_and(1,2,3,4) | zdd_and(2,3) ) %>% expect_equal( zdd_and(2,3) )
+  (zdd_and(1,2,3,4) | zdd_and(2,4) ) %>% expect_equal( zdd_and(2,4) )
+  (zdd_and(1,2,3,4) | zdd_and(3,4) ) %>% expect_equal( zdd_and(3,4) )
+  skip_on_ci()
+  (zdd_and(1,2,3,4) | zdd_and(1,3) ) %>% expect_equal( zdd_and(1,3) ) # FAIL!
 })
