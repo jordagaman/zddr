@@ -35,33 +35,55 @@ devtools::install_github("jordagaman/zddr")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a simple cutset.
 
 ``` r
 library(zddr)
-## basic example code
+zdd(1) * zdd(2) * zdd(3)
+#> Registered S3 method overwritten by 'pryr':
+#>   method      from
+#>   print.bytes Rcpp
+#> Memory of ZDD Store:     0.005 MB, item count: 7 
+#> Memory of ZDD Functions: 0.005 MB, item count: 13 
+#> d669df34342e40b977d48fbd7e725243 : 1 cutsets
+#> { 1 2 3 }
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+You can create the same cutset above with a simpler call:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(zddr)
+zdd_and(1, 2, 3)
+#> Memory of ZDD Store:     0.005 MB, item count: 7 
+#> Memory of ZDD Functions: 0.008 MB, item count: 22 
+#> d669df34342e40b977d48fbd7e725243 : 1 cutsets
+#> { 1 2 3 }
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
+Multiple cutsets look like this:
 
-You can also embed plots, for example:
+``` r
+library(zddr)
+zdd_and(1, 2, 3) | zdd_and(4, 5) | zdd(6)
+#> Memory of ZDD Store:     0.011 MB, item count: 14 
+#> Memory of ZDD Functions: 0.015 MB, item count: 42 
+#> 17c4ddfd5601bfe04f5c14f01d1b4fd4 : 3 cutsets
+#> { 1 2 3 } 
+#> { 4 5 } 
+#> { 6 }
+```
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+The real magic is ensuring that when you add a new cutset, you check if
+either that one or the existing ones are nonminimal. For example,
+{1,2,3} is nonminimal to {1}. Check this out:
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
+``` r
+library(zddr)
+zdd_and(1, 2, 3) | zdd_and(4, 5) | zdd(6) | zdd(1)
+#> Memory of ZDD Store:     0.013 MB, item count: 17 
+#> Memory of ZDD Functions: 0.026 MB, item count: 75 
+#> 6bd5786cfd76ff927f06820c0b856a25 : 3 cutsets
+#> { 1 } 
+#> { 4 5 } 
+#> { 6 }
+```
