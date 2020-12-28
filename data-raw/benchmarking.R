@@ -1,3 +1,5 @@
+library(magrittr)
+
 ######### BASELINE - TIBBLE MULTIPLICATION
 start_time <- Sys.time()
 tb<-tibble::tibble(
