@@ -164,7 +164,51 @@ pryr::object_size(zddr::zdd_fxns)  # 782 kB
 
 
 
-######### COMPARISON - ZDD MULTIPLICATION
+######### COMPARISON - GREEDY ZDD MULTIPLICATION with a single minimal addition
+library(zddr)
+reset_zdd_store()
+start_time <- Sys.time()
+zddr:::zdd_count(
+  (zdd_or(   1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20) *
+     zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *
+     zdd_or(41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60) *
+     zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
+     zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) *
+     zdd_or(101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120)) |
+    zdd_and(61, 71)
+) # [1] 64000001
+
+######### PERFORMANCE STATS
+Sys.time() - start_time            # Time difference of 3.2359 secs
+pryr::object_size(zddr::zdd_store) # 301 kB
+pryr::object_size(zddr::zdd_fxns)  # 576 kB
+
+
+
+
+######### COMPARISON - GREEDY ZDD MULTIPLICATION with a single nonminimal addition
+library(zddr)
+reset_zdd_store()
+start_time <- Sys.time()
+zddr:::zdd_count(
+  (zdd_or(   1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20) *
+     zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *
+     zdd_or(41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60) *
+     zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
+     zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) *
+     zdd_or(101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120)) |
+    zdd_and(41,81)
+) # [1] 63,840,0001  (which is right, 20^6 - 20^4 +1 = 64,000,000 - 160,000 + 1)
+
+######### PERFORMANCE STATS
+Sys.time() - start_time            # Time difference of 10.14345 secs
+pryr::object_size(zddr::zdd_store) # 398 kB
+pryr::object_size(zddr::zdd_fxns)  # 1.12 MB
+
+
+
+
+######### COMPARISON - GREEDY ZDD MULTIPLICATION with a multiple nonminimal additions
 library(zddr)
 reset_zdd_store()
 start_time <- Sys.time()
