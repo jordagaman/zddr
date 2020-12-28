@@ -36,8 +36,8 @@ zddr:::zdd_count(
 
 ######### PERFORMANCE STATS
 Sys.time() - start_time            # Time difference of 2.008795 secs
-pryr::object_size(zddr::zdd_store) # 220 kB
-pryr::object_size(zddr::zdd_fxns)  # 398 kB
+pryr::object_size(zddr::zdd_store) # 205 kB
+pryr::object_size(zddr::zdd_fxns)  # 254 kB
 
 
 
@@ -55,9 +55,9 @@ zddr:::zdd_count(
 ) # [1] 3040001
 
 ######### PERFORMANCE STATS
-Sys.time() - start_time            # Time difference of 13.6091 secs
-pryr::object_size(zddr::zdd_store) # 482 kB
-pryr::object_size(zddr::zdd_fxns)  # 1.88 MB
+Sys.time() - start_time            # Time difference of 9.531208 secs
+pryr::object_size(zddr::zdd_store) # 480 kB
+pryr::object_size(zddr::zdd_fxns)  # 1.17 MB
 
 
 
@@ -75,9 +75,9 @@ zddr:::zdd_count(
 ) # [1] 2880002
 
 ######### PERFORMANCE STATS
-Sys.time() - start_time            # Time difference of 33.33057 secs
-pryr::object_size(zddr::zdd_store) # 915 kB
-pryr::object_size(zddr::zdd_fxns)  # 4.44 MB
+Sys.time() - start_time            # Time difference of 15.4015 secs
+pryr::object_size(zddr::zdd_store) # 628 kB
+pryr::object_size(zddr::zdd_fxns)  # 2.22 MB
 
 
 
@@ -95,9 +95,9 @@ zddr:::zdd_count(
 ) # [1] 3040001
 
 ######### PERFORMANCE STATS
-Sys.time() - start_time            # Time difference of 3.410514 secs
-pryr::object_size(zddr::zdd_store) # 271 kB
-pryr::object_size(zddr::zdd_fxns)  # 622 kB
+Sys.time() - start_time            # Time difference of 4.089529 secs
+pryr::object_size(zddr::zdd_store) # 309 kB
+pryr::object_size(zddr::zdd_fxns)  # 673 kB
 
 
 
@@ -115,9 +115,9 @@ zddr:::zdd_count(
 ) # [1] 3040001
 
 ######### PERFORMANCE STATS
-Sys.time() - start_time            # Time difference of 3.410514 secs
-pryr::object_size(zddr::zdd_store) # 220 kB
-pryr::object_size(zddr::zdd_fxns)  # 399 kB
+Sys.time() - start_time            # Time difference of 1.477556 secs
+pryr::object_size(zddr::zdd_store) # 210 kB
+pryr::object_size(zddr::zdd_fxns)  # 291 kB
 
 
 
@@ -164,7 +164,7 @@ pryr::object_size(zddr::zdd_fxns)  # 782 kB
 
 
 
-######### COMPARISON - ZDD MULTIPLICATION - this one might be wrong
+######### COMPARISON - ZDD MULTIPLICATION
 library(zddr)
 reset_zdd_store()
 start_time <- Sys.time()
@@ -176,12 +176,10 @@ zddr:::zdd_count(
      zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) *
      zdd_or(101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120)) |
     zdd_and(41,81) | zdd_and(28,88)
-) # [1] 64,000,002 (WRONG!!!)
+) # [1] 63,680,002  (which is right, 20^6 - 2*20^4 +2 = 64,000,000 - 320,000 + 2)
 
 ######### PERFORMANCE STATS
-Sys.time() - start_time            # Time difference of 3.598466 mins
-pryr::object_size(zddr::zdd_store) # 4.57 MB
-pryr::object_size(zddr::zdd_fxns)  # 28.2 MB
-
-
+Sys.time() - start_time            # Time difference of 43.60355 secs
+pryr::object_size(zddr::zdd_store) # 1.07 MB
+pryr::object_size(zddr::zdd_fxns)  # 6.18 MB
 
