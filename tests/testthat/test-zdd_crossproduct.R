@@ -12,6 +12,5 @@ test_that("zdd_crossproduct works", {
          c(1,4),
          c(2,4))
   )
-  skip_on_ci()
-  expect_equal( zdd_and(1,2,3,4) * zdd_and(1,3) , zdd_and(1,2,3,4) ) # FAILS!
+  expect_equal( zdd_and(1,2,3,4) * zdd_and(1,3) , zdd_and(1,2,3,4) )
 })

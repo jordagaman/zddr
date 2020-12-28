@@ -30,6 +30,5 @@ test_that("zdd_union works", {
   (zdd_and(1,2,3,4) | zdd_and(2,3) ) %>% expect_equal( zdd_and(2,3) )
   (zdd_and(1,2,3,4) | zdd_and(2,4) ) %>% expect_equal( zdd_and(2,4) )
   (zdd_and(1,2,3,4) | zdd_and(3,4) ) %>% expect_equal( zdd_and(3,4) )
-  skip_on_ci()
-  (zdd_and(1,2,3,4) | zdd_and(1,3) ) %>% expect_equal( zdd_and(1,3) ) # FAIL!
+  (zdd_and(1,2,3,4) | zdd_and(1,3) ) %>% expect_equal( zdd_and(1,3) )
 })
