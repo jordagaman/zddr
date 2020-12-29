@@ -102,20 +102,59 @@
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">c</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span>
+  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span>,<span class="va">d</span>,<span class="va">e</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 4.286858 secs</span>
+<span class="co">#&gt; Time difference of 2.82684 mins</span>
+<span class="va">tb</span>
+<span class="co">#&gt; # A tibble: 3,200,000 x 1</span>
+<span class="co">#&gt; # Rowwise: </span>
+<span class="co">#&gt;    X        </span>
+<span class="co">#&gt;    &lt;list&gt;   </span>
+<span class="co">#&gt;  1 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  2 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  3 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  4 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  5 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  6 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  7 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  8 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  9 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt; 10 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt; # … with 3,199,990 more rows</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="va">tb</span><span class="op">)</span> 
 <span class="co">#&gt; Registered S3 method overwritten by 'pryr':</span>
 <span class="co">#&gt;   method      from</span>
 <span class="co">#&gt;   print.bytes Rcpp</span>
-<span class="co">#&gt; 128 MB</span></code></pre></div>
+<span class="co">#&gt; 538 MB</span></code></pre></div>
+<p>The tibble is an inefficient way to deal with sets, especially if there is a need to remove nonminimal sets. For example, say the above family add a single set of <code>1</code>, making all existing sets containing <code>1</code> nonminimal.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">tb</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fl">1</span> <span class="op">%in%</span> <span class="va">X</span><span class="op">)</span> 
+<span class="co">#&gt; # A tibble: 3,040,000 x 1</span>
+<span class="co">#&gt; # Rowwise: </span>
+<span class="co">#&gt;    X        </span>
+<span class="co">#&gt;    &lt;list&gt;   </span>
+<span class="co">#&gt;  1 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  2 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  3 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  4 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  5 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  6 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  7 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  8 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt;  9 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt; 10 &lt;dbl [5]&gt;</span>
+<span class="co">#&gt; # … with 3,039,990 more rows</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
+<span class="co">#&gt; Time difference of 30.82543 secs</span></code></pre></div>
 </div>
 <div id="introduce-the-zdd" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduce-the-zdd" class="anchor"></a>Introduce the ZDD</h2>
 <p>Perform this same operation using a ZDD from this package and note the space efficiency achieved.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
 <span class="fu"><a href="../reference/reset_zdd_store.html">reset_zdd_store</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Resetting zdd_store.</span>
@@ -130,7 +169,7 @@
 <span class="op">)</span> 
 <span class="co">#&gt; [1] 3200000</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 0.6257341 secs</span>
+<span class="co">#&gt; Time difference of 2.125334 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span>
 <span class="co">#&gt; 205 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span> 
@@ -140,7 +179,7 @@
 <h2 class="hasAnchor">
 <a href="#the-importance-of-variable-ordering" class="anchor"></a>The importance of variable ordering</h2>
 <p>Now if the same number of elements are used, but in random order, note the difference in memory and time. This is a minor illustration of the importance of variable ordering.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_zdd_store.html">reset_zdd_store</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Resetting zdd_store.</span>
 <span class="co">#&gt; NULL</span>
@@ -154,7 +193,7 @@
 <span class="op">)</span> 
 <span class="co">#&gt; [1] 3200000</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 1.555584 mins</span>
+<span class="co">#&gt; Time difference of 4.33938 mins</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span>
 <span class="co">#&gt; 1.39 MB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span> 
@@ -164,7 +203,7 @@
 <h2 class="hasAnchor">
 <a href="#minimizing-the-family-of-sets" class="anchor"></a>Minimizing the family of sets</h2>
 <p>Check out how the size of the ZDD and the calculation time change when a single non-minimal ZDD is unioned with the first one above.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_zdd_store.html">reset_zdd_store</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Resetting zdd_store.</span>
 <span class="co">#&gt; NULL</span>
@@ -179,13 +218,13 @@
 <span class="op">)</span>
 <span class="co">#&gt; [1] 3040001</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 3.836256 secs</span>
+<span class="co">#&gt; Time difference of 10.3706 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span> 
 <span class="co">#&gt; 412 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span>  
 <span class="co">#&gt; 1.59 MB</span></code></pre></div>
 <p>Using the same example, add one additional union of a non-minimal ZDD and watch the change in ZDD complexity (memory) and calculation time.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_zdd_store.html">reset_zdd_store</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Resetting zdd_store.</span>
 <span class="co">#&gt; NULL</span>
@@ -200,7 +239,7 @@
 <span class="op">)</span>
 <span class="co">#&gt; [1] 2880002</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 7.478346 secs</span>
+<span class="co">#&gt; Time difference of 19.79944 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span> 
 <span class="co">#&gt; 631 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span>  
@@ -210,7 +249,7 @@
 <h2 class="hasAnchor">
 <a href="#under-construction" class="anchor"></a>Under construction</h2>
 <p>The following benchmarks are in development and are therefore not yet run here.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">######### COMPARISON - ZDD REDUCTION x3 - minimize by a higher ranked variable</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
