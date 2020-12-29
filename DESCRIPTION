@@ -21,6 +21,9 @@ Imports:
     pryr
 Suggests: 
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
 Depends: 
     R (>= 2.10)
+VignetteBuilder: knitr
