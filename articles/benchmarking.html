@@ -106,7 +106,7 @@
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span>,<span class="va">d</span>,<span class="va">e</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 2.82684 mins</span>
+<span class="co">#&gt; Time difference of 44.85234 secs</span>
 <span class="va">tb</span>
 <span class="co">#&gt; # A tibble: 3,200,000 x 1</span>
 <span class="co">#&gt; # Rowwise: </span>
@@ -148,7 +148,7 @@
 <span class="co">#&gt; 10 &lt;dbl [5]&gt;</span>
 <span class="co">#&gt; # … with 3,039,990 more rows</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 30.82543 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 9.468701 secs</span></code></pre></div>
 </div>
 <div id="introduce-the-zdd" class="section level2">
 <h2 class="hasAnchor">
@@ -169,7 +169,7 @@
 <span class="op">)</span> 
 <span class="co">#&gt; [1] 3200000</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 2.125334 secs</span>
+<span class="co">#&gt; Time difference of 0.6913769 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span>
 <span class="co">#&gt; 205 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span> 
@@ -193,7 +193,7 @@
 <span class="op">)</span> 
 <span class="co">#&gt; [1] 3200000</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 4.33938 mins</span>
+<span class="co">#&gt; Time difference of 1.44278 mins</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span>
 <span class="co">#&gt; 1.39 MB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span> 
@@ -218,7 +218,7 @@
 <span class="op">)</span>
 <span class="co">#&gt; [1] 3040001</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 10.3706 secs</span>
+<span class="co">#&gt; Time difference of 3.419631 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span> 
 <span class="co">#&gt; 412 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span>  
@@ -239,7 +239,7 @@
 <span class="op">)</span>
 <span class="co">#&gt; [1] 2880002</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 19.79944 secs</span>
+<span class="co">#&gt; Time difference of 6.497924 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span> 
 <span class="co">#&gt; 631 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span>  
