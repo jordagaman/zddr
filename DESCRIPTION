@@ -18,7 +18,8 @@ Imports:
     digest,
     purrr,
     crayon,
-    pryr
+    pryr,
+    tibble
 Suggests: 
     testthat,
     covr,
