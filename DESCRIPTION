@@ -20,7 +20,8 @@ Imports:
     crayon,
     pryr,
     tibble,
-    tidyr
+    tidyr,
+    dplyr
 Suggests: 
     testthat,
     covr,
