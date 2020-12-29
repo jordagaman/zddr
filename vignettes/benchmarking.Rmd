@@ -44,6 +44,14 @@ tb
 pryr::object_size(tb) 
 ```
 
+The tibble is an inefficient way to deal with sets, especially if there is a need to remove nonminimal sets. For example, say the above family add a single set of `1`, making all existing sets containing `1` nonminimal. 
+
+```{r benchmark_nonminal}
+start_time <- Sys.time()
+tb %>% dplyr::filter(!1 %in% X) 
+Sys.time() - start_time
+```
+
 ## Introduce the ZDD
 
 Perform this same operation using a ZDD from this package and note the space efficiency achieved.
