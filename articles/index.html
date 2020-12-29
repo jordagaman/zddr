@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>zdd_or — zdd_or • zddr</title>
+<title>Articles • zddr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,7 @@
 
 
 
-<meta property="og:title" content="zdd_or — zdd_or" />
-<meta property="og:description" content="zdd_or" />
+<meta property="og:title" content="Articles" />
 
 
 
@@ -59,7 +58,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-article-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -115,53 +114,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>zdd_or</h1>
-    
-    <div class="hidden name"><code>zdd_or.Rd</code></div>
+      <h1>Articles</h1>
     </div>
 
-    <div class="ref-description">
-    <p>zdd_or</p>
+    <div class="section ">
+      <h3>All vignettes</h3>
+      <p class="section-desc"></p>
+
+      <dl>
+        <dt><a href="benchmarking.html">UNKNOWN TITLE</a></dt>
+        <dd></dt>
+      </dl>
     </div>
-
-    <pre class="usage"><span class='fu'>zdd_or</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>a list of objects that can be coerced to zdds</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a zdd that is the union of all inputs</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>zdd_or</span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>4</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Memory of ZDD Store:     0.016 MB, item count: 21 
-#&gt; Memory of ZDD Functions: 0.036 MB, item count: 104 
-#&gt; <span style='color: #0000BB;'>9be62ca7468916c0f4be2665da790647</span><span> : 4 cutsets
-#&gt; </span><span style='color: #00BBBB;'>{</span><span> 1 </span><span style='color: #00BBBB;'>}</span><span> 
-#&gt; </span><span style='color: #00BBBB;'>{</span><span> 2 </span><span style='color: #00BBBB;'>}</span><span> 
-#&gt; </span><span style='color: #00BBBB;'>{</span><span> 3 </span><span style='color: #00BBBB;'>}</span><span> 
-#&gt; </span><span style='color: #00BBBB;'>{</span><span> 4 </span><span style='color: #00BBBB;'>}</span><span> </div><div class='input'><span class='fu'>zdd_or</span><span class='op'>(</span> <span class='fu'><a href='zdd_and.html'>zdd_and</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='zdd_and.html'>zdd_and</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>4</span><span class='op'>)</span> <span class='op'>)</span> <span class='co'># { {1,2}, {3,4} }</span>
-</div><div class='output co'>#&gt; Memory of ZDD Store:     0.017 MB, item count: 22 
-#&gt; Memory of ZDD Functions: 0.038 MB, item count: 110 
-#&gt; </span><span style='color: #0000BB;'>fac558ad76b4998a3095a1d2073de6f4</span><span> : 2 cutsets
-#&gt; </span><span style='color: #00BBBB;'>{</span><span> 1 2 </span><span style='color: #00BBBB;'>}</span><span> 
-#&gt; </span><span style='color: #00BBBB;'>{</span><span> 3 4 </span><span style='color: #00BBBB;'>}</span><span> </div><div class='input'><span class='fu'>zdd_or</span><span class='op'>(</span> <span class='fu'><a href='zdd_and.html'>zdd_and</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>4</span>,<span class='fl'>5</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>)</span>       <span class='co'># { {4} }</span>
-</div><div class='output co'>#&gt; Memory of ZDD Store:     0.017 MB, item count: 23 
-#&gt; Memory of ZDD Functions: 0.041 MB, item count: 120 
-#&gt; </span><span style='color: #0000BB;'>2863f659b84a60a3b2077896d5960955</span><span> : 1 cutsets
-#&gt; </span><span style='color: #00BBBB;'>{</span><span> 4 </span><span style='color: #00BBBB;'>}</span><span> </div></span></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <nav id="toc" data-toggle="toc" class="sticky-top">
-      <h2 data-toc-skip>Contents</h2>
-    </nav>
   </div>
 </div>
 
