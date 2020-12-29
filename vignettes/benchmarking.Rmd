@@ -1,8 +1,8 @@
 ---
-title: "Benchmarking the ZDDR package for performance time and memory"
+title: "Benchmarking"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{benchmarking}
+  %\VignetteIndexEntry{Benchmarking}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
