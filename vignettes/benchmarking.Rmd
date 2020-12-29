@@ -61,6 +61,29 @@ pryr::object_size(zddr::zdd_store)
 pryr::object_size(zddr::zdd_fxns) 
 ```
 
+
+Now if the same number of elements are used, but in random order, note the difference in memory and time. This is a minor illustration of the importance of variable ordering.
+
+```{r zdd_mult_rand}
+library(zddr)
+reset_zdd_store()
+start_time <- Sys.time()
+zddr:::zdd_count(
+  zdd_or(  85,44,24,41, 5,20,74,71,56,52,92,76,42,89, 65,16, 1,38,10,97) *
+    zdd_or(21, 2,25,36,63,22,61,46,70,62,90,29,91,60, 79,83,51,39,81,58) *
+    zdd_or( 7,40,31,26,72,45,34,57,49,67,80,87,86,19,  4,59,17,14,75,53) *
+    zdd_or( 6,68,32,78,33,13,73,69,18,11,98,77,82,93, 95,23,99,96,50,88) *
+    zdd_or(43,15,94,84,66,64,54, 8,47,28,55,35,48,37,100, 9, 3,30,12,27)
+) 
+
+######### PERFORMANCE STATS
+Sys.time() - start_time           
+pryr::object_size(zddr::zdd_store)
+pryr::object_size(zddr::zdd_fxns) 
+```
+
+
+
 Check out how the size of the ZDD and the calculation time change when a single non-minimal ZDD is unioned with the same one above.
 
 ```{r zdd_mult2}
