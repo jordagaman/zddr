@@ -36,8 +36,11 @@ tb<-tibble::tibble(
   tidyr::unnest(b) %>%
   tidyr::unnest(c) %>%
   tidyr::unnest(d) %>%
-  tidyr::unnest(e)
+  tidyr::unnest(e) %>%
+  dplyr::rowwise() %>%
+  dplyr::transmute(X = list(c(a,b,c,d,e)))
 Sys.time() - start_time
+tb
 pryr::object_size(tb) 
 ```
 
