@@ -19,7 +19,8 @@ Imports:
     purrr,
     crayon,
     pryr,
-    tibble
+    tibble,
+    tidyr
 Suggests: 
     testthat,
     covr,
