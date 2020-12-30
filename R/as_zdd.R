@@ -32,5 +32,5 @@ as_zdd.numeric <- function(x) {
 #' @export
 as_zdd.character <- function(x) {
   if(!zdd_exists(x)) stop('hash not found in zdd_store')
-  get(x, envir = zddr::zdd_store)
+  return(zddr::zdd_store[[x]])
 }
