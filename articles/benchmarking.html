@@ -54,6 +54,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/Algorithms.html">Algorithms</a>
+    </li>
+    <li>
       <a href="../articles/benchmarking.html">Benchmarking</a>
     </li>
   </ul>
@@ -93,62 +96,62 @@
 <span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">tb</span><span class="op">&lt;-</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
   a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span>,<span class="fl">10</span>,<span class="fl">11</span>,<span class="fl">12</span>,<span class="fl">13</span>,<span class="fl">14</span>,<span class="fl">15</span>,<span class="fl">16</span>,<span class="fl">17</span>,<span class="fl">18</span>,<span class="fl">19</span>,<span class="fl">20</span><span class="op">)</span><span class="op">)</span>,
-  b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">21</span>,<span class="fl">22</span>,<span class="fl">23</span>,<span class="fl">24</span>,<span class="fl">25</span>,<span class="fl">26</span>,<span class="fl">27</span>,<span class="fl">28</span>,<span class="fl">29</span>,<span class="fl">30</span>,<span class="fl">31</span>,<span class="fl">32</span>,<span class="fl">33</span>,<span class="fl">34</span>,<span class="fl">35</span>,<span class="fl">36</span>,<span class="fl">37</span>,<span class="fl">38</span>,<span class="fl">39</span>,<span class="fl">40</span><span class="op">)</span><span class="op">)</span>,
+  <span class="co">#b = list(c(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40)),</span>
   c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">41</span>,<span class="fl">42</span>,<span class="fl">43</span>,<span class="fl">44</span>,<span class="fl">45</span>,<span class="fl">46</span>,<span class="fl">47</span>,<span class="fl">48</span>,<span class="fl">49</span>,<span class="fl">50</span>,<span class="fl">51</span>,<span class="fl">52</span>,<span class="fl">53</span>,<span class="fl">54</span>,<span class="fl">55</span>,<span class="fl">56</span>,<span class="fl">57</span>,<span class="fl">58</span>,<span class="fl">59</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span>,
   d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">61</span>,<span class="fl">62</span>,<span class="fl">63</span>,<span class="fl">64</span>,<span class="fl">65</span>,<span class="fl">66</span>,<span class="fl">67</span>,<span class="fl">68</span>,<span class="fl">69</span>,<span class="fl">70</span>,<span class="fl">71</span>,<span class="fl">72</span>,<span class="fl">73</span>,<span class="fl">74</span>,<span class="fl">75</span>,<span class="fl">76</span>,<span class="fl">77</span>,<span class="fl">78</span>,<span class="fl">79</span>,<span class="fl">80</span><span class="op">)</span><span class="op">)</span>,
   e <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">81</span>,<span class="fl">82</span>,<span class="fl">83</span>,<span class="fl">84</span>,<span class="fl">85</span>,<span class="fl">86</span>,<span class="fl">87</span>,<span class="fl">88</span>,<span class="fl">89</span>,<span class="fl">90</span>,<span class="fl">91</span>,<span class="fl">92</span>,<span class="fl">93</span>,<span class="fl">94</span>,<span class="fl">95</span>,<span class="fl">96</span>,<span class="fl">97</span>,<span class="fl">98</span>,<span class="fl">99</span>,<span class="fl">100</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="co">#tidyr::unnest(b) %&gt;%</span>
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">c</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span>,<span class="va">d</span>,<span class="va">e</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">c</span>,<span class="va">d</span>,<span class="va">e</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 44.85234 secs</span>
+<span class="co">#&gt; Time difference of 2.68846 secs</span>
 <span class="va">tb</span>
-<span class="co">#&gt; # A tibble: 3,200,000 x 1</span>
+<span class="co">#&gt; # A tibble: 160,000 x 1</span>
 <span class="co">#&gt; # Rowwise: </span>
 <span class="co">#&gt;    X        </span>
 <span class="co">#&gt;    &lt;list&gt;   </span>
-<span class="co">#&gt;  1 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  2 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  3 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  4 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  5 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  6 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  7 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  8 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  9 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt; 10 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt; # … with 3,199,990 more rows</span>
+<span class="co">#&gt;  1 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  2 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  3 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  4 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  5 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  6 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  7 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  8 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  9 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt; 10 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt; # … with 159,990 more rows</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="va">tb</span><span class="op">)</span> 
 <span class="co">#&gt; Registered S3 method overwritten by 'pryr':</span>
 <span class="co">#&gt;   method      from</span>
 <span class="co">#&gt;   print.bytes Rcpp</span>
-<span class="co">#&gt; 538 MB</span></code></pre></div>
+<span class="co">#&gt; 24.3 MB</span></code></pre></div>
 <p>The tibble is an inefficient way to deal with sets, especially if there is a need to remove nonminimal sets. For example, say the above family add a single set of <code>1</code>, making all existing sets containing <code>1</code> nonminimal.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">tb</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fl">1</span> <span class="op">%in%</span> <span class="va">X</span><span class="op">)</span> 
-<span class="co">#&gt; # A tibble: 3,040,000 x 1</span>
+<span class="co">#&gt; # A tibble: 152,000 x 1</span>
 <span class="co">#&gt; # Rowwise: </span>
 <span class="co">#&gt;    X        </span>
 <span class="co">#&gt;    &lt;list&gt;   </span>
-<span class="co">#&gt;  1 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  2 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  3 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  4 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  5 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  6 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  7 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  8 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt;  9 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt; 10 &lt;dbl [5]&gt;</span>
-<span class="co">#&gt; # … with 3,039,990 more rows</span>
+<span class="co">#&gt;  1 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  2 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  3 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  4 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  5 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  6 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  7 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  8 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt;  9 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt; 10 &lt;dbl [4]&gt;</span>
+<span class="co">#&gt; # … with 151,990 more rows</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 9.468701 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.583555 secs</span></code></pre></div>
 </div>
 <div id="introduce-the-zdd" class="section level2">
 <h2 class="hasAnchor">
@@ -162,18 +165,18 @@
 <span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu">zddr</span><span class="fu">:::</span><span class="fu">zdd_count</span><span class="op">(</span>
   <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span>   <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span>,<span class="fl">10</span>,<span class="fl">11</span>,<span class="fl">12</span>,<span class="fl">13</span>,<span class="fl">14</span>,<span class="fl">15</span>,<span class="fl">16</span>,<span class="fl">17</span>,<span class="fl">18</span>,<span class="fl">19</span>,<span class="fl">20</span><span class="op">)</span> <span class="op">*</span>
-    <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">21</span>,<span class="fl">22</span>,<span class="fl">23</span>,<span class="fl">24</span>,<span class="fl">25</span>,<span class="fl">26</span>,<span class="fl">27</span>,<span class="fl">28</span>,<span class="fl">29</span>,<span class="fl">30</span>,<span class="fl">31</span>,<span class="fl">32</span>,<span class="fl">33</span>,<span class="fl">34</span>,<span class="fl">35</span>,<span class="fl">36</span>,<span class="fl">37</span>,<span class="fl">38</span>,<span class="fl">39</span>,<span class="fl">40</span><span class="op">)</span> <span class="op">*</span>
+    <span class="co">#zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">41</span>,<span class="fl">42</span>,<span class="fl">43</span>,<span class="fl">44</span>,<span class="fl">45</span>,<span class="fl">46</span>,<span class="fl">47</span>,<span class="fl">48</span>,<span class="fl">49</span>,<span class="fl">50</span>,<span class="fl">51</span>,<span class="fl">52</span>,<span class="fl">53</span>,<span class="fl">54</span>,<span class="fl">55</span>,<span class="fl">56</span>,<span class="fl">57</span>,<span class="fl">58</span>,<span class="fl">59</span>,<span class="fl">60</span><span class="op">)</span> <span class="op">*</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">61</span>,<span class="fl">62</span>,<span class="fl">63</span>,<span class="fl">64</span>,<span class="fl">65</span>,<span class="fl">66</span>,<span class="fl">67</span>,<span class="fl">68</span>,<span class="fl">69</span>,<span class="fl">70</span>,<span class="fl">71</span>,<span class="fl">72</span>,<span class="fl">73</span>,<span class="fl">74</span>,<span class="fl">75</span>,<span class="fl">76</span>,<span class="fl">77</span>,<span class="fl">78</span>,<span class="fl">79</span>,<span class="fl">80</span><span class="op">)</span> <span class="op">*</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">81</span>,<span class="fl">82</span>,<span class="fl">83</span>,<span class="fl">84</span>,<span class="fl">85</span>,<span class="fl">86</span>,<span class="fl">87</span>,<span class="fl">88</span>,<span class="fl">89</span>,<span class="fl">90</span>,<span class="fl">91</span>,<span class="fl">92</span>,<span class="fl">93</span>,<span class="fl">94</span>,<span class="fl">95</span>,<span class="fl">96</span>,<span class="fl">97</span>,<span class="fl">98</span>,<span class="fl">99</span>,<span class="fl">100</span><span class="op">)</span>
 <span class="op">)</span> 
-<span class="co">#&gt; [1] 3200000</span>
+<span class="co">#&gt; [1] 160000</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 0.6913769 secs</span>
+<span class="co">#&gt; Time difference of 0.5231969 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span>
-<span class="co">#&gt; 205 kB</span>
+<span class="co">#&gt; 161 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span> 
-<span class="co">#&gt; 252 kB</span></code></pre></div>
+<span class="co">#&gt; 195 kB</span></code></pre></div>
 </div>
 <div id="the-importance-of-variable-ordering" class="section level2">
 <h2 class="hasAnchor">
@@ -186,18 +189,18 @@
 <span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu">zddr</span><span class="fu">:::</span><span class="fu">zdd_count</span><span class="op">(</span>
   <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span>  <span class="fl">85</span>,<span class="fl">44</span>,<span class="fl">24</span>,<span class="fl">41</span>, <span class="fl">5</span>,<span class="fl">20</span>,<span class="fl">74</span>,<span class="fl">71</span>,<span class="fl">56</span>,<span class="fl">52</span>,<span class="fl">92</span>,<span class="fl">76</span>,<span class="fl">42</span>,<span class="fl">89</span>, <span class="fl">65</span>,<span class="fl">16</span>, <span class="fl">1</span>,<span class="fl">38</span>,<span class="fl">10</span>,<span class="fl">97</span><span class="op">)</span> <span class="op">*</span>
-    <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">21</span>, <span class="fl">2</span>,<span class="fl">25</span>,<span class="fl">36</span>,<span class="fl">63</span>,<span class="fl">22</span>,<span class="fl">61</span>,<span class="fl">46</span>,<span class="fl">70</span>,<span class="fl">62</span>,<span class="fl">90</span>,<span class="fl">29</span>,<span class="fl">91</span>,<span class="fl">60</span>, <span class="fl">79</span>,<span class="fl">83</span>,<span class="fl">51</span>,<span class="fl">39</span>,<span class="fl">81</span>,<span class="fl">58</span><span class="op">)</span> <span class="op">*</span>
+    <span class="co">#zdd_or(21, 2,25,36,63,22,61,46,70,62,90,29,91,60, 79,83,51,39,81,58) *</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span> <span class="fl">7</span>,<span class="fl">40</span>,<span class="fl">31</span>,<span class="fl">26</span>,<span class="fl">72</span>,<span class="fl">45</span>,<span class="fl">34</span>,<span class="fl">57</span>,<span class="fl">49</span>,<span class="fl">67</span>,<span class="fl">80</span>,<span class="fl">87</span>,<span class="fl">86</span>,<span class="fl">19</span>,  <span class="fl">4</span>,<span class="fl">59</span>,<span class="fl">17</span>,<span class="fl">14</span>,<span class="fl">75</span>,<span class="fl">53</span><span class="op">)</span> <span class="op">*</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span> <span class="fl">6</span>,<span class="fl">68</span>,<span class="fl">32</span>,<span class="fl">78</span>,<span class="fl">33</span>,<span class="fl">13</span>,<span class="fl">73</span>,<span class="fl">69</span>,<span class="fl">18</span>,<span class="fl">11</span>,<span class="fl">98</span>,<span class="fl">77</span>,<span class="fl">82</span>,<span class="fl">93</span>, <span class="fl">95</span>,<span class="fl">23</span>,<span class="fl">99</span>,<span class="fl">96</span>,<span class="fl">50</span>,<span class="fl">88</span><span class="op">)</span> <span class="op">*</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">43</span>,<span class="fl">15</span>,<span class="fl">94</span>,<span class="fl">84</span>,<span class="fl">66</span>,<span class="fl">64</span>,<span class="fl">54</span>, <span class="fl">8</span>,<span class="fl">47</span>,<span class="fl">28</span>,<span class="fl">55</span>,<span class="fl">35</span>,<span class="fl">48</span>,<span class="fl">37</span>,<span class="fl">100</span>, <span class="fl">9</span>, <span class="fl">3</span>,<span class="fl">30</span>,<span class="fl">12</span>,<span class="fl">27</span><span class="op">)</span>
 <span class="op">)</span> 
-<span class="co">#&gt; [1] 3200000</span>
+<span class="co">#&gt; [1] 160000</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 1.44278 mins</span>
+<span class="co">#&gt; Time difference of 20.87518 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span>
-<span class="co">#&gt; 1.39 MB</span>
+<span class="co">#&gt; 735 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span> 
-<span class="co">#&gt; 29.1 MB</span></code></pre></div>
+<span class="co">#&gt; 6.77 MB</span></code></pre></div>
 </div>
 <div id="minimizing-the-family-of-sets" class="section level2">
 <h2 class="hasAnchor">
@@ -210,19 +213,19 @@
 <span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu">zddr</span><span class="fu">:::</span><span class="fu">zdd_count</span><span class="op">(</span>
   <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span>   <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span>,<span class="fl">10</span>,<span class="fl">11</span>,<span class="fl">12</span>,<span class="fl">13</span>,<span class="fl">14</span>,<span class="fl">15</span>,<span class="fl">16</span>,<span class="fl">17</span>,<span class="fl">18</span>,<span class="fl">19</span>,<span class="fl">20</span><span class="op">)</span> <span class="op">*</span>
-    <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">21</span>,<span class="fl">22</span>,<span class="fl">23</span>,<span class="fl">24</span>,<span class="fl">25</span>,<span class="fl">26</span>,<span class="fl">27</span>,<span class="fl">28</span>,<span class="fl">29</span>,<span class="fl">30</span>,<span class="fl">31</span>,<span class="fl">32</span>,<span class="fl">33</span>,<span class="fl">34</span>,<span class="fl">35</span>,<span class="fl">36</span>,<span class="fl">37</span>,<span class="fl">38</span>,<span class="fl">39</span>,<span class="fl">40</span><span class="op">)</span> <span class="op">*</span>
+    <span class="co">#zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">41</span>,<span class="fl">42</span>,<span class="fl">43</span>,<span class="fl">44</span>,<span class="fl">45</span>,<span class="fl">46</span>,<span class="fl">47</span>,<span class="fl">48</span>,<span class="fl">49</span>,<span class="fl">50</span>,<span class="fl">51</span>,<span class="fl">52</span>,<span class="fl">53</span>,<span class="fl">54</span>,<span class="fl">55</span>,<span class="fl">56</span>,<span class="fl">57</span>,<span class="fl">58</span>,<span class="fl">59</span>,<span class="fl">60</span><span class="op">)</span> <span class="op">*</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">61</span>,<span class="fl">62</span>,<span class="fl">63</span>,<span class="fl">64</span>,<span class="fl">65</span>,<span class="fl">66</span>,<span class="fl">67</span>,<span class="fl">68</span>,<span class="fl">69</span>,<span class="fl">70</span>,<span class="fl">71</span>,<span class="fl">72</span>,<span class="fl">73</span>,<span class="fl">74</span>,<span class="fl">75</span>,<span class="fl">76</span>,<span class="fl">77</span>,<span class="fl">78</span>,<span class="fl">79</span>,<span class="fl">80</span><span class="op">)</span> <span class="op">*</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">81</span>,<span class="fl">82</span>,<span class="fl">83</span>,<span class="fl">84</span>,<span class="fl">85</span>,<span class="fl">86</span>,<span class="fl">87</span>,<span class="fl">88</span>,<span class="fl">89</span>,<span class="fl">90</span>,<span class="fl">91</span>,<span class="fl">92</span>,<span class="fl">93</span>,<span class="fl">94</span>,<span class="fl">95</span>,<span class="fl">96</span>,<span class="fl">97</span>,<span class="fl">98</span>,<span class="fl">99</span>,<span class="fl">100</span><span class="op">)</span> <span class="op">|</span>
     <span class="fu"><a href="../reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="op">)</span>
-<span class="co">#&gt; [1] 3040001</span>
+<span class="co">#&gt; [1] 152001</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 3.419631 secs</span>
+<span class="co">#&gt; Time difference of 2.685962 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span> 
-<span class="co">#&gt; 412 kB</span>
+<span class="co">#&gt; 319 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span>  
-<span class="co">#&gt; 1.59 MB</span></code></pre></div>
+<span class="co">#&gt; 956 kB</span></code></pre></div>
 <p>Using the same example, add one additional union of a non-minimal ZDD and watch the change in ZDD complexity (memory) and calculation time.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_zdd_store.html">reset_zdd_store</a></span><span class="op">(</span><span class="op">)</span>
@@ -231,19 +234,19 @@
 <span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu">zddr</span><span class="fu">:::</span><span class="fu">zdd_count</span><span class="op">(</span>
   <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span>   <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span>,<span class="fl">10</span>,<span class="fl">11</span>,<span class="fl">12</span>,<span class="fl">13</span>,<span class="fl">14</span>,<span class="fl">15</span>,<span class="fl">16</span>,<span class="fl">17</span>,<span class="fl">18</span>,<span class="fl">19</span>,<span class="fl">20</span><span class="op">)</span> <span class="op">*</span>
-    <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">21</span>,<span class="fl">22</span>,<span class="fl">23</span>,<span class="fl">24</span>,<span class="fl">25</span>,<span class="fl">26</span>,<span class="fl">27</span>,<span class="fl">28</span>,<span class="fl">29</span>,<span class="fl">30</span>,<span class="fl">31</span>,<span class="fl">32</span>,<span class="fl">33</span>,<span class="fl">34</span>,<span class="fl">35</span>,<span class="fl">36</span>,<span class="fl">37</span>,<span class="fl">38</span>,<span class="fl">39</span>,<span class="fl">40</span><span class="op">)</span> <span class="op">*</span>
+    <span class="co">#zdd_or(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40) *</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">41</span>,<span class="fl">42</span>,<span class="fl">43</span>,<span class="fl">44</span>,<span class="fl">45</span>,<span class="fl">46</span>,<span class="fl">47</span>,<span class="fl">48</span>,<span class="fl">49</span>,<span class="fl">50</span>,<span class="fl">51</span>,<span class="fl">52</span>,<span class="fl">53</span>,<span class="fl">54</span>,<span class="fl">55</span>,<span class="fl">56</span>,<span class="fl">57</span>,<span class="fl">58</span>,<span class="fl">59</span>,<span class="fl">60</span><span class="op">)</span> <span class="op">*</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">61</span>,<span class="fl">62</span>,<span class="fl">63</span>,<span class="fl">64</span>,<span class="fl">65</span>,<span class="fl">66</span>,<span class="fl">67</span>,<span class="fl">68</span>,<span class="fl">69</span>,<span class="fl">70</span>,<span class="fl">71</span>,<span class="fl">72</span>,<span class="fl">73</span>,<span class="fl">74</span>,<span class="fl">75</span>,<span class="fl">76</span>,<span class="fl">77</span>,<span class="fl">78</span>,<span class="fl">79</span>,<span class="fl">80</span><span class="op">)</span> <span class="op">*</span>
     <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">81</span>,<span class="fl">82</span>,<span class="fl">83</span>,<span class="fl">84</span>,<span class="fl">85</span>,<span class="fl">86</span>,<span class="fl">87</span>,<span class="fl">88</span>,<span class="fl">89</span>,<span class="fl">90</span>,<span class="fl">91</span>,<span class="fl">92</span>,<span class="fl">93</span>,<span class="fl">94</span>,<span class="fl">95</span>,<span class="fl">96</span>,<span class="fl">97</span>,<span class="fl">98</span>,<span class="fl">99</span>,<span class="fl">100</span><span class="op">)</span> <span class="op">|</span>
     <span class="fu"><a href="../reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="../reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
 <span class="op">)</span>
-<span class="co">#&gt; [1] 2880002</span>
+<span class="co">#&gt; [1] 144002</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 6.497924 secs</span>
+<span class="co">#&gt; Time difference of 5.170443 secs</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_store.html">zdd_store</a></span><span class="op">)</span> 
-<span class="co">#&gt; 631 kB</span>
+<span class="co">#&gt; 496 kB</span>
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/object_size.html">object_size</a></span><span class="op">(</span><span class="fu">zddr</span><span class="fu">::</span><span class="va"><a href="../reference/zdd_fxns.html">zdd_fxns</a></span><span class="op">)</span>  
-<span class="co">#&gt; 2.57 MB</span></code></pre></div>
+<span class="co">#&gt; 1.7 MB</span></code></pre></div>
 </div>
 <div id="under-construction" class="section level2">
 <h2 class="hasAnchor">
