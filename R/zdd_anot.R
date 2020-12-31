@@ -25,9 +25,10 @@ zdd_anot <- function(zddP, zddQ) {
           p1    = p1(P) %anot% Q)
     )
   return(                              # (P0 + Pv*P1) anot (Q0 + Pv*Q1)
-    zdd(value = P,                     #   = (P0 anot Q0) + Pv*(P1 anot Q1)
-        p0    = p0(P) %anot% p0(Q),
-        p1    = p1(P) %anot% p1(Q))
+    #zdd(value = P,                     #   = (P0 anot Q0) + Pv*(P1 anot Q0|Q1)
+    #    p0    = p0(P) %anot% p0(Q),
+    #    p1    = p1(P) %anot% (p0(Q) | p1(Q) ) )
+    P - (P*Q)
   )
 }
 
