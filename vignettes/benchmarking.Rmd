@@ -106,7 +106,7 @@ zddr:::zdd_count(
     zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
     zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) |
     zdd(1)
-)
+) # 19*20^3+1 = 152,001
 Sys.time() - start_time            
 pryr::object_size(zddr::zdd_store) 
 pryr::object_size(zddr::zdd_fxns)  
@@ -124,7 +124,7 @@ zddr:::zdd_count(
     zdd_or(61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80) *
     zdd_or(81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100) |
     zdd(1) | zdd(2)
-)
+) # 18*20^3+2 = 144,002
 Sys.time() - start_time            
 pryr::object_size(zddr::zdd_store) 
 pryr::object_size(zddr::zdd_fxns)  
