@@ -16,14 +16,19 @@ zdd_anot <- function(zddP, zddQ) {
   if( is_zero(Q) ) return(   P    )
   if(  is_one(P) ) return( zdd1() )
   if(  is_one(Q) ) return( zdd0() )
-  # IDEALLY, THIS CAN BE SOLVED BY RECURSION FOR THE FOLLOWING CONDITIONS
-  # if(   P == Q   ) return( ? )
-  # if(   P <  Q   ) return( ? )
-  # if(   P >  Q   ) return( ? )
-  # return(  ?  )
-  #
-  # UNTIL WE GET SMARTER, THE BRUTE FORCE METHOD WILL HAVE TO DO:
-  return( P - (P*Q) )
+  if(   P == Q   ) return( zdd0() )
+  if(   P <  Q   ) return( P %anot% p0(Q) )
+  if(   P >  Q   )
+    return(
+      zdd(value = P,
+          p0    = p0(P) %anot% Q,
+          p1    = p1(P) %anot% Q)
+    )
+  return(                              # (P0 + Pv*P1) anot (Q0 + Pv*Q1)
+    zdd(value = P,                     #   = (P0 anot Q0) + Pv*(P1 anot Q1)
+        p0    = p0(P) %anot% p0(Q),
+        p1    = p1(P) %anot% p1(Q))
+  )
 }
 
 #' infix operator for zdd_anot
