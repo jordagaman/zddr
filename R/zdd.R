@@ -171,8 +171,8 @@ zdd_binary_function <- function(P, op, Q) {
   fun <- match.fun(op)
   hash_calc <- digest::digest(list(P, fun, Q))
   result_exists <- exists(hash_calc, envir = zddr::zdd_fxns)
-  if(result_exists) return(zddr::zdd_fxns[[hash_calc]])
+  if(result_exists) return(as_zdd(zdd_fxns[[hash_calc]]))
   res <- do.call(fun, list(P, Q))
-  zdd_fxns[[hash_calc]] <- res
+  zdd_fxns[[hash_calc]] <- as.character(res)
   return( res )
 }
