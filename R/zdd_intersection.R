@@ -15,8 +15,8 @@ zdd_intersection <- function(zddP, zddQ) {
   if(   P == Q   ) return(      P        ) #       =  P & P = P
   if( is_zero(P) ) return(    zdd0()     ) # P & Q =  0 & Q = 0
   if( is_zero(Q) ) return(    zdd0()     ) #       =  P & 0 = 0
-  if(  is_one(P) ) return(      Q        ) #       =  1 & Q = Q
-  if(  is_one(Q) ) return(      P        ) #       =  P & 1 = P
+  if(  is_one(P) ) return(    zdd0()     ) #       =  1 & Q = 0
+  if(  is_one(Q) ) return(    zdd0()     ) #       =  P & 1 = 0
   if(   P <  Q   ) return(    P  & p0(Q) ) #      P       & (Q0 + Qv*Q1) = P &Q0
   if(   P >  Q   ) return( p0(P) &    Q  ) # (P0 + Pv*P1) &     Q        = P0&Q
   return(
