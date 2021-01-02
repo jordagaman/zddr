@@ -91,13 +91,19 @@ zdd_hash <- function(value, p0, p1) {
 #' print(zdd0())
 #' print(zdd(3L))
 print.zdd <- function(x, ...) {
-  cat('Memory of ZDD Store:    ', round(pryr::object_size(zddr::zdd_store)/1e6,digits = 3), 'MB, item count:', length(ls(zddr::zdd_store)), '\n')
-  cat('Memory of ZDD Functions:', round(pryr::object_size(zddr::zdd_fxns )/1e6,digits = 3), 'MB, item count:', length(ls(zddr::zdd_fxns )), '\n')
+  zdd_mem <- round(pryr::object_size(zddr::zdd_store)/1e6,digits = 3)
+  fxn_mem <- round(pryr::object_size(zddr::zdd_fxns )/1e6,digits = 3)
+  zdd_cnt <- length(ls(zddr::zdd_store))
+  fxn_cnt <- length(ls(zddr::zdd_fxns ))
+  cat('Memory of ZDD Store:    ', zdd_mem, 'MB, item count:', zdd_cnt, '(', zdd_mem*1e6/zdd_cnt, 'b/item)\n')
+  cat('Memory of ZDD Functions:', fxn_mem, 'MB, item count:', fxn_cnt, '(', fxn_mem*1e6/fxn_cnt, 'b/item)\n')
   cat(crayon::blue(as.character(x)), ':', zdd_count(x), 'cutsets\n')
   if( is_one(x)) {
     cat(crayon::green('ONE'))
   } else if(is_zero(x)) {
     cat(crayon::red('ZERO'))
+  } else if(zdd_count(x) > 100L) {
+    cat(crayon::yellow('\nMore than 100 cutsets, not printing all those!\n'))
   } else {
     purrr::walk(cutsets(x), ~ cat(crayon::cyan('{'), .x, crayon::cyan('}'),'\n') )
   }
