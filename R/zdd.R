@@ -95,8 +95,10 @@ print.zdd <- function(x, ...) {
   fxn_mem <- round(pryr::object_size(zddr::zdd_fxns )/1e6,digits = 3)
   zdd_cnt <- length(ls(zddr::zdd_store))
   fxn_cnt <- length(ls(zddr::zdd_fxns ))
-  cat('Memory of ZDD Store:    ', zdd_mem, 'MB, item count:', zdd_cnt, '(', zdd_mem*1e6/zdd_cnt, 'b/item)\n')
-  cat('Memory of ZDD Functions:', fxn_mem, 'MB, item count:', fxn_cnt, '(', fxn_mem*1e6/fxn_cnt, 'b/item)\n')
+  zdd_rat <- round(1e3*zdd_mem / zdd_cnt, digits = 2)
+  fxn_rat <- round(1e3*fxn_mem / fxn_cnt, digits = 2)
+  cat('Memory of ZDD Store:    ', zdd_mem, 'MB, item count:', zdd_cnt, '(', zdd_rat, 'KB/item)\n')
+  cat('Memory of ZDD Functions:', fxn_mem, 'MB, item count:', fxn_cnt, '(', fxn_rat, 'KB/item)\n')
   cat(crayon::blue(as.character(x)), ':', zdd_count(x), 'cutsets\n')
   if( is_one(x)) {
     cat(crayon::green('ONE'))
