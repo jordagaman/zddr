@@ -12,12 +12,12 @@
 zdd_anot <- function(zddP, zddQ) {
   P <- as_zdd(zddP)
   Q <- as_zdd(zddQ)
-  if( is_zero(P) ) return( zdd0() )
-  if( is_zero(Q) ) return(   P    )
-  if(  is_one(P) ) return( zdd1() )
-  if(  is_one(Q) ) return( zdd0() )
-  if(   P == Q   ) return( zdd0() )
-  if(   P <  Q   ) return( P %anot% p0(Q) )
+  if(   P == Q   ) return( zdd0()         )  #          =  P anot P = 0
+  if( is_zero(P) ) return( zdd0()         )  # P anot Q =  0 anot Q = 0
+  if( is_zero(Q) ) return(   P            )  #          =  P anot 0 = P
+  if(  is_one(P) ) return( zdd1()         )  #          =  1 anot Q = 1
+  if(  is_one(Q) ) return( zdd0()         )  #          =  P anot 1 = 0
+  if(   P <  Q   ) return( P %anot% p0(Q) )  # P anot (Q0 + Qv*Q1) = P anot Q0
   if(   P >  Q   )
     return(
       zdd(value = P,
