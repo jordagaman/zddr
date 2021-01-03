@@ -12,8 +12,72 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+# use this space to clear out the annoying pryr message
+library(zddr)
+zdd(1)
+reset_zdd_store()
 ```
 
 ```{r setup}
 library(zddr)
 ```
+
+## Terminal cases
+
+The first insight into the underlying algorithms is an examination of how each function handles the terminal cases. The terminal cases are:
+
+* Operation of a ZDD to itself
+* Operation of a ZDD to the zero-node (and vice-versa)
+* Operation of a ZDD to the one-node (and vice-versa)
+
+### Union
+
+```{r terminal_union}
+zdd(4) | zdd(4)
+zdd(4) | zdd0()
+zdd(4) | zdd1()
+zdd0() | zdd(4)
+zdd1() | zdd(4)
+```
+
+### Difference
+
+```{r terminal_difference}
+zdd(4) - zdd(4)
+zdd(4) - zdd0()
+zdd(4) - zdd1()
+zdd0() - zdd(4)
+zdd1() - zdd(4)
+```
+
+### Intersection
+
+```{r terminal_intersection}
+zdd(4) & zdd(4)
+zdd(4) & zdd0()
+zdd(4) & zdd1()
+zdd0() & zdd(4)
+zdd1() & zdd(4)
+```
+
+
+### Crossproduct
+
+```{r terminal_crossproduct}
+zdd(4) * zdd(4)
+zdd(4) * zdd0()
+zdd(4) * zdd1()
+zdd0() * zdd(4)
+zdd1() * zdd(4)
+```
+
+### AND-NOT
+
+```{r terminal_anot}
+zdd(4) %anot% zdd(4)
+zdd(4) %anot% zdd0()
+zdd(4) %anot% zdd1()
+zdd0() %anot% zdd(4)
+zdd1() %anot% zdd(4)
+```
+
