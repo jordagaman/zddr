@@ -38,4 +38,11 @@ test_that("zdd_union works", {
   zdd_or(zdd1(),1,2)  %>% expect_equal( zdd1()      )
 
   ( (zdd(1) | zdd_and(2,3)) | zdd(2) ) %>% expect_equal( zdd_or(1,2) ) # if you are not careful, this returns {1},{2},{2,4}
+
+  (zdd_and(1,2) | zdd_and(1,3,4) | zdd_and(1,4,5,6,7) | zdd(6) ) %>%
+    zddr:::zdd_minimum_order() %>%
+    expect_equal(1L)
+  (zdd_and(1,2) | zdd_and(1,3,4) | zdd_and(1,4,5,6,7) | zdd(6) ) %>%
+    zddr:::zdd_maximum_order() %>%
+    expect_equal(3L)
 })
