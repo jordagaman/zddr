@@ -7,6 +7,8 @@
 zdd1 <- function() {
   return(
     terminal_node(hash = 'ffffffffffffffffffffffffffffffff',
+                  minimum_order = 0L,
+                  maximum_order = 0L,
                   count = 1L)
   )
 }
