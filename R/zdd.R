@@ -29,8 +29,8 @@ zdd <- function(value, p0 = zdd0(), p1 = zdd1()) {
 new_zdd <- function(value, p0, p1) {
   stopifnot(length(value)==1)
   V  <- as.integer(value)
-  P0 <- as.character(p0)
-  P1 <- as.character(p1)
+  P0 <- as.raw(p0)
+  P1 <- as.raw(p1)
   ID <- zdd_hash(V, P0, P1)
   z  <- structure(
     .Data = ID,
@@ -45,12 +45,12 @@ new_zdd <- function(value, p0, p1) {
 
 zdd_exists <- function(zdd) {
   return(
-    exists(zdd, envir = zddr::zdd_store)
+    exists(as.character(zdd), envir = zddr::zdd_store)
   )
 }
 
 register_zdd <- function(zdd) {
-  zdd_store[[zdd]] <- zdd
+  zdd_store[[as.character(zdd)]] <- zdd
   return()
 }
 
@@ -75,7 +75,7 @@ zdd_hash <- function(value, p0, p1) {
     stop('p1 must be a registered zdd node')
   digest::digest(
     object = list(value, p0, p1),
-    raw    = FALSE
+    raw    = TRUE
   )
 }
 
@@ -127,6 +127,12 @@ as.integer.zdd <- function(x, ...) {
   return(attr(x, 'value'))
 }
 
+#' @export
+as.character.zdd <- function(x, ...) {
+  return(
+    paste0(as.character(unlist(x)), collapse = '')
+  )
+}
 
 p0 <- function(x) {
   UseMethod("p0")

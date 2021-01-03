@@ -34,3 +34,10 @@ as_zdd.character <- function(x) {
   if(!zdd_exists(x)) stop('hash not found in zdd_store')
   return(zddr::zdd_store[[x]])
 }
+
+#' @export
+as_zdd.raw <- function(x) {
+  zdd <- paste0(as.character(x), collapse = '')
+  if(!zdd_exists(zdd)) stop('hash not found in zdd_store')
+  return(zddr::zdd_store[[zdd]])
+}
