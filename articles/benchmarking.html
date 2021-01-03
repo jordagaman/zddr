@@ -109,7 +109,7 @@
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">c</span>,<span class="va">d</span>,<span class="va">e</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 2.733035 secs</span>
+<span class="co">#&gt; Time difference of 2.571949 secs</span>
 <span class="va">tb</span>
 <span class="co">#&gt; # A tibble: 160,000 x 1</span>
 <span class="co">#&gt; # Rowwise: </span>
@@ -151,7 +151,7 @@
 <span class="co">#&gt; 10 &lt;dbl [4]&gt;</span>
 <span class="co">#&gt; # … with 151,990 more rows</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 0.5345891 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.517688 secs</span></code></pre></div>
 </div>
 <div id="introduce-the-zdd" class="section level2">
 <h2 class="hasAnchor">
@@ -173,7 +173,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 0.3619938 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.357672 secs</span></code></pre></div>
 </div>
 <div id="the-importance-of-variable-ordering" class="section level2">
 <h2 class="hasAnchor">
@@ -194,7 +194,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 5.947584 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 5.680214 secs</span></code></pre></div>
 </div>
 <div id="minimizing-the-family-of-sets" class="section level2">
 <h2 class="hasAnchor">
@@ -216,7 +216,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 0.5002651 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.4905982 secs</span></code></pre></div>
 <p>Using the same example, add one additional union of a non-minimal ZDD and watch the change in ZDD complexity (memory) and calculation time.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_zdd_store.html">reset_zdd_store</a></span><span class="op">(</span><span class="op">)</span>
@@ -234,7 +234,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 0.711987 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.684123 secs</span></code></pre></div>
 </div>
 <div id="under-construction" class="section level2">
 <h2 class="hasAnchor">
