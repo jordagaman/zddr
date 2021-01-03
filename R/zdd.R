@@ -37,6 +37,8 @@ new_zdd <- function(value, p0, p1) {
     value = V,
     p0    = P0,
     p1    = P1,
+    minimum_order = min(zdd_minimum_order(p0), zdd_minimum_order(p1)+1L),
+    maximum_order = max(zdd_maximum_order(p0), zdd_maximum_order(p1)+1L),
     count = zdd_count(p0) + zdd_count(p1),
     class = 'zdd'
   )
@@ -148,6 +150,16 @@ p1.zdd <- function(x) {
   if(is_zero(x)) stop('You just asked me to return the p1 value for a constant-0 node!')
   p1  <- attr(x, 'p1')
   return(as_zdd(p1))
+}
+
+
+zdd_minimum_order <- function(x) {
+  zdd <- as_zdd(x)
+  return(attr(zdd, 'minimum_order'))
+}
+zdd_maximum_order <- function(x) {
+  zdd <- as_zdd(x)
+  return(attr(zdd, 'maximum_order'))
 }
 
 zdd_count <- function(x) {
