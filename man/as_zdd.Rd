@@ -2,21 +2,40 @@
 % Please edit documentation in R/as_zdd.R
 \name{as_zdd}
 \alias{as_zdd}
-\title{as_zdd}
+\alias{as_zdd.zdd}
+\alias{as_zdd.integer}
+\alias{as_zdd.numeric}
+\alias{as_zdd.character}
+\title{Coerce an integer or string hash to a ZDD object}
 \usage{
 as_zdd(x)
+
+\method{as_zdd}{zdd}(x)
+
+\method{as_zdd}{integer}(x)
+
+\method{as_zdd}{numeric}(x)
+
+\method{as_zdd}{character}(x)
 }
 \arguments{
-\item{x}{the integer value of the node to be added or the string hash of the node to pull from the store}
+\item{x}{the integer value of the node to be added or the string hash of the
+node to pull from the store}
 }
 \value{
-the single variable elementary zdd (the so-called "set containing \code{value}")
+the single variable elementary zdd (the so-called "set containing
+\code{value}")
 }
 \description{
-as_zdd
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
+
+\code{as_zdd()} turns an existing object, such as a numeric/integer value or a
+string that corresponds to a previously created ZDD, into a registered ZDD
+object of class \code{zdd}.
 }
 \examples{
 as_zdd(3L)
 as_zdd('d7281766b28bdc9025520edeeffecdd9')
 #as_zdd('this one does not exist')  # this one throws an error
+
 }
