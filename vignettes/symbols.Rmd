@@ -17,3 +17,143 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(zddr)
 ```
+
+```{r silent, echo=FALSE, message=FALSE, results='hide'}
+zdd0()
+```
+
+Currently, the `zddr` package only works using integer variables corresponding
+to variable rank. An additional layer of abstraction is needed for the user to
+enter real life fault tree problems, which can be converted to the integer
+variable form for solving.
+
+The purpose of this vignette is to use the existing `zddr` package for a fault
+tree problem to discover the design of functions that will do this 
+automatically. This vignette will be retired once the `zddr` package exposes
+the new symbolic functions. Easy enough.
+
+## Define a problem
+
+Imagine a system with four trains: A, B, C, and D. The fault tree of the first
+train is essentially an OR gate of the following subtrees:
+
+* Failures of Train A that have no dependencies to the other trains: 
+  `IND_A`
+* Failures of Train A that have dependencies with one other train: 
+  `CCF_AB`, `CCF_AC`, `CCF_AD`
+* Failures of Train A that have dependencies with two other trains:
+  `CCF_ABC`, `CCF_ABD`, `CCF_ACD`
+* Failures of Train A that have dependencies with all trains:
+  `CCF_ABCD`
+
+## Set up variables
+
+For a complete description of the problem, the entire range of possible 
+variables are assigned integers. (Remember: doing this the long way right now to
+help discover what the clever functions will be. This will be necessarily 
+painful.)
+
+```{r variables}
+# independent failures
+IND_A    <-  1;   IND_B    <-  2;   IND_C    <-  3;   IND_D    <-  4
+# dependencies between two trains
+CCF_AB   <-  5;   CCF_AC   <-  6;   CCF_AD   <-  7
+CCF_BC   <-  8;   CCF_BD   <-  9;   CCF_CD   <- 10
+# dependencies between three trains
+CCF_ABC  <- 11;   CCF_ABD  <- 12;   CCF_ACD  <- 13;   CCF_BCD  <- 14
+# dependencies between all trains
+CCF_ABCD <- 15
+```
+
+## Use `zddr` to create simple system trees
+
+With the variables defined, the train failure cutsets can be given by the 
+following OR gates for each train.
+
+```{r train_failures}
+A <- zdd_or(IND_A, CCF_AB, CCF_AC, CCF_AD, CCF_ABC, CCF_ABD, CCF_ACD, CCF_ABCD)
+B <- zdd_or(IND_B, CCF_AB, CCF_BC, CCF_BD, CCF_ABC, CCF_ABD, CCF_BCD, CCF_ABCD)
+C <- zdd_or(IND_C, CCF_AC, CCF_BC, CCF_CD, CCF_ABC, CCF_ACD, CCF_BCD, CCF_ABCD)
+D <- zdd_or(IND_D, CCF_AD, CCF_BD, CCF_CD, CCF_ABD, CCF_ACD, CCF_BCD, CCF_ABCD)
+```
+
+```{r train_A}
+A
+```
+
+Admittedly, the `zddr` package still needs a good way to translate the results
+back to the original variable names for better readability. The best way to 
+accomplish that translation is part of what this vignette is trying to discover.
+Be patient, okay?
+
+## Manipulate the trees
+
+Some examples of tree manipulation follow. Remember, there are four "trees" 
+defined above, one for each train. The examples below explore 
+
+### Multiply two trees
+
+What are the cutsets associated with failure of trains A _and_ B? 
+
+```{r A_and_B}
+A*B
+```
+
+Note that there were common events between `A` and `B`. For this reason
+the crossproduct of `A` and `B` has only `r length(cutsets(A*B))` cutsets. If 
+this problem were to be solved by brute force cross multiplication, the solution
+would have to look at all `r length(cutsets(A))*length(cutsets(B))` combinations
+of `A` and `B`'s trees and then filter out the non-minimal cutsets. The full
+cross multiplication is trivial for a small problem, but would quickly get 
+unmanageable for a problem with many `AND` operations. 
+
+### Multiply three trees
+
+What are the cutsets associated with failure of trains A _and_ B _and_ D?
+
+```{r A_and_B_and_D}
+A*B*D
+```
+
+As above, there were common events between `A`, `B`, and `D`, resulting in only
+`r length(cutsets(A*B*D))` cutsets. This is far fewer than the maximum possible
+number of cutsets by brute force cross multiplication,
+`r length(cutsets(A))*length(cutsets(B))*length(cutsets(D))`.
+
+### Multiply all four trees
+
+What about failure of all four?
+
+```{r all_four}
+A*B*C*D
+```
+
+Again, the cross multiplication using `zddr` directly identifies the 
+`r length(cutsets(A*B*C*D))` nonminimal cutsets, without having to first 
+generate the 
+`r length(cutsets(A))*length(cutsets(B))*length(cutsets(C))*length(cutsets(D))`
+possible cutsets by brute force. Huzzah!
+
+
+### k of n train failures
+
+For now, k of n failures is done manually. If we were interested in the list
+of cutsets that represents failure of at least 2 trains, it would be the 
+logical OR of the AND of all possible pairs of trains. Note how compact the 
+results actually are: there are `r 6*8*8` possible combinations of cutsets for 
+the problem defined, but the ZDD method quickly filters down to the `r 17` that
+match the criteria without evaluating all permutations.
+
+```{r two_of_four}
+(A*B) | (A*C) | (A*D) | (B*C) | (B*D) | (C*D)
+```
+
+Repeating the same exercise, except with failure of at least 3 trains. Again, 
+instead of evaluating `r 3*8*8*8` combinations, the ZDD method quickly 
+identifies the `r 32` cutsets that meet the criteria.
+
+```{r three_of_four}
+(A*B*C) | (A*C*D) | (B*C*D) 
+```
+
+
