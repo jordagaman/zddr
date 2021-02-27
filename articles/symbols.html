@@ -312,28 +312,35 @@
 <span class="co">#&gt; { 13 } </span>
 <span class="co">#&gt; { 14 } </span>
 <span class="co">#&gt; { 15 }</span></code></pre></div>
-<p>Repeating the same exercise, except with failure of at least 3 trains. Again, instead of evaluating 1536 combinations, the ZDD method quickly identifies the 32 cutsets that meet the criteria.</p>
+<p>Repeating the same exercise, except with failure of at least 3 trains. Again, instead of evaluating 1536 combinations, the ZDD method quickly identifies the 30 cutsets that meet the criteria.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> 
-<span class="co">#&gt; Memory of ZDD Store:     0.315 MB, item count: 333 ( 0.95 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.342 MB, item count: 1780 ( 0.19 KB/item)</span>
-<span class="co">#&gt; ad1263b90dcde6c71a54a445bc559adc : 32 cutsets, min order: 1 max order: 3 </span>
+<code class="sourceCode R"><span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> 
+<span class="co">#&gt; Memory of ZDD Store:     0.327 MB, item count: 346 ( 0.95 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.357 MB, item count: 1847 ( 0.19 KB/item)</span>
+<span class="co">#&gt; 39b214ae4432e10f195ac9a5f92fed0a : 36 cutsets, min order: 1 max order: 3 </span>
 <span class="co">#&gt; { 1 2 3 } </span>
+<span class="co">#&gt; { 1 2 4 } </span>
 <span class="co">#&gt; { 1 3 4 } </span>
 <span class="co">#&gt; { 2 3 4 } </span>
 <span class="co">#&gt; { 3 5 } </span>
+<span class="co">#&gt; { 4 5 } </span>
 <span class="co">#&gt; { 2 6 } </span>
 <span class="co">#&gt; { 4 6 } </span>
 <span class="co">#&gt; { 5 6 } </span>
+<span class="co">#&gt; { 2 7 } </span>
 <span class="co">#&gt; { 3 7 } </span>
+<span class="co">#&gt; { 5 7 } </span>
 <span class="co">#&gt; { 6 7 } </span>
 <span class="co">#&gt; { 1 8 } </span>
 <span class="co">#&gt; { 4 8 } </span>
 <span class="co">#&gt; { 5 8 } </span>
 <span class="co">#&gt; { 6 8 } </span>
 <span class="co">#&gt; { 7 8 } </span>
+<span class="co">#&gt; { 1 9 } </span>
 <span class="co">#&gt; { 3 9 } </span>
+<span class="co">#&gt; { 5 9 } </span>
 <span class="co">#&gt; { 6 9 } </span>
+<span class="co">#&gt; { 7 9 } </span>
 <span class="co">#&gt; { 8 9 } </span>
 <span class="co">#&gt; { 1 10 } </span>
 <span class="co">#&gt; { 2 10 } </span>
@@ -343,33 +350,37 @@
 <span class="co">#&gt; { 8 10 } </span>
 <span class="co">#&gt; { 9 10 } </span>
 <span class="co">#&gt; { 11 } </span>
-<span class="co">#&gt; { 3 12 } </span>
-<span class="co">#&gt; { 6 12 } </span>
-<span class="co">#&gt; { 8 12 } </span>
-<span class="co">#&gt; { 10 12 } </span>
+<span class="co">#&gt; { 12 } </span>
 <span class="co">#&gt; { 13 } </span>
 <span class="co">#&gt; { 14 } </span>
 <span class="co">#&gt; { 15 }</span></code></pre></div>
 <p>What about <em>exactly</em> 3 failed trains? EASY.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">(</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">)</span> <span class="op">%anot%</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.33 MB, item count: 349 ( 0.95 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.36 MB, item count: 1865 ( 0.19 KB/item)</span>
-<span class="co">#&gt; a28cdfd91444033261e3be190b591dc8 : 24 cutsets, min order: 1 max order: 3 </span>
+<code class="sourceCode R"><span class="op">(</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">)</span> <span class="op">%anot%</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.343 MB, item count: 363 ( 0.94 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.374 MB, item count: 1941 ( 0.19 KB/item)</span>
+<span class="co">#&gt; 40c41a7d25bf17cd61e9a3d642346abc : 32 cutsets, min order: 1 max order: 3 </span>
 <span class="co">#&gt; { 1 2 3 } </span>
+<span class="co">#&gt; { 1 2 4 } </span>
 <span class="co">#&gt; { 1 3 4 } </span>
 <span class="co">#&gt; { 2 3 4 } </span>
 <span class="co">#&gt; { 3 5 } </span>
+<span class="co">#&gt; { 4 5 } </span>
 <span class="co">#&gt; { 2 6 } </span>
 <span class="co">#&gt; { 4 6 } </span>
 <span class="co">#&gt; { 5 6 } </span>
+<span class="co">#&gt; { 2 7 } </span>
 <span class="co">#&gt; { 3 7 } </span>
+<span class="co">#&gt; { 5 7 } </span>
 <span class="co">#&gt; { 6 7 } </span>
 <span class="co">#&gt; { 1 8 } </span>
 <span class="co">#&gt; { 4 8 } </span>
 <span class="co">#&gt; { 5 8 } </span>
 <span class="co">#&gt; { 6 8 } </span>
+<span class="co">#&gt; { 1 9 } </span>
 <span class="co">#&gt; { 3 9 } </span>
+<span class="co">#&gt; { 5 9 } </span>
+<span class="co">#&gt; { 7 9 } </span>
 <span class="co">#&gt; { 8 9 } </span>
 <span class="co">#&gt; { 1 10 } </span>
 <span class="co">#&gt; { 2 10 } </span>
@@ -378,6 +389,7 @@
 <span class="co">#&gt; { 8 10 } </span>
 <span class="co">#&gt; { 9 10 } </span>
 <span class="co">#&gt; { 11 } </span>
+<span class="co">#&gt; { 12 } </span>
 <span class="co">#&gt; { 13 } </span>
 <span class="co">#&gt; { 14 }</span></code></pre></div>
 </div>
