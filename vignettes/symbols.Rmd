@@ -156,4 +156,10 @@ identifies the `r 32` cutsets that meet the criteria.
 (A*B*C) | (A*C*D) | (B*C*D) 
 ```
 
+What about _exactly_ 3 failed trains? EASY.
+
+```{r three_of_four_exact}
+( (A*B*C) | (A*C*D) | (B*C*D) ) %anot% (A*B*C*D)
+```
+
 
