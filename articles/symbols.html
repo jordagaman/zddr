@@ -350,6 +350,36 @@
 <span class="co">#&gt; { 13 } </span>
 <span class="co">#&gt; { 14 } </span>
 <span class="co">#&gt; { 15 }</span></code></pre></div>
+<p>What about <em>exactly</em> 3 failed trains? EASY.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">)</span> <span class="op">%anot%</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.33 MB, item count: 349 ( 0.95 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.36 MB, item count: 1865 ( 0.19 KB/item)</span>
+<span class="co">#&gt; a28cdfd91444033261e3be190b591dc8 : 24 cutsets, min order: 1 max order: 3 </span>
+<span class="co">#&gt; { 1 2 3 } </span>
+<span class="co">#&gt; { 1 3 4 } </span>
+<span class="co">#&gt; { 2 3 4 } </span>
+<span class="co">#&gt; { 3 5 } </span>
+<span class="co">#&gt; { 2 6 } </span>
+<span class="co">#&gt; { 4 6 } </span>
+<span class="co">#&gt; { 5 6 } </span>
+<span class="co">#&gt; { 3 7 } </span>
+<span class="co">#&gt; { 6 7 } </span>
+<span class="co">#&gt; { 1 8 } </span>
+<span class="co">#&gt; { 4 8 } </span>
+<span class="co">#&gt; { 5 8 } </span>
+<span class="co">#&gt; { 6 8 } </span>
+<span class="co">#&gt; { 3 9 } </span>
+<span class="co">#&gt; { 8 9 } </span>
+<span class="co">#&gt; { 1 10 } </span>
+<span class="co">#&gt; { 2 10 } </span>
+<span class="co">#&gt; { 6 10 } </span>
+<span class="co">#&gt; { 7 10 } </span>
+<span class="co">#&gt; { 8 10 } </span>
+<span class="co">#&gt; { 9 10 } </span>
+<span class="co">#&gt; { 11 } </span>
+<span class="co">#&gt; { 13 } </span>
+<span class="co">#&gt; { 14 }</span></code></pre></div>
 </div>
 </div>
   </div>
