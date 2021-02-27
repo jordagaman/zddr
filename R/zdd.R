@@ -33,14 +33,14 @@ new_zdd <- function(value, p0, p1) {
   P1 <- as.character(p1)
   ID <- zdd_hash(V, P0, P1)
   z  <- structure(
-    .Data = ID,
-    value = V,
-    p0    = P0,
-    p1    = P1,
+    .Data         = ID,
+    value         = V,
+    p0            = P0,
+    p1            = P1,
     minimum_order = min(zdd_minimum_order(p0), zdd_minimum_order(p1)+1L),
     maximum_order = max(zdd_maximum_order(p0), zdd_maximum_order(p1)+1L),
-    count = zdd_count(p0) + zdd_count(p1),
-    class = 'zdd'
+    count         = zdd_count(p0) + zdd_count(p1),
+    class         = 'zdd'
   )
   return(z)
 }
