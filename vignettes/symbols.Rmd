@@ -1,0 +1,19 @@
+---
+title: "Using Symbols instead of Variable Order Integers"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using Symbols instead of Variable Order Integers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(zddr)
+```
