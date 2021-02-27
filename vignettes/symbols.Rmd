@@ -150,16 +150,16 @@ match the criteria without evaluating all permutations.
 
 Repeating the same exercise, except with failure of at least 3 trains. Again, 
 instead of evaluating `r 3*8*8*8` combinations, the ZDD method quickly 
-identifies the `r 32` cutsets that meet the criteria.
+identifies the `r 30` cutsets that meet the criteria.
 
 ```{r three_of_four}
-(A*B*C) | (A*C*D) | (B*C*D) 
+(A*B*C) | (A*B*D) | (A*C*D) | (B*C*D) 
 ```
 
 What about _exactly_ 3 failed trains? EASY.
 
 ```{r three_of_four_exact}
-( (A*B*C) | (A*C*D) | (B*C*D) ) %anot% (A*B*C*D)
+( (A*B*C) | (A*B*D) | (A*C*D) | (B*C*D) ) %anot% (A*B*C*D)
 ```
 
 
