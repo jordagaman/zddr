@@ -394,6 +394,326 @@
 <span class="co">#&gt; { 14 }</span></code></pre></div>
 </div>
 </div>
+<div id="experiment-with-interfaces" class="section level2">
+<h2 class="hasAnchor">
+<a href="#experiment-with-interfaces" class="anchor"></a>Experiment with interfaces</h2>
+<p>So listen, this isn’t a perfect solution, BUT we finally have a prototype that proves that it’s doable to convert the ZDD-based solution easily to the string variables that were used in defining the original fault tree. Enjoy this demonstration and stay tuned!</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/reset_zdd_store.html">reset_zdd_store</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Resetting zdd_store.</span>
+<span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span>
+  <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>,
+  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="co"># independent failures</span>
+    <span class="st">'IND_A'</span>, <span class="st">'IND_B'</span>, <span class="st">'IND_C'</span>, <span class="st">'IND_D'</span>, 
+    <span class="co"># dependencies between two trains</span>
+    <span class="st">'CCF_AB'</span>, <span class="st">'CCF_AC'</span>, <span class="st">'CCF_AD'</span>, <span class="st">'CCF_BC'</span>, <span class="st">'CCF_BD'</span>, <span class="st">'CCF_CD'</span>, 
+    <span class="co"># dependencies between three trains</span>
+    <span class="st">'CCF_ABC'</span>, <span class="st">'CCF_ABD'</span>, <span class="st">'CCF_ACD'</span>, <span class="st">'CCF_BCD'</span>, 
+    <span class="co"># dependencies between all trains</span>
+    <span class="st">'CCF_ABCD'</span>
+  <span class="op">)</span> 
+<span class="op">)</span>
+<span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="va">v</span><span class="op">[</span><span class="st">'IND_A'</span>   <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_AB'</span>  <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_AC'</span>  <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_AD'</span>  <span class="op">]</span>, 
+            <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABC'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ACD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABCD'</span><span class="op">]</span> <span class="op">)</span>
+<span class="va">B</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="va">v</span><span class="op">[</span><span class="st">'IND_B'</span>   <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_AB'</span>  <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_BC'</span>  <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_BD'</span>  <span class="op">]</span>, 
+            <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABC'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_BCD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABCD'</span><span class="op">]</span> <span class="op">)</span>
+<span class="va">C</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="va">v</span><span class="op">[</span><span class="st">'IND_C'</span>   <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_AC'</span>  <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_BC'</span>  <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_CD'</span>  <span class="op">]</span>, 
+            <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABC'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ACD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_BCD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABCD'</span><span class="op">]</span> <span class="op">)</span>
+<span class="va">D</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="va">v</span><span class="op">[</span><span class="st">'IND_D'</span>   <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_AD'</span>  <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_BD'</span>  <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_CD'</span>  <span class="op">]</span>, 
+            <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ACD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_BCD'</span> <span class="op">]</span>, <span class="va">v</span><span class="op">[</span><span class="st">'CCF_ABCD'</span><span class="op">]</span> <span class="op">)</span>
+
+<span class="co"># define a function that can convert zdd results to cutsets</span>
+<span class="va">convert_zdd_result_to_cutsets</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">zdd</span>, <span class="va">variables</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">reslist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cutsets.html">cutsets</a></span><span class="op">(</span><span class="va">zdd</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/relist.html">relist</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">variables</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">reslist</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> , <span class="va">reslist</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">)</span>              <span class="op">%&gt;%</span> <span class="fu">convert_zdd_result_to_cutsets</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] "IND_A" "IND_B"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] "CCF_AB"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] "IND_B"  "CCF_AC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] "IND_B"  "CCF_AD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[5]]</span>
+<span class="co">#&gt; [1] "IND_A"  "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[6]]</span>
+<span class="co">#&gt; [1] "CCF_AC" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[7]]</span>
+<span class="co">#&gt; [1] "CCF_AD" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[8]]</span>
+<span class="co">#&gt; [1] "IND_A"  "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[9]]</span>
+<span class="co">#&gt; [1] "CCF_AC" "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[10]]</span>
+<span class="co">#&gt; [1] "CCF_AD" "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[11]]</span>
+<span class="co">#&gt; [1] "CCF_ABC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[12]]</span>
+<span class="co">#&gt; [1] "CCF_ABD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[13]]</span>
+<span class="co">#&gt; [1] "IND_B"   "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[14]]</span>
+<span class="co">#&gt; [1] "CCF_BC"  "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[15]]</span>
+<span class="co">#&gt; [1] "CCF_BD"  "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[16]]</span>
+<span class="co">#&gt; [1] "IND_A"   "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[17]]</span>
+<span class="co">#&gt; [1] "CCF_AC"  "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[18]]</span>
+<span class="co">#&gt; [1] "CCF_AD"  "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[19]]</span>
+<span class="co">#&gt; [1] "CCF_ACD" "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[20]]</span>
+<span class="co">#&gt; [1] "CCF_ABCD"</span>
+<span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span>            <span class="op">%&gt;%</span> <span class="fu">convert_zdd_result_to_cutsets</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] "IND_A" "IND_B" "IND_C"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] "IND_C"  "CCF_AB"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] "IND_B"  "CCF_AC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_AC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[5]]</span>
+<span class="co">#&gt; [1] "IND_B"  "IND_C"  "CCF_AD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[6]]</span>
+<span class="co">#&gt; [1] "IND_A"  "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[7]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[8]]</span>
+<span class="co">#&gt; [1] "CCF_AC" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[9]]</span>
+<span class="co">#&gt; [1] "CCF_AD" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[10]]</span>
+<span class="co">#&gt; [1] "IND_A"  "IND_C"  "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[11]]</span>
+<span class="co">#&gt; [1] "CCF_AC" "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[12]]</span>
+<span class="co">#&gt; [1] "IND_C"  "CCF_AD" "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[13]]</span>
+<span class="co">#&gt; [1] "IND_A"  "IND_B"  "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[14]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[15]]</span>
+<span class="co">#&gt; [1] "IND_B"  "CCF_AD" "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[16]]</span>
+<span class="co">#&gt; [1] "IND_A"  "CCF_BD" "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[17]]</span>
+<span class="co">#&gt; [1] "CCF_AD" "CCF_BD" "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[18]]</span>
+<span class="co">#&gt; [1] "CCF_ABC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[19]]</span>
+<span class="co">#&gt; [1] "IND_C"   "CCF_ABD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[20]]</span>
+<span class="co">#&gt; [1] "CCF_AC"  "CCF_ABD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[21]]</span>
+<span class="co">#&gt; [1] "CCF_BC"  "CCF_ABD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[22]]</span>
+<span class="co">#&gt; [1] "CCF_CD"  "CCF_ABD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[23]]</span>
+<span class="co">#&gt; [1] "IND_B"   "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[24]]</span>
+<span class="co">#&gt; [1] "CCF_AB"  "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[25]]</span>
+<span class="co">#&gt; [1] "CCF_BC"  "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[26]]</span>
+<span class="co">#&gt; [1] "CCF_BD"  "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[27]]</span>
+<span class="co">#&gt; [1] "CCF_ABD" "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[28]]</span>
+<span class="co">#&gt; [1] "IND_A"   "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[29]]</span>
+<span class="co">#&gt; [1] "CCF_AB"  "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[30]]</span>
+<span class="co">#&gt; [1] "CCF_AC"  "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[31]]</span>
+<span class="co">#&gt; [1] "CCF_AD"  "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[32]]</span>
+<span class="co">#&gt; [1] "CCF_ABD" "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[33]]</span>
+<span class="co">#&gt; [1] "CCF_ACD" "CCF_BCD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[34]]</span>
+<span class="co">#&gt; [1] "CCF_ABCD"</span>
+<span class="op">(</span><span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">%anot%</span> <span class="va">D</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">convert_zdd_result_to_cutsets</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] "IND_A" "IND_B" "IND_C"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] "IND_C"  "CCF_AB"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] "IND_B"  "CCF_AC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_AC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[5]]</span>
+<span class="co">#&gt; [1] "IND_A"  "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[6]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[7]]</span>
+<span class="co">#&gt; [1] "CCF_AC" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[8]]</span>
+<span class="co">#&gt; [1] "CCF_ABC"</span>
+
+<span class="op">(</span><span class="op">(</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">)</span> <span class="op">%anot%</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">convert_zdd_result_to_cutsets</span><span class="op">(</span><span class="va">v</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] "IND_A" "IND_B" "IND_C"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] "IND_A" "IND_B" "IND_D"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] "IND_A" "IND_C" "IND_D"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] "IND_B" "IND_C" "IND_D"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[5]]</span>
+<span class="co">#&gt; [1] "IND_C"  "CCF_AB"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[6]]</span>
+<span class="co">#&gt; [1] "IND_D"  "CCF_AB"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[7]]</span>
+<span class="co">#&gt; [1] "IND_B"  "CCF_AC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[8]]</span>
+<span class="co">#&gt; [1] "IND_D"  "CCF_AC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[9]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_AC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[10]]</span>
+<span class="co">#&gt; [1] "IND_B"  "CCF_AD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[11]]</span>
+<span class="co">#&gt; [1] "IND_C"  "CCF_AD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[12]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_AD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[13]]</span>
+<span class="co">#&gt; [1] "CCF_AC" "CCF_AD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[14]]</span>
+<span class="co">#&gt; [1] "IND_A"  "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[15]]</span>
+<span class="co">#&gt; [1] "IND_D"  "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[16]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[17]]</span>
+<span class="co">#&gt; [1] "CCF_AC" "CCF_BC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[18]]</span>
+<span class="co">#&gt; [1] "IND_A"  "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[19]]</span>
+<span class="co">#&gt; [1] "IND_C"  "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[20]]</span>
+<span class="co">#&gt; [1] "CCF_AB" "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[21]]</span>
+<span class="co">#&gt; [1] "CCF_AD" "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[22]]</span>
+<span class="co">#&gt; [1] "CCF_BC" "CCF_BD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[23]]</span>
+<span class="co">#&gt; [1] "IND_A"  "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[24]]</span>
+<span class="co">#&gt; [1] "IND_B"  "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[25]]</span>
+<span class="co">#&gt; [1] "CCF_AC" "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[26]]</span>
+<span class="co">#&gt; [1] "CCF_AD" "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[27]]</span>
+<span class="co">#&gt; [1] "CCF_BC" "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[28]]</span>
+<span class="co">#&gt; [1] "CCF_BD" "CCF_CD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[29]]</span>
+<span class="co">#&gt; [1] "CCF_ABC"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[30]]</span>
+<span class="co">#&gt; [1] "CCF_ABD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[31]]</span>
+<span class="co">#&gt; [1] "CCF_ACD"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[32]]</span>
+<span class="co">#&gt; [1] "CCF_BCD"</span></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
