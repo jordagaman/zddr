@@ -165,4 +165,49 @@ What about _exactly_ 3 failed trains? EASY.
 ( (A*B*C) | (A*B*D) | (A*C*D) | (B*C*D) ) %anot% (A*B*C*D)
 ```
 
+## Experiment with interfaces
+
+So listen, this isn't a perfect solution, BUT we finally have a prototype that
+proves that it's doable to convert the ZDD-based solution easily to the string
+variables that were used in defining the original fault tree. Enjoy this 
+demonstration and stay tuned!
+
+```{r new_variables}
+reset_zdd_store()
+v <- structure(
+  1:15,
+  names = c(
+    # independent failures
+    'IND_A', 'IND_B', 'IND_C', 'IND_D', 
+    # dependencies between two trains
+    'CCF_AB', 'CCF_AC', 'CCF_AD', 'CCF_BC', 'CCF_BD', 'CCF_CD', 
+    # dependencies between three trains
+    'CCF_ABC', 'CCF_ABD', 'CCF_ACD', 'CCF_BCD', 
+    # dependencies between all trains
+    'CCF_ABCD'
+  ) 
+)
+A <- zdd_or(v['IND_A'   ], v['CCF_AB'  ], v['CCF_AC'  ], v['CCF_AD'  ], 
+            v['CCF_ABC' ], v['CCF_ABD' ], v['CCF_ACD' ], v['CCF_ABCD'] )
+B <- zdd_or(v['IND_B'   ], v['CCF_AB'  ], v['CCF_BC'  ], v['CCF_BD'  ], 
+            v['CCF_ABC' ], v['CCF_ABD' ], v['CCF_BCD' ], v['CCF_ABCD'] )
+C <- zdd_or(v['IND_C'   ], v['CCF_AC'  ], v['CCF_BC'  ], v['CCF_CD'  ], 
+            v['CCF_ABC' ], v['CCF_ACD' ], v['CCF_BCD' ], v['CCF_ABCD'] )
+D <- zdd_or(v['IND_D'   ], v['CCF_AD'  ], v['CCF_BD'  ], v['CCF_CD'  ], 
+            v['CCF_ABD' ], v['CCF_ACD' ], v['CCF_BCD' ], v['CCF_ABCD'] )
+
+# define a function that can convert zdd results to cutsets
+convert_zdd_result_to_cutsets <- function(zdd, variables) {
+  reslist <- cutsets(zdd)
+  relist( names(variables[unlist(reslist)]) , reslist)
+}
+
+(A*B)              %>% convert_zdd_result_to_cutsets(v)
+(A*B*C)            %>% convert_zdd_result_to_cutsets(v)
+((A*B*C) %anot% D) %>% convert_zdd_result_to_cutsets(v)
+
+(( (A*B*C) | (A*B*D) | (A*C*D) | (B*C*D) ) %anot% (A*B*C*D) ) %>% 
+  convert_zdd_result_to_cutsets(v)
+```
+
 
