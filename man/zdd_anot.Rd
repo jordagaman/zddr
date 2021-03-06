@@ -18,6 +18,6 @@ a zdd list object that is the elements of the first object that are nonminimal t
 zdd_anot
 }
 \examples{
-cutsets( (zdd(3) | zdd(4)) \%anot\% zdd(4))
-cutsets( (zdd(3) * zdd(4)) \%anot\% zdd(4))
+cutsets( (zdd(3) | zdd(4)) \%\% zdd(4))
+cutsets( (zdd(3) * zdd(4)) \%\% zdd(4))
 }
