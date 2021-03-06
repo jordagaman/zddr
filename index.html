@@ -104,25 +104,25 @@
 <span class="co">#&gt; Registered S3 method overwritten by 'pryr':</span>
 <span class="co">#&gt;   method      from</span>
 <span class="co">#&gt;   print.bytes Rcpp</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.005 MB, item count: 7 </span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.005 MB, item count: 13 </span>
-<span class="co">#&gt; d669df34342e40b977d48fbd7e725243 : 1 cutsets</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.007 MB, item count: 7 ( 1 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.003 MB, item count: 13 ( 0.23 KB/item)</span>
+<span class="co">#&gt; d669df34342e40b977d48fbd7e725243 : 1 cutsets, min order: 3 max order: 3 </span>
 <span class="co">#&gt; { 1 2 3 }</span></code></pre></div>
 <p>You can create the same cutset above with a simpler call:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
 <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.005 MB, item count: 7 </span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.008 MB, item count: 22 </span>
-<span class="co">#&gt; d669df34342e40b977d48fbd7e725243 : 1 cutsets</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.007 MB, item count: 7 ( 1 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.005 MB, item count: 22 ( 0.23 KB/item)</span>
+<span class="co">#&gt; d669df34342e40b977d48fbd7e725243 : 1 cutsets, min order: 3 max order: 3 </span>
 <span class="co">#&gt; { 1 2 3 }</span></code></pre></div>
 <p>Multiple cutsets look like this:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
 <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.011 MB, item count: 14 </span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.015 MB, item count: 42 </span>
-<span class="co">#&gt; 17c4ddfd5601bfe04f5c14f01d1b4fd4 : 3 cutsets</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.013 MB, item count: 13 ( 1 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.008 MB, item count: 37 ( 0.22 KB/item)</span>
+<span class="co">#&gt; 17c4ddfd5601bfe04f5c14f01d1b4fd4 : 3 cutsets, min order: 1 max order: 3 </span>
 <span class="co">#&gt; { 1 2 3 } </span>
 <span class="co">#&gt; { 4 5 } </span>
 <span class="co">#&gt; { 6 }</span></code></pre></div>
@@ -130,9 +130,9 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
 <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.013 MB, item count: 17 </span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.026 MB, item count: 75 </span>
-<span class="co">#&gt; 6bd5786cfd76ff927f06820c0b856a25 : 3 cutsets</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.014 MB, item count: 15 ( 0.93 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.012 MB, item count: 60 ( 0.2 KB/item)</span>
+<span class="co">#&gt; 6bd5786cfd76ff927f06820c0b856a25 : 3 cutsets, min order: 1 max order: 2 </span>
 <span class="co">#&gt; { 1 } </span>
 <span class="co">#&gt; { 4 5 } </span>
 <span class="co">#&gt; { 6 }</span></code></pre></div>
@@ -161,7 +161,7 @@
 <li><a href="https://travis-ci.com/jordagaman/zddr"><img src="https://travis-ci.com/jordagaman/zddr.svg?branch=main" alt="Travis build status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://github.com/jordagaman/zddr/actions"><img src="https://github.com/jordagaman/zddr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/jordagaman/zddr?branch=master"><img src="https://codecov.io/gh/jordagaman/zddr/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://codecov.io/gh/jordagaman/zddr?branch=main"><img src="https://codecov.io/gh/jordagaman/zddr/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 </div>
