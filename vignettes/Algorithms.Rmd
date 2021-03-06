@@ -74,10 +74,10 @@ zdd1() * zdd(4)
 ### AND-NOT
 
 ```{r terminal_anot}
-zdd(4) %anot% zdd(4)
-zdd(4) %anot% zdd0()
-zdd(4) %anot% zdd1()
-zdd0() %anot% zdd(4)
-zdd1() %anot% zdd(4)
+zdd(4) %% zdd(4)
+zdd(4) %% zdd0()
+zdd(4) %% zdd1()
+zdd0() %% zdd(4)
+zdd1() %% zdd(4)
 ```
 

@@ -162,7 +162,7 @@ cutsets that meet the criteria.
 What about _exactly_ 3 failed trains? EASY.
 
 ```{r three_of_four_exact}
-( (A*B*C) | (A*B*D) | (A*C*D) | (B*C*D) ) %anot% (A*B*C*D)
+( (A*B*C) | (A*B*D) | (A*C*D) | (B*C*D) ) %% (A*B*C*D)
 ```
 
 ## Experiment with interfaces
@@ -204,9 +204,9 @@ convert_zdd_result_to_cutsets <- function(zdd, variables) {
 
 (A*B)              %>% convert_zdd_result_to_cutsets(v)
 (A*B*C)            %>% convert_zdd_result_to_cutsets(v)
-((A*B*C) %anot% D) %>% convert_zdd_result_to_cutsets(v)
+((A*B*C) %% D)     %>% convert_zdd_result_to_cutsets(v)
 
-(( (A*B*C) | (A*B*D) | (A*C*D) | (B*C*D) ) %anot% (A*B*C*D) ) %>% 
+(( (A*B*C) | (A*B*D) | (A*C*D) | (B*C*D) ) %% (A*B*C*D) ) %>% 
   convert_zdd_result_to_cutsets(v)
 ```
 
