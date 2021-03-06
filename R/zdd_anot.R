@@ -12,21 +12,21 @@
 zdd_anot <- function(zddP, zddQ) {
   P <- as_zdd(zddP)
   Q <- as_zdd(zddQ)
-  if(   P == Q   ) return( zdd0()         )  #          =  P anot P = 0
-  if( is_zero(P) ) return( zdd0()         )  # P anot Q =  0 anot Q = 0
-  if( is_zero(Q) ) return(   P            )  #          =  P anot 0 = P
-  if(  is_one(P) ) return( zdd1()         )  #          =  1 anot Q = 1
-  if(  is_one(Q) ) return( zdd0()         )  #          =  P anot 1 = 0
-  if(   P <  Q   ) return( P %% p0(Q) )  # P anot (Q0 + Qv*Q1) = P anot Q0
+  if(   P == Q   ) return( zdd0()     )  #                   =  P %% P = 0
+  if( is_zero(P) ) return( zdd0()     )  # P %% Q            =  0 %% Q = 0
+  if( is_zero(Q) ) return(   P        )  #                   =  P %% 0 = P
+  if(  is_one(P) ) return( zdd1()     )  #                   =  1 %% Q = 1
+  if(  is_one(Q) ) return( zdd0()     )  #                   =  P %% 1 = 0
+  if(   P <  Q   ) return( P %% p0(Q) )  # P %% (Q0 + Qv*Q1) = P %% Q0
   if(   P >  Q   )
     return(
       zdd(value = P,
           p0    = p0(P) %% Q,
           p1    = p1(P) %% Q)
     )
-  return(                              # (P0 + Pv*P1) anot (Q0 + Pv*Q1)
-    zdd(value = P,                     #   = (P0 anot Q0) + Pv*(P1 anot Q0|Q1)
-        p0    = p0(P) %% p0(Q),    #   = (P0 anot Q0) + Pv*(P1 anot Q1)
+  return(                              # (P0 + Pv*P1) %% (Q0 + Pv*Q1)
+    zdd(value = P,                     #   = (P0 %% Q0) + Pv*(P1 %% Q0|Q1)
+        p0    = p0(P) %% p0(Q),        #   = (P0 %% Q0) + Pv*(P1 %% Q1   )
         p1    = p1(P) %% p1(Q) )
   )
 }
