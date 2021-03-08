@@ -168,3 +168,144 @@ p(c059)=0.0188
 p(c060)=0.0188
 p(c061)=0.0188
 ```
+
+
+```{r build_tree}
+reset_zdd_store()
+library(magrittr)
+# will propose new functions for usability
+
+# (1) there is already `zdd_and` and `zdd_or` to take comma separated 
+#     arguments. need a copy of that which accepts a list or array as 
+#     input:
+lzdd_and <- function(inputs) {
+  input_list <- purrr::map_chr(inputs, as_zdd)
+  if(any(purrr::map_lgl(input_list, is_zero)))
+    return(zdd0())
+  return(
+    purrr::reduce(input_list, zdd_crossproduct)
+  )
+}
+lzdd_or <- function(inputs) {
+  input_list <- purrr::map_chr(inputs, as_zdd)
+  if(any(purrr::map_lgl(input_list, is_one)))
+    return(zdd1())
+  return(
+    purrr::reduce(input_list, zdd_union)  
+  )
+}
+
+# (2) there is no native functionality in zddr yet to do k of n
+#     gates. this is an example of such a function
+k_of_n <- function(k, ...) {
+  # k is the number to choose
+  # ... is a list of zdds to choose from
+  n <- list(...)
+  combos <- combn(n, k)
+  list_of_anded_zdds <- apply(X      = combos,
+                              MARGIN = 2,
+                              FUN    = lzdd_and)
+  return(lzdd_or(list_of_anded_zdds))
+}
+
+# example application:
+k_of_n(k = 3, 1, zdd_or(2, 3), 4, 5) 
+
+# now we're ready for an example problem
+# note: this was painstakenly ordered by hand - have to make that 
+#       part automatic
+g069 <- zdd_and(1, 9)
+g068 <- zdd_and(1, 8)
+g067 <- zdd_and(1, 7)
+g066 <- zdd_and(1, 6)
+g065 <- zdd_and(1, 5)
+g064 <- zdd_and(1, 4)
+g063 <- zdd_and(1, 3)
+g062 <- zdd_and(1, 2)
+
+g105 <- (g069 | 45)
+g104 <- (g067 | 44)
+g103 <- (g068 | 43)
+g102 <- (g066 | 42)
+g101 <- (g069 | 41)
+g100 <- (g067 | 40)
+g099 <- (g068 | 39)
+g098 <- (g066 | 38)
+g097 <- (g069 | 37)
+g096 <- (g067 | 36)
+g095 <- (g068 | 35)
+g094 <- (g066 | 34)
+g093 <- (g069 | 33)
+g092 <- (g067 | 32)
+g091 <- (g068 | 31)
+g090 <- (g066 | 30)
+g089 <- (g065 | 29)
+g088 <- (g064 | 28)
+g087 <- (g063 | 27)
+g086 <- (g062 | 26)
+g085 <- (g065 | 25)
+g084 <- (g064 | 24)
+g083 <- (g063 | 23)
+g082 <- (g062 | 22)
+g081 <- (g065 | 21)
+g080 <- (g064 | 20)
+g079 <- (g063 | 19)
+g078 <- (g062 | 18)
+g077 <- (g065 | 17)
+g076 <- (g064 | 16)
+g075 <- (g063 | 15)
+g074 <- (g062 | 14)
+g073 <- (g065 | 13)
+g072 <- (g064 | 12)
+g071 <- (g063 | 11)
+g070 <- (g062 | 10)
+
+g112 <- k_of_n(3, g098,g099,g100,g101)
+g111 <- k_of_n(3, g094,g095,g096,g097)
+g110 <- k_of_n(3, g086,g087,g088,g089)
+g109 <- k_of_n(3, g082,g083,g084,g085)
+g108 <- k_of_n(3, g078,g079,g080,g081)
+g107 <- k_of_n(3, g074,g075,g076,g077)
+g106 <- k_of_n(3, g070,g071,g072,g073)
+
+g120 <- (g109 | g110)
+g119 <- (g107 | g108 | 52)
+
+g114 <- (g091 * g093)
+g113 <- (g090 * g092)
+
+g118 <- (g114 | 47)
+g117 <- (g113 | 46)
+g116 <- (g103 * g105)
+g115 <- (g102 * g104)
+
+g124 <- (g069 | g118 | 51)
+g123 <- (g067 | g117 | 50)
+g122 <- (g068 | g118 | 49)
+g121 <- (g066 | g117 | 48)
+
+g125 <- k_of_n(2, g121,g123,g122,g124)
+
+g128 <- (g116 * g120)
+g127 <- (g115 * g120)
+g126 <- (g111 | g112 | g125 | 53)
+
+g132 <- (g065 | g128 | 57)
+g131 <- (g064 | g127 | 56)
+g130 <- (g063 | g128 | 55)
+g129 <- (g062 | g127 | 54)
+
+g136 <- (g065 | g132 | 61)
+g135 <- (g064 | g131 | 60)
+g134 <- (g063 | g130 | 59)
+g133 <- (g062 | g129 | 58)  
+# there's a bug somewhere - this produces nonminimal cutsets: 
+# [[1]]
+# [1] 1 2
+# [[6]]
+# [1]  1  2  4  6  7 23
+# [[7]]
+# [1]  1  2  5  6  7 23
+
+g133
+```
