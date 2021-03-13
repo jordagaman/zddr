@@ -157,7 +157,7 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">A</span><span class="op">*</span><span class="va">B</span>
 <span class="co">#&gt; Memory of ZDD Store:     0.058 MB, item count: 61 ( 0.95 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.032 MB, item count: 152 ( 0.21 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.036 MB, item count: 179 ( 0.2 KB/item)</span>
 <span class="co">#&gt; 442e4c2c7cbfb7b11856378445d32358 : 20 cutsets, min order: 1 max order: 2 </span>
 <span class="co">#&gt; { 1 2 } </span>
 <span class="co">#&gt; { 5 } </span>
@@ -187,8 +187,8 @@
 <p>What are the cutsets associated with failure of trains A <em>and</em> B <em>and</em> D?</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">D</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.075 MB, item count: 79 ( 0.95 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.059 MB, item count: 298 ( 0.2 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.079 MB, item count: 83 ( 0.95 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.073 MB, item count: 378 ( 0.19 KB/item)</span>
 <span class="co">#&gt; 5cb3e88f1c6a857b514e223ea50dfe1c : 34 cutsets, min order: 1 max order: 3 </span>
 <span class="co">#&gt; { 1 2 4 } </span>
 <span class="co">#&gt; { 4 5 } </span>
@@ -232,8 +232,8 @@
 <p>What about failure of all four?</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.123 MB, item count: 130 ( 0.95 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.125 MB, item count: 650 ( 0.19 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.137 MB, item count: 145 ( 0.94 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.163 MB, item count: 857 ( 0.19 KB/item)</span>
 <span class="co">#&gt; bf6462db079af2b05a202b13e29b550b : 49 cutsets, min order: 1 max order: 4 </span>
 <span class="co">#&gt; { 1 2 3 4 } </span>
 <span class="co">#&gt; { 3 4 5 } </span>
@@ -292,8 +292,8 @@
 <p>For now, k of n failures is done manually. If we were interested in the list of cutsets that represents failure of at least 2 trains, it would be the logical OR of the AND of all possible pairs of trains. Note how compact the results actually are: there are 384 possible combinations of cutsets for the problem defined, but the ZDD method quickly filters down to the 17 that match the criteria without evaluating all permutations.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.239 MB, item count: 253 ( 0.94 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.211 MB, item count: 1070 ( 0.2 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.257 MB, item count: 272 ( 0.94 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.262 MB, item count: 1352 ( 0.19 KB/item)</span>
 <span class="co">#&gt; 2274d75e4c80d65c83db6c3db7d0637d : 17 cutsets, min order: 1 max order: 2 </span>
 <span class="co">#&gt; { 1 2 } </span>
 <span class="co">#&gt; { 1 3 } </span>
@@ -315,8 +315,8 @@
 <p>Repeating the same exercise, except with failure of at least 3 trains. Again, instead of evaluating 1536 combinations, the ZDD method quickly identifies the 36 cutsets that meet the criteria.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> 
-<span class="co">#&gt; Memory of ZDD Store:     0.315 MB, item count: 333 ( 0.95 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.288 MB, item count: 1473 ( 0.2 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.327 MB, item count: 346 ( 0.95 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.357 MB, item count: 1847 ( 0.19 KB/item)</span>
 <span class="co">#&gt; 39b214ae4432e10f195ac9a5f92fed0a : 36 cutsets, min order: 1 max order: 3 </span>
 <span class="co">#&gt; { 1 2 3 } </span>
 <span class="co">#&gt; { 1 2 4 } </span>
@@ -357,8 +357,8 @@
 <p>What about <em>exactly</em> 3 failed trains? EASY.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span> <span class="op">)</span> <span class="op">%%</span> <span class="op">(</span><span class="va">A</span><span class="op">*</span><span class="va">B</span><span class="op">*</span><span class="va">C</span><span class="op">*</span><span class="va">D</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.327 MB, item count: 346 ( 0.95 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.301 MB, item count: 1527 ( 0.2 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.343 MB, item count: 363 ( 0.94 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.374 MB, item count: 1941 ( 0.19 KB/item)</span>
 <span class="co">#&gt; 40c41a7d25bf17cd61e9a3d642346abc : 32 cutsets, min order: 1 max order: 3 </span>
 <span class="co">#&gt; { 1 2 3 } </span>
 <span class="co">#&gt; { 1 2 4 } </span>
