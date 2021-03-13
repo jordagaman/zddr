@@ -45,4 +45,7 @@ test_that("zdd_union works", {
   (zdd_and(1,2) | zdd_and(1,3,4) | zdd_and(1,4,5,6,7) | zdd(6) ) %>%
     zddr:::zdd_maximum_order() %>%
     expect_equal(3L)
+
+  ( zdd_and(1,3,4,5,6,7) | zdd_and(1,2,4,6,7,23) | zdd_and(1,2) ) %>%
+    expect_equal(zdd_and(1,3,4,5,6,7) | zdd_and(1,2)  )
 })
