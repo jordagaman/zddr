@@ -109,7 +109,11 @@ print.zdd <- function(x, ...) {
   } else if(zdd_count(x) > 100L) {
     cat(crayon::yellow('\nMore than 100 cutsets, not printing all those!\n'))
   } else {
-    purrr::walk(cutsets(x), ~ cat(crayon::cyan('{'), .x, crayon::cyan('}'),'\n') )
+    cutsets <- lapply(cutsets(x), paste, collapse = ',')
+    cutsets <- paste0('{', cutsets, '}', collapse = ', ')
+    cutsets <- strwrap(cutsets, width = 80)
+    cutsets <- gsub('([{}],?)' , crayon::cyan('\\1' ), cutsets)
+    cat( cutsets, sep = '\n')
   }
 }
 
