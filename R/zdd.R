@@ -32,11 +32,17 @@ new_zdd <- function(value, p0, p1) {
   P0 <- as.character(p0)
   P1 <- as.character(p1)
   ID <- zdd_hash(V, P0, P1)
+  p0_order <-       zdd_order(p0)
+  p1_order <- c(0L, zdd_order(p1))
+  highest_order <- max( length(p0_order), length(p1_order) )
+  p0_order <- c(p0_order, rep(0, highest_order - length(p0_order)))
+  p1_order <- c(p1_order, rep(0, highest_order - length(p1_order)))
   z  <- structure(
     .Data         = ID,
     value         = V,
     p0            = P0,
     p1            = P1,
+    order         = p0_order + p1_order,
     minimum_order = min(zdd_minimum_order(p0), zdd_minimum_order(p1)+1L),
     maximum_order = max(zdd_maximum_order(p0), zdd_maximum_order(p1)+1L),
     count         = zdd_count(p0) + zdd_count(p1),
@@ -106,14 +112,19 @@ print.zdd <- function(x, ...) {
     cat(crayon::green('ONE'))
   } else if(is_zero(x)) {
     cat(crayon::red('ZERO'))
-  } else if(zdd_count(x) > 100L) {
-    cat(crayon::yellow('\nMore than 100 cutsets, not printing all those!\n'))
   } else {
-    cutsets <- lapply(cutsets(x), paste, collapse = ',')
-    cutsets <- paste0('{', cutsets, '}', collapse = ', ')
-    cutsets <- strwrap(cutsets, width = 80)
-    cutsets <- gsub('([{}],?)' , crayon::cyan('\\1' ), cutsets)
-    cat( cutsets, sep = '\n')
+    cutset_orders <-zdd_order(x)
+    attr(cutset_orders, 'names') <- paste0(1L:length(cutset_orders) - 1L, '-order')
+    print(cutset_orders[cutset_orders>0L])
+    if(zdd_count(x) > 100L) {
+      cat(crayon::yellow('\nMore than 100 cutsets, not printing all those!\n'))
+    } else {
+      cutsets <- lapply(cutsets(x), paste, collapse = ',')
+      cutsets <- paste0('{', cutsets, '}', collapse = ', ')
+      cutsets <- strwrap(cutsets, width = 80)
+      cutsets <- gsub('([{}],?)' , crayon::cyan('\\1' ), cutsets)
+      cat( cutsets, sep = '\n')
+    }
   }
 }
 
@@ -156,6 +167,11 @@ p1.zdd <- function(x) {
   return(as_zdd(p1))
 }
 
+
+zdd_order <- function(x) {
+  zdd <- as_zdd(x)
+  return(attr(zdd, 'order'))
+}
 
 zdd_minimum_order <- function(x) {
   zdd <- as_zdd(x)
