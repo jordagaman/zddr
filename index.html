@@ -82,15 +82,19 @@
 <a href="#zddr" class="anchor"></a>zddr</h1></div>
 <!-- badges: start -->
 
-<p>The goal of zddr is to …</p>
+<p>The goal of <code>zddr</code> is to enable definition, manipulation, and solving of fault tree problems using an implementation of <a href="https://en.wikipedia.org/wiki/Zero-suppressed_decision_diagram">zero-suppressed binary decision diagram</a> algorithms in R.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of zddr from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<!--
+You can install the released version of zddr from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("zddr")
+```
+-->
+<p>Install the development version from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"zddr"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jordagaman/zddr"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -98,44 +102,129 @@
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a simple cutset.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
 <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt; Registered S3 method overwritten by 'pryr':</span>
 <span class="co">#&gt;   method      from</span>
 <span class="co">#&gt;   print.bytes Rcpp</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.007 MB, item count: 7 ( 1 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.008 MB, item count: 7 ( 1.14 KB/item)</span>
 <span class="co">#&gt; Memory of ZDD Functions: 0.003 MB, item count: 13 ( 0.23 KB/item)</span>
 <span class="co">#&gt; d669df34342e40b977d48fbd7e725243 : 1 cutsets, min order: 3 max order: 3 </span>
-<span class="co">#&gt; { 1 2 3 }</span></code></pre></div>
+<span class="co">#&gt; 3-order </span>
+<span class="co">#&gt;       1 </span>
+<span class="co">#&gt; {1,2,3}</span></code></pre></div>
 <p>You can create the same cutset above with a simpler call:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
-<span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.007 MB, item count: 7 ( 1 KB/item)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.008 MB, item count: 7 ( 1.14 KB/item)</span>
 <span class="co">#&gt; Memory of ZDD Functions: 0.005 MB, item count: 22 ( 0.23 KB/item)</span>
 <span class="co">#&gt; d669df34342e40b977d48fbd7e725243 : 1 cutsets, min order: 3 max order: 3 </span>
-<span class="co">#&gt; { 1 2 3 }</span></code></pre></div>
+<span class="co">#&gt; 3-order </span>
+<span class="co">#&gt;       1 </span>
+<span class="co">#&gt; {1,2,3}</span></code></pre></div>
 <p>Multiple cutsets look like this:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
-<span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.013 MB, item count: 13 ( 1 KB/item)</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.014 MB, item count: 13 ( 1.08 KB/item)</span>
 <span class="co">#&gt; Memory of ZDD Functions: 0.008 MB, item count: 37 ( 0.22 KB/item)</span>
 <span class="co">#&gt; 17c4ddfd5601bfe04f5c14f01d1b4fd4 : 3 cutsets, min order: 1 max order: 3 </span>
-<span class="co">#&gt; { 1 2 3 } </span>
-<span class="co">#&gt; { 4 5 } </span>
-<span class="co">#&gt; { 6 }</span></code></pre></div>
-<p>The real magic is ensuring that when you add a new cutset, you check if either that one or the existing ones are nonminimal. For example, {1,2,3} is nonminimal to {1}. Check this out:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zddr</span><span class="op">)</span>
-<span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; Memory of ZDD Store:     0.014 MB, item count: 15 ( 0.93 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.012 MB, item count: 60 ( 0.2 KB/item)</span>
+<span class="co">#&gt; 1-order 2-order 3-order </span>
+<span class="co">#&gt;       1       1       1 </span>
+<span class="co">#&gt; {1,2,3}, {4,5}, {6}</span></code></pre></div>
+<p>The real magic is ensuring that when you add a new cutset, you check if either that one or the existing ones are nonminimal. For example, <code>{1,2,3}</code> is nonminimal to <code>{1}</code>. Check this out:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd_and.html">zdd_and</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="reference/zdd.html">zdd</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.016 MB, item count: 15 ( 1.07 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.012 MB, item count: 62 ( 0.19 KB/item)</span>
 <span class="co">#&gt; 6bd5786cfd76ff927f06820c0b856a25 : 3 cutsets, min order: 1 max order: 2 </span>
-<span class="co">#&gt; { 1 } </span>
-<span class="co">#&gt; { 4 5 } </span>
-<span class="co">#&gt; { 6 }</span></code></pre></div>
+<span class="co">#&gt; 1-order 2-order </span>
+<span class="co">#&gt;       2       1 </span>
+<span class="co">#&gt; {1}, {4,5}, {6}</span></code></pre></div>
+</div>
+<div id="longer-term-vision" class="section level2">
+<h2 class="hasAnchor">
+<a href="#longer-term-vision" class="anchor"></a>Longer-term vision</h2>
+<p>This package is in a developmental state. The ultimate dream is to simplify the user interface using the increasingly robust <code><a href="reference/as_zdd.html">as_zdd()</a></code> function.</p>
+<p>The most basic use of <code><a href="reference/as_zdd.html">as_zdd()</a></code> accepts numeric and integer inputs.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/as_zdd.html">as_zdd</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.017 MB, item count: 16 ( 1.06 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.012 MB, item count: 62 ( 0.19 KB/item)</span>
+<span class="co">#&gt; 3fe2ac99b730ddf1f8240994344c9a49 : 1 cutsets, min order: 1 max order: 1 </span>
+<span class="co">#&gt; 1-order </span>
+<span class="co">#&gt;       1 </span>
+<span class="co">#&gt; {10}</span>
+<span class="fu"><a href="reference/as_zdd.html">as_zdd</a></span><span class="op">(</span><span class="fl">10L</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.017 MB, item count: 16 ( 1.06 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.012 MB, item count: 63 ( 0.19 KB/item)</span>
+<span class="co">#&gt; 3fe2ac99b730ddf1f8240994344c9a49 : 1 cutsets, min order: 1 max order: 1 </span>
+<span class="co">#&gt; 1-order </span>
+<span class="co">#&gt;       1 </span>
+<span class="co">#&gt; {10}</span></code></pre></div>
+<p>The function also assumes that vectors are meant to represent a cutset.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/as_zdd.html">as_zdd</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span> <span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.017 MB, item count: 16 ( 1.06 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.014 MB, item count: 71 ( 0.2 KB/item)</span>
+<span class="co">#&gt; d669df34342e40b977d48fbd7e725243 : 1 cutsets, min order: 3 max order: 3 </span>
+<span class="co">#&gt; 3-order </span>
+<span class="co">#&gt;       1 </span>
+<span class="co">#&gt; {1,2,3}</span></code></pre></div>
+<p>And lists are meant to represent a collection of cutsets.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/as_zdd.html">as_zdd</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span> <span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.019 MB, item count: 18 ( 1.06 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.015 MB, item count: 78 ( 0.19 KB/item)</span>
+<span class="co">#&gt; 8734bc46920d7528a4b26fa2c034857e : 3 cutsets, min order: 1 max order: 1 </span>
+<span class="co">#&gt; 1-order </span>
+<span class="co">#&gt;       3 </span>
+<span class="co">#&gt; {1}, {2}, {3}</span></code></pre></div>
+<p>One can combine the two to produce a ZDD representation of cutsets. The final example from the last section is reproduced here using only base R types and the <code><a href="reference/as_zdd.html">as_zdd()</a></code> function.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lst</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>,
+  <span class="fl">6</span>,
+  <span class="fl">1</span>
+<span class="op">)</span>
+<span class="fu"><a href="reference/as_zdd.html">as_zdd</a></span><span class="op">(</span><span class="va">lst</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.019 MB, item count: 18 ( 1.06 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.02 MB, item count: 108 ( 0.19 KB/item)</span>
+<span class="co">#&gt; 6bd5786cfd76ff927f06820c0b856a25 : 3 cutsets, min order: 1 max order: 2 </span>
+<span class="co">#&gt; 1-order 2-order </span>
+<span class="co">#&gt;       2       1 </span>
+<span class="co">#&gt; {1}, {4,5}, {6}</span></code></pre></div>
+<p>There are two effects to the above. First, it enables a complete round trip between base R cutsets and ZDDs.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/as_zdd.html">as_zdd</a></span><span class="op">(</span><span class="va">lst</span><span class="op">)</span>
+<span class="fu"><a href="reference/cutsets.html">cutsets</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] 4 5</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] 6</span>
+<span class="fu"><a href="reference/cutsets.html">cutsets</a></span><span class="op">(</span> <span class="fu"><a href="reference/as_zdd.html">as_zdd</a></span><span class="op">(</span><span class="fu"><a href="reference/cutsets.html">cutsets</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] 4 5</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] 6</span></code></pre></div>
+<p>Second, it enables quick generation and then manipulation of ZDDs without having to know too much about the internals of the <code>zddr</code> implementation.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span>
+<span class="co">#&gt; Memory of ZDD Store:     0.025 MB, item count: 23 ( 1.09 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.026 MB, item count: 137 ( 0.19 KB/item)</span>
+<span class="co">#&gt; 2e37313d5b9ac940767ef56a332722f8 : 4 cutsets, min order: 1 max order: 3 </span>
+<span class="co">#&gt; 1-order 2-order 3-order </span>
+<span class="co">#&gt;       1       2       1 </span>
+<span class="co">#&gt; {1}, {4,5}, {2,3,6}, {4,6}</span></code></pre></div>
 </div>
 </div>
   </div>
