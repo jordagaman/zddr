@@ -32,13 +32,21 @@ as_zdd.zdd <- function(x) {
 #' @export
 #' @rdname as_zdd
 as_zdd.integer <- function(x) {
+  if(length(x) > 1L) return(lzdd_and(x))
   return(zdd(x))
+}
+
+#' @export
+#' @rdname as_zdd
+as_zdd.list <- function(x) {
+  return(lzdd_or(x))
 }
 
 #' @export
 #' @rdname as_zdd
 as_zdd.numeric <- function(x) {
   stopifnot(all.equal(x, as.integer(x)))
+  if(length(x) > 1L) return(lzdd_and(x))
   return(zdd(x))
 }
 
@@ -46,5 +54,6 @@ as_zdd.numeric <- function(x) {
 #' @rdname as_zdd
 as_zdd.character <- function(x) {
   if(!zdd_exists(x)) stop('hash not found in zdd_store')
+  if(length(x) > 1L) return(lzdd_and(x))
   return(zddr::zdd_store[[x]])
 }

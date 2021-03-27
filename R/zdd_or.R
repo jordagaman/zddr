@@ -11,7 +11,11 @@
 #' zdd_or( zdd_and(1,2,3,4,5), 4)       # { {4} }
 zdd_or <- function(...) {
   input_list <- list(...)
-  input_list <- purrr::map_chr(input_list, as_zdd)
+  return(lzdd_or(input_list))
+}
+
+lzdd_or <- function(lst) {
+  input_list <- purrr::map_chr(lst, as_zdd)  # future optimization opportunity: only as_zdd everything if there are no zdd1's in here
   if(any(purrr::map_lgl(input_list, is_one)))
     return(zdd1())
   return(

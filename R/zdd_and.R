@@ -9,7 +9,11 @@
 #' zdd_and(1,2,3,4)
 zdd_and <- function(...) {
   input_list <- list(...)
-  input_list <- purrr::map_chr(input_list, as_zdd)
+  return(lzdd_and(input_list))
+}
+
+lzdd_and <- function(lst) {
+  input_list <- purrr::map_chr(lst, as_zdd)
   if(any(purrr::map_lgl(input_list, is_zero)))
     return(zdd0())
   return(

@@ -4,6 +4,7 @@
 \alias{as_zdd}
 \alias{as_zdd.zdd}
 \alias{as_zdd.integer}
+\alias{as_zdd.list}
 \alias{as_zdd.numeric}
 \alias{as_zdd.character}
 \title{Coerce an integer or string hash to a ZDD object}
@@ -13,6 +14,8 @@ as_zdd(x)
 \method{as_zdd}{zdd}(x)
 
 \method{as_zdd}{integer}(x)
+
+\method{as_zdd}{list}(x)
 
 \method{as_zdd}{numeric}(x)
 

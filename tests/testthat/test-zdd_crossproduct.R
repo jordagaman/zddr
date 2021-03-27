@@ -16,4 +16,5 @@ test_that("zdd_crossproduct works", {
   expect_equal( zdd(3) * zdd(2) * zdd(1)        , zdd_and(1,3,2)   )
   expect_equal( zdd_and(1,2,zdd0())             , zdd0()           )
   expect_equal( zdd_and(1,2,zdd1())             , zdd_and(1,2)     )
+  expect_equal(c(zdd1,zdd2) %>% as_zdd %>% cutsets %>% length, 20L )
 })
