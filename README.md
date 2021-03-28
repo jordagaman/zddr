@@ -38,6 +38,10 @@ Install the development version from [GitHub](https://github.com/) with:
 devtools::install_github("jordagaman/zddr")
 ```
 
+IMPORTANT: The functions from this package will *not* work properly if
+invoked without a `library(zddr)` call first. For example, calling
+`zddr::zdd(1L)` should not work. Sorry.
+
 ## Example
 
 This is a simple cutset.
