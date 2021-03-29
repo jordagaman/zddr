@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>reset_zdd_store — reset_zdd_store • zddr</title>
+<title>protect — protect • zddr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="reset_zdd_store — reset_zdd_store" />
-<meta property="og:description" content="reset_zdd_store" />
+<meta property="og:title" content="protect — protect" />
+<meta property="og:description" content="protect" />
 
 
 
@@ -121,34 +121,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>reset_zdd_store</h1>
+    <h1>protect</h1>
     
-    <div class="hidden name"><code>reset_zdd_store.Rd</code></div>
+    <div class="hidden name"><code>protect.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>reset_zdd_store</p>
+    <p>protect</p>
     </div>
 
-    <pre class="usage"><span class='fu'>reset_zdd_store</span><span class='op'>(</span>keep_protected <span class='op'>=</span> <span class='cn'>TRUE</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>protect</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S3 method for zdd</span>
+<span class='fu'>protect</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>keep_protected</th>
-      <td><p>when TRUE, preserves the ZDD nodes that are marked protected</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>when FALSE, print a message whenever this command is run</p></td>
+      <th>x</th>
+      <td><p>the ZDD to protect, including subnodes</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>the ZDD, protected</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>reset_zdd_store</span><span class='op'>(</span>quiet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as_zdd.html'>as_zdd</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span>, <span class='fl'>4</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>protect</span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Memory of ZDD Store:     0.017 MB, item count: 15 ( 1.13 KB/item)
+#&gt; Memory of ZDD Functions: 0.006 MB, item count: 27 ( 0.22 KB/item)
+#&gt; <span style='color: #0000BB;'>7197ba4a8d4eae3b331a1373a707076b</span><span> : 3 cutsets, min order: 1 max order: 3 
+#&gt; 1-order 2-order 3-order 
+#&gt;       1       1       1 
+#&gt; </span><span style='color: #00BBBB;'>{</span><span>1,2,3</span><span style='color: #00BBBB;'>},</span><span> </span><span style='color: #00BBBB;'>{</span><span>4</span><span style='color: #00BBBB;'>},</span><span> </span><span style='color: #00BBBB;'>{</span><span>5,6</span><span style='color: #00BBBB;'>}</span><span></div><div class='input'><span class='fu'><a href='reset_zdd_store.html'>reset_zdd_store</a></span><span class='op'>(</span>keep_protected <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='co'># preserves the protected ZDD assigned to `a`</span>
+</div><div class='output co'>#&gt; <span class='message'>Resetting zdd_store.</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
