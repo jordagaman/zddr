@@ -45,6 +45,7 @@ new_zdd <- function(value, p0, p1) {
     order         = p0_order + p1_order,
     minimum_order = min(zdd_minimum_order(p0), zdd_minimum_order(p1)+1L),
     maximum_order = max(zdd_maximum_order(p0), zdd_maximum_order(p1)+1L),
+    protected     = FALSE,
     count         = zdd_count(p0) + zdd_count(p1),
     class         = 'zdd'
   )
@@ -185,6 +186,11 @@ zdd_maximum_order <- function(x) {
 zdd_count <- function(x) {
   zdd <- as_zdd(x)
   return(attr(zdd, 'count'))
+}
+
+zdd_protected <- function(x) {
+  zdd <- as_zdd(x)
+  return(attr(zdd, 'protected'))
 }
 
 #' @export

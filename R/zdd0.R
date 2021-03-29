@@ -20,6 +20,7 @@ terminal_node <- function(hash, order, minimum_order, maximum_order, count) {
                    order = order,
                    minimum_order = minimum_order,
                    maximum_order = maximum_order,
+                   protected = TRUE,
                    count = as.integer(count))
   if(!zdd_exists(res)) register_zdd(res)
   return(res)

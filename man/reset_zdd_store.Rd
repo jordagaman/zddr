@@ -4,9 +4,11 @@
 \alias{reset_zdd_store}
 \title{reset_zdd_store}
 \usage{
-reset_zdd_store(quiet = FALSE)
+reset_zdd_store(keep_protected = TRUE, quiet = FALSE)
 }
 \arguments{
+\item{keep_protected}{when TRUE, preserves the ZDD nodes that are marked protected}
+
 \item{quiet}{when FALSE, print a message whenever this command is run}
 }
 \description{
