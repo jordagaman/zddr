@@ -18,6 +18,6 @@ cutsets
 \examples{
 cutsets( zdd(3) | zdd(4) )
 cutsets( zdd(4) | zdd(3) )
-cutsets( zdd(4) | zdd0() )
-cutsets( zdd(4) | zdd1() )
+cutsets( zdd(4) | FALSE  )
+cutsets( zdd(4) | TRUE   )
 }

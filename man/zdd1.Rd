@@ -12,6 +12,3 @@ the constant-1 elementary zdd (the so-called "set containing the empty set")
 \description{
 zdd1
 }
-\examples{
-zdd1()
-}

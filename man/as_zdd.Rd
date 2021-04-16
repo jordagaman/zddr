@@ -7,6 +7,7 @@
 \alias{as_zdd.list}
 \alias{as_zdd.numeric}
 \alias{as_zdd.character}
+\alias{as_zdd.logical}
 \title{Coerce an integer or string hash to a ZDD object}
 \usage{
 as_zdd(x)
@@ -20,6 +21,8 @@ as_zdd(x)
 \method{as_zdd}{numeric}(x)
 
 \method{as_zdd}{character}(x)
+
+\method{as_zdd}{logical}(x)
 }
 \arguments{
 \item{x}{the integer value of the node to be added or the string hash of the

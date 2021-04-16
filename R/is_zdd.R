@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' is_zdd(zdd0()) # TRUE
+#' is_zdd(as_zdd(FALSE)) # TRUE
 #' is_zdd(3L)     # FALSE
 is_zdd <- function(zdd) {
   return(class(zdd) == 'zdd')

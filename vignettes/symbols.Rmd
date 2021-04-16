@@ -19,7 +19,7 @@ library(zddr)
 ```
 
 ```{r silent, echo=FALSE, message=FALSE, results='hide'}
-zdd0()
+as_zdd(F)
 ```
 
 Currently, the `zddr` package only works using integer variables corresponding

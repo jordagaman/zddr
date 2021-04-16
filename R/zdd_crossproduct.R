@@ -13,12 +13,12 @@
 zdd_crossproduct <- function(zddP, zddQ) {
   P <- as_zdd(zddP)
   Q <- as_zdd(zddQ)
-  if(   P == Q   ) return(  P   )      #       =  P * P = P
-  if( is_zero(P) ) return(zdd0())      # P * Q =  0 * Q = 0
-  if( is_zero(Q) ) return(zdd0())      #       =  P * 0 = 0
-  if(  is_one(P) ) return(  Q   )      #       =  1 * Q = Q
-  if(  is_one(Q) ) return(  P   )      #       =  P * 1 = P
-  if(   P <  Q   ) return(Q * P )
+  if(   P == Q   ) return(  P      )      #       =  P * P = P
+  if( is_zero(P) ) return(as_zdd(F))      # P * Q =  0 * Q = 0
+  if( is_zero(Q) ) return(as_zdd(F))      #       =  P * 0 = 0
+  if(  is_one(P) ) return(  Q      )      #       =  1 * Q = Q
+  if(  is_one(Q) ) return(  P      )      #       =  P * 1 = P
+  if(   P <  Q   ) return(Q * P    )
   if(   P >  Q   )                     # (P0 + Pv*P1) * Q
     return(                            #    = (P0 * Q) + Pv*(P1 * Q)
       zdd(value = P,

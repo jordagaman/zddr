@@ -15,7 +15,7 @@ zdd_and <- function(...) {
 lzdd_and <- function(lst) {
   input_list <- purrr::map_chr(lst, as_zdd)
   if(any(purrr::map_lgl(input_list, is_zero)))
-    return(zdd0())
+    return(as_zdd(F))
   return(
     purrr::reduce(input_list, zdd_crossproduct)  # this would probably be faster if the list was sorted first
   )

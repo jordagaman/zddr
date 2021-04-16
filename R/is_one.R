@@ -6,8 +6,9 @@
 #' @export
 #'
 #' @examples
-#' is_one(zdd1())     # TRUE
+#' is_one(as_zdd(TRUE))  # TRUE
 #' is_one(zdd(1L))    # FALSE
 is_one <- function(zdd) {
   return(zdd == zdd1())
 }
+

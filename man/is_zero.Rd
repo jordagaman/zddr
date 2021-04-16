@@ -16,6 +16,6 @@ TRUE if the zdd matches the output of zdd0()
 is_zero
 }
 \examples{
-is_zero(zdd0())     # TRUE
+is_zero(as_zdd(FALSE))  # TRUE
 is_zero(zdd(0L))    # FALSE
 }

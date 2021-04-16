@@ -12,6 +12,3 @@ the constant-0 elementary zdd (the so-called "empty set")
 \description{
 zdd0
 }
-\examples{
-zdd0()
-}

@@ -7,5 +7,5 @@ test_that("intersection works", {
 
   ( (zdd345 | zdd35) & (zdd34 | zdd35) ) %>% expect_equal( zdd35  )
   ( (zdd345 | zdd(1)) &  zdd345        ) %>% expect_equal( zdd345 )
-  ( (zdd345 | zdd34) &  zdd35          ) %>% expect_equal( zdd0() )
+  is_zero( (zdd345 | zdd34) &  zdd35   ) %>% expect_true()
 })

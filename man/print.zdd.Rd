@@ -18,6 +18,6 @@ printed zdd
 print zdd
 }
 \examples{
-print(zdd0())
+print(as_zdd(FALSE))
 print(zdd(3L))
 }

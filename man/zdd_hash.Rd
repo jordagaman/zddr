@@ -20,5 +20,5 @@ hash
 zdd hash
 }
 \examples{
-zddr:::zdd_hash(1L, zdd0(), zdd1())
+zddr:::zdd_hash(1L, as_zdd(FALSE), as_zdd(TRUE))
 }

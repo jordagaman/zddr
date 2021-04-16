@@ -32,10 +32,10 @@ test_that("zdd_union works", {
   (zdd_and(1,2,3,4) | zdd_and(3,4) ) %>% expect_equal( zdd_and(3,4) )
   (zdd_and(1,2,3,4) | zdd_and(1,3) ) %>% expect_equal( zdd_and(1,3) )
 
-  zdd_or(1,2,zdd0())  %>% expect_equal( zdd_or(1,2) )
+  zdd_or(1,2,FALSE)   %>% expect_equal( zdd_or(1,2) )
   zdd_or(1,1)         %>% expect_equal( zdd(1)      )
-  zdd_or(1,2,zdd1())  %>% expect_equal( zdd1()      )
-  zdd_or(zdd1(),1,2)  %>% expect_equal( zdd1()      )
+  zdd_or(1,2,TRUE)    %>% is_one %>% expect_true
+  zdd_or(TRUE,1,2)    %>% is_one %>% expect_true
 
   ( (zdd(1) | zdd_and(2,3)) | zdd(2) ) %>% expect_equal( zdd_or(1,2) ) # if you are not careful, this returns {1},{2},{2,4}
 

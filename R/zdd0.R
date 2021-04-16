@@ -1,9 +1,7 @@
 #' zdd0
 #'
 #' @return the constant-0 elementary zdd (the so-called "empty set")
-#' @export
-#'
-#' @examples zdd0()
+#' @example zddr:::zdd0()
 zdd0 <- function() {
   return(
     terminal_node(hash = '00000000000000000000000000000000',

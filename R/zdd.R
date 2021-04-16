@@ -9,8 +9,10 @@
 #'
 #' @examples
 #' zdd(1L)
-zdd <- function(value, p0 = zdd0(), p1 = zdd1()) {
-  if( is_one(p0)) return(zdd1())  # p0 + v*p1 = 1  + v*p1 = 1
+zdd <- function(value, p0 = FALSE, p1 = TRUE) {
+  p0 = as_zdd(p0)
+  p1 = as_zdd(p1)
+  if( is_one(p0)) return(as_zdd(T)) # p0 + v*p1 = 1  + v*p1 = 1
   p1m <- p1 %% p0
   if(is_zero(p1m)) return(  p0   )  #           = p0 + v*0  = p0
   if( p0 == p1m  ) return(  p1m  )  #           = p1 + v*p1 = p1
@@ -72,7 +74,7 @@ register_zdd <- function(zdd) {
 #' @return hash
 #'
 #' @examples
-#' zddr:::zdd_hash(1L, zdd0(), zdd1())
+#' zddr:::zdd_hash(1L, as_zdd(FALSE), as_zdd(TRUE))
 zdd_hash <- function(value, p0, p1) {
   if(!is.integer(value))
     stop('value must be an integer')
@@ -97,7 +99,7 @@ zdd_hash <- function(value, p0, p1) {
 #' @export
 #'
 #' @examples
-#' print(zdd0())
+#' print(as_zdd(FALSE))
 #' print(zdd(3L))
 print.zdd <- function(x, ...) {
   zdd_mem <- round(pryr::object_size(zddr::zdd_store)/1e6,digits = 3)
@@ -157,6 +159,10 @@ p0.zdd <- function(x) {
   return(as_zdd(p0))
 }
 
+p0.logical <- function(x) {
+  return(p0(as_zdd(x)))
+}
+
 p1 <- function(x) {
   UseMethod("p1")
 }
@@ -167,6 +173,11 @@ p1.zdd <- function(x) {
   p1  <- attr(x, 'p1')
   return(as_zdd(p1))
 }
+
+p1.logical <- function(x) {
+  return(p1(as_zdd(x)))
+}
+
 
 
 zdd_order <- function(x) {

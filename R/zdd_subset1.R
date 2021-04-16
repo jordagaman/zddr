@@ -12,9 +12,9 @@
 #' zdd_subset1(zdd(1L), 2L)# ZERO
 #' zdd_subset1(zdd_and(3,4,5), 4L)   # {3,5}
 zdd_subset1 <- function(zdd, value) {
-  if(is_zero(zdd)) return(zdd0())
-  if( is_one(zdd)) return(zdd0())
-  if(zdd < value ) return(zdd0())
+  if(is_zero(zdd)) return( as_zdd(F) )
+  if( is_one(zdd)) return( as_zdd(F) )
+  if(zdd < value ) return( as_zdd(F) )
   if(zdd > value ) return(
     zdd(value = zdd,
         p0    = zdd_subset1(p0(zdd), value),

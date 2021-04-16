@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' is_zero(zdd0())     # TRUE
+#' is_zero(as_zdd(FALSE))  # TRUE
 #' is_zero(zdd(0L))    # FALSE
 is_zero <- function(zdd) {
   return(zdd == zdd0())

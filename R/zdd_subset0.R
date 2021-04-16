@@ -13,9 +13,9 @@
 #' zdd_subset0(zdd_and(3,4,5), 2L)   # {3,4,5}
 #' zdd_subset0(zdd_and(3,4,5), 5L)   # {}
 zdd_subset0 <- function(zdd, value) {
-  if(is_zero(zdd)) return(zdd0())
-  if( is_one(zdd)) return(zdd1())
-  if(zdd < value ) return(zdd   )  # note that the standard algorithm for this says to return zero here
+  if(is_zero(zdd)) return(as_zdd(F))
+  if( is_one(zdd)) return(as_zdd(T))
+  if(zdd < value ) return(zdd      )  # note that the standard algorithm for this says to return zero here
   if(zdd > value ) return(
     zdd(value = zdd,
         p0    = zdd_subset0(p0(zdd), value),

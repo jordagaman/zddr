@@ -17,7 +17,7 @@ zdd_or <- function(...) {
 lzdd_or <- function(lst) {
   input_list <- purrr::map_chr(lst, as_zdd)  # future optimization opportunity: only as_zdd everything if there are no zdd1's in here
   if(any(purrr::map_lgl(input_list, is_one)))
-    return(zdd1())
+    return(as_zdd(T))
   return(
     purrr::reduce(input_list, zdd_union)  # this would probably be faster if the list was sorted first
   )

@@ -57,3 +57,15 @@ as_zdd.character <- function(x) {
   if(length(x) > 1L) return(lzdd_and(x))
   return(zddr::zdd_store[[x]])
 }
+
+#' @export
+#' @rdname as_zdd
+as_zdd.logical <- function(x) {
+  if(length(x) > 1L) return(lzdd_and(x))
+  if(is.na(x)) return('You tried to have an NA to be converted to a ZDD. I\'m not upset, just disappointed.')
+  if(x) {
+    return( zdd1() )
+  } else {
+    return( zdd0() )
+  }
+}

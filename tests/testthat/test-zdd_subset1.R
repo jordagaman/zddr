@@ -12,7 +12,7 @@ test_that("subset1 works", {
   # some basic tests to start
   ####
   zdd_subset1(zdd135, 5L) %>% expect_equal( zdd13  )
-  zdd_subset1(zdd135, 4L) %>% expect_equal( zdd0() )
+  is_zero(zdd_subset1(zdd135, 4L)) %>% expect_true()
   zdd_subset1(zdd135, 3L) %>% expect_equal( zdd15  )
 
   ####
@@ -23,6 +23,6 @@ test_that("subset1 works", {
   zdd_subset1(zdd135 | zdd24     , 3L) %>% expect_equal( zdd15      )
   zdd_subset1(zdd135 | zdd24     , 2L) %>% expect_equal( zdd(4L)    )
   zdd_subset1(zdd135 | zdd24     , 1L) %>% expect_equal( zdd35      )
-  zdd_subset1(zdd135 | zdd(6L)   , 6L) %>% expect_equal( zdd1()     )
-  zdd_subset1(zdd135 | zdd(6L)   , 7L) %>% expect_equal( zdd0()     )
+  zdd_subset1(zdd135 | zdd(6L)   , 6L) %>% is_one  %>% expect_true()
+  zdd_subset1(zdd135 | zdd(6L)   , 7L) %>% is_zero %>% expect_true()
 })

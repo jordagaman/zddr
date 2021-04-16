@@ -12,12 +12,12 @@
 zdd_union <- function(zddP, zddQ) {
   P <- as_zdd(zddP)
   Q <- as_zdd(zddQ)
-  if(   P == Q   ) return(  P   )      #       =  P | P = P
-  if(  is_one(P) ) return(zdd1())      # P | Q =  1 | Q = 1
-  if(  is_one(Q) ) return(zdd1())      #       =  P | 1 = 1
-  if( is_zero(P) ) return(  Q   )      #       =  0 | Q = Q
-  if( is_zero(Q) ) return(  P   )      #       =  P | 0 = P
-  if(   P <  Q   ) return(Q | P )
+  if(   P == Q   ) return(  P      )      #       =  P | P = P
+  if(  is_one(P) ) return(as_zdd(T))      # P | Q =  1 | Q = 1
+  if(  is_one(Q) ) return(as_zdd(T))      #       =  P | 1 = 1
+  if( is_zero(P) ) return(  Q      )      #       =  0 | Q = Q
+  if( is_zero(Q) ) return(  P      )      #       =  P | 0 = P
+  if(   P <  Q   ) return(Q | P    )
   if(   P >  Q   )                     # (P0 + Pv*P1) | Q
     return(                            #    = (P0 | Q) + Pv*P1
       zdd(value = P,

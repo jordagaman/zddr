@@ -16,6 +16,6 @@ TRUE if the zdd matches the output of zdd1()
 is_one
 }
 \examples{
-is_one(zdd1())     # TRUE
+is_one(as_zdd(TRUE))  # TRUE
 is_one(zdd(1L))    # FALSE
 }

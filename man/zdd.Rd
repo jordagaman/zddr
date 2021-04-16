@@ -4,7 +4,7 @@
 \alias{zdd}
 \title{zdd}
 \usage{
-zdd(value, p0 = zdd0(), p1 = zdd1())
+zdd(value, p0 = FALSE, p1 = TRUE)
 }
 \arguments{
 \item{value}{the integer value of the node}
