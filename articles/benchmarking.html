@@ -112,7 +112,7 @@
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">c</span>,<span class="va">d</span>,<span class="va">e</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 4.649308 secs</span>
+<span class="co">#&gt; Time difference of 4.517607 secs</span>
 <span class="va">tb</span>
 <span class="co">#&gt; # A tibble: 160,000 x 1</span>
 <span class="co">#&gt; # Rowwise: </span>
@@ -154,7 +154,7 @@
 <span class="co">#&gt; 10 &lt;dbl [4]&gt;</span>
 <span class="co">#&gt; # … with 151,990 more rows</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 0.587291 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.6067071 secs</span></code></pre></div>
 </div>
 <div id="introduce-the-zdd" class="section level2">
 <h2 class="hasAnchor">
@@ -171,14 +171,14 @@
   <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">61</span>,<span class="fl">62</span>,<span class="fl">63</span>,<span class="fl">64</span>,<span class="fl">65</span>,<span class="fl">66</span>,<span class="fl">67</span>,<span class="fl">68</span>,<span class="fl">69</span>,<span class="fl">70</span>,<span class="fl">71</span>,<span class="fl">72</span>,<span class="fl">73</span>,<span class="fl">74</span>,<span class="fl">75</span>,<span class="fl">76</span>,<span class="fl">77</span>,<span class="fl">78</span>,<span class="fl">79</span>,<span class="fl">80</span><span class="op">)</span> <span class="op">*</span>
   <span class="fu"><a href="../reference/zdd_or.html">zdd_or</a></span><span class="op">(</span><span class="fl">81</span>,<span class="fl">82</span>,<span class="fl">83</span>,<span class="fl">84</span>,<span class="fl">85</span>,<span class="fl">86</span>,<span class="fl">87</span>,<span class="fl">88</span>,<span class="fl">89</span>,<span class="fl">90</span>,<span class="fl">91</span>,<span class="fl">92</span>,<span class="fl">93</span>,<span class="fl">94</span>,<span class="fl">95</span>,<span class="fl">96</span>,<span class="fl">97</span>,<span class="fl">98</span>,<span class="fl">99</span>,<span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt; Memory of ZDD Store:     0.25 MB, item count: 218 ( 1.15 KB/item)</span>
-<span class="co">#&gt; Memory of ZDD Functions: 0.076 MB, item count: 358 ( 0.21 KB/item)</span>
+<span class="co">#&gt; Memory of ZDD Functions: 0.077 MB, item count: 358 ( 0.22 KB/item)</span>
 <span class="co">#&gt; 5643917c867818eab1444c603aa23cfe : 160000 cutsets, min order: 4 max order: 4 </span>
 <span class="co">#&gt; 4-order </span>
 <span class="co">#&gt;  160000 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 0.4655821 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.398849 secs</span></code></pre></div>
 </div>
 <div id="the-importance-of-variable-ordering" class="section level2">
 <h2 class="hasAnchor">
@@ -201,7 +201,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>           
-<span class="co">#&gt; Time difference of 7.093882 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 6.996709 secs</span></code></pre></div>
 </div>
 <div id="minimizing-the-family-of-sets" class="section level2">
 <h2 class="hasAnchor">
@@ -225,7 +225,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 0.5899708 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.689801 secs</span></code></pre></div>
 <p>Using the same example, add one additional union of a non-minimal ZDD and watch the change in ZDD complexity (memory) and calculation time.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_zdd_store.html">reset_zdd_store</a></span><span class="op">(</span><span class="op">)</span>
@@ -245,7 +245,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>            
-<span class="co">#&gt; Time difference of 0.958581 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.933044 secs</span></code></pre></div>
 </div>
 <div id="minimize-based-on-a-higher-ranked-variable" class="section level2">
 <h2 class="hasAnchor">
@@ -269,7 +269,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 0.4307489 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.504714 secs</span></code></pre></div>
 </div>
 <div id="minimize-against-a-more-complicated-set" class="section level2">
 <h2 class="hasAnchor">
@@ -292,7 +292,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; More than 100 cutsets, not printing all those!</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="co">#&gt; Time difference of 0.562417 secs</span></code></pre></div>
+<span class="co">#&gt; Time difference of 0.612792 secs</span></code></pre></div>
 </div>
   </div>
 
