@@ -18,3 +18,15 @@ test_that("hashes still work", {
   expect_error( as.integer(as_zdd(F)) )
   expect_error( as.integer(as_zdd(T)) )
 })
+
+test_that("the zdd store behaves appropriately", {
+  reset_zdd_store(keep_protected = FALSE, quiet = TRUE)
+  a <- as_zdd(c(1,2,3))
+  protect(a)
+
+  reset_zdd_store(keep_protected = TRUE, quiet = TRUE)
+  expect_equal(a | 1, as_zdd(1))
+
+  reset_zdd_store(keep_protected = FALSE, quiet = TRUE)
+  expect_error(a | 1)
+})

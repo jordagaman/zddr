@@ -17,10 +17,10 @@ protect <- function(x) {
 #' @rdname protect
 protect.zdd <- function(x) {
   if(zdd_protected(x))
-    return(x)
-  p0 <- protect(p0(x))
-  p1 <- protect(p1(x))
+    return(invisible(NULL))
+  protect(p0(x))
+  protect(p1(x))
   attr(x, 'protected') <- TRUE
   register_zdd(x)
-  return(x)
+  return(invisible(NULL))
 }
