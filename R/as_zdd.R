@@ -53,8 +53,8 @@ as_zdd.numeric <- function(x) {
 #' @export
 #' @rdname as_zdd
 as_zdd.character <- function(x) {
-  if(!zdd_exists(x)) stop('hash not found in zdd_store')
   if(length(x) > 1L) return(lzdd_and(x))
+  if(!zdd_exists(x)) stop('hash not found in zdd_store')
   return(zddr::zdd_store[[x]])
 }
 
