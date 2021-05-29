@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>zdd — zdd • zddr</title>
+<title>zdd_minimize — zdd_minimize • zddr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="zdd — zdd" />
-<meta property="og:description" content="zdd" />
+<meta property="og:title" content="zdd_minimize — zdd_minimize" />
+<meta property="og:description" content="zdd_minimize" />
 
 
 
@@ -121,46 +121,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>zdd</h1>
+    <h1>zdd_minimize</h1>
     
-    <div class="hidden name"><code>zdd.Rd</code></div>
+    <div class="hidden name"><code>zdd_minimize.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>zdd</p>
+    <p>zdd_minimize</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zdd</span><span class='op'>(</span><span class='va'>value</span>, p0 <span class='op'>=</span> <span class='cn'>FALSE</span>, p1 <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>zdd_minimize</span><span class='op'>(</span><span class='va'>zdd</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>value</th>
-      <td><p>the integer value of the node</p></td>
-    </tr>
-    <tr>
-      <th>p0</th>
-      <td><p>the negative compliment of the zdd with respect to <code>value</code>, expressed as a string hash or as class zdd</p></td>
-    </tr>
-    <tr>
-      <th>p1</th>
-      <td><p>the positive compliment of the zdd with respect to <code>value</code>, expressed as a string hash or as class zdd</p></td>
+      <th>zdd</th>
+      <td><p>a zdd object</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the resulting zdd node, expressed as class zdd</p>
+    <p>a zdd object that has only minimal solutions</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>zdd</span><span class='op'>(</span><span class='fl'>1L</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Memory of ZDD Store:     0.009 MB, item count: 8 ( 1.12 KB/item)
-#&gt; Memory of ZDD Functions: 0.001 MB, item count: 1 ( 1 KB/item)
-#&gt; <span style='color: #0000BB;'>f2816dcf6260cfc789e3e107d89895df</span> : 1 cutsets, min order: 1 max order: 1 
+    <pre class="examples"><div class='input'><span class='fu'><a href='zdd.html'>zdd</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'><a href='zdd.html'>zdd</a></span><span class='op'>(</span><span class='fl'>3L</span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='fu'><a href='zdd.html'>zdd</a></span><span class='op'>(</span><span class='fl'>3L</span><span class='op'>)</span>   <span class='co'># { {2}, {3} }</span>
+</div><div class='output co'>#&gt; Memory of ZDD Store:     0.025 MB, item count: 21 ( 1.19 KB/item)
+#&gt; Memory of ZDD Functions: 0.015 MB, item count: 74 ( 0.2 KB/item)
+#&gt; <span style='color: #0000BB;'>28d876f0bc13709180138e294f169ad4</span> : 2 cutsets, min order: 1 max order: 1 
+#&gt; 1-order 
+#&gt;       2 
+#&gt; <span style='color: #00BBBB;'>{</span>2<span style='color: #00BBBB;'>},</span> <span style='color: #00BBBB;'>{</span>3<span style='color: #00BBBB;'>}</span></div><div class='input'><span class='op'>(</span><span class='fu'><a href='zdd.html'>zdd</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'><a href='zdd.html'>zdd</a></span><span class='op'>(</span><span class='fl'>3L</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='fu'><a href='zdd.html'>zdd</a></span><span class='op'>(</span><span class='fl'>3L</span><span class='op'>)</span> <span class='co'># {   {3}    }</span>
+</div><div class='output co'>#&gt; Memory of ZDD Store:     0.025 MB, item count: 21 ( 1.19 KB/item)
+#&gt; Memory of ZDD Functions: 0.015 MB, item count: 74 ( 0.2 KB/item)
+#&gt; <span style='color: #0000BB;'>d7281766b28bdc9025520edeeffecdd9</span> : 1 cutsets, min order: 1 max order: 1 
 #&gt; 1-order 
 #&gt;       1 
-#&gt; <span style='color: #00BBBB;'>{</span>1<span style='color: #00BBBB;'>}</span></div></pre>
+#&gt; <span style='color: #00BBBB;'>{</span>3<span style='color: #00BBBB;'>}</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
