@@ -13,7 +13,11 @@ zdd <- function(value, p0 = FALSE, p1 = TRUE) {
   p0 = as_zdd(p0)
   p1 = as_zdd(p1)
   if( is_one(p0)) return(as_zdd(T)) # p0 + v*p1 = 1  + v*p1 = 1
-  p1m <- p1 %% p0
+  p1m <- if(getOption('MINIMIZE_EVERY_ZDD')) {
+    p1 %%p0
+  } else{
+    p1
+  }
   if(is_zero(p1m)) return(  p0   )  #           = p0 + v*0  = p0
   if( p0 == p1m  ) return(  p1m  )  #           = p1 + v*p1 = p1
   z <- new_zdd(value, p0, p1m)
