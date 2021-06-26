@@ -12,10 +12,10 @@ zdd_minimize <- function(zdd, Q = NULL) {
   if(  is_one(P) ) return(  P  )
   return(
     zdd(value = P,
-        p0    = min( p0(P) ),
-        p1    = min( p1(P) ) %% p0(P) )
+        p0    = zmin( p0(P) ),
+        p1    = zmin( p1(P) ) %% p0(P) )
   )
 }
 
 #' @export
-min.zdd <- function(a, na.rm = FALSE) zdd_binary_function(a, 'zdd_minimize', '')
+zmin.zdd <- function(a, na.rm = FALSE) zdd_binary_function(a, 'zdd_minimize', '')
