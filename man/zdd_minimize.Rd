@@ -4,18 +4,16 @@
 \alias{zdd_minimize}
 \title{zdd_minimize}
 \usage{
-zdd_minimize(zdd)
+zdd_minimize(zdd, Q = NULL)
 }
 \arguments{
 \item{zdd}{a zdd object}
+
+\item{Q}{a NULL object - nothing is done with this input, a refactor should be performed at some point to remove it}
 }
 \value{
-a zdd object that has only minimal solutions
+a zdd object that contains only minimal solutions
 }
 \description{
 zdd_minimize
-}
-\examples{
-zdd(2L) | zdd(3L) & zdd(3L)   # { {2}, {3} }
-(zdd(2L) | zdd(3L)) & zdd(3L) # {   {3}    }
 }
