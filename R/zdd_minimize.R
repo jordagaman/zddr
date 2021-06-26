@@ -17,5 +17,4 @@ zdd_minimize <- function(zdd, Q = NULL) {
   )
 }
 
-#' @export
 zmin.zdd <- function(a, na.rm = FALSE) zdd_binary_function(a, 'zdd_minimize', '')
